@@ -473,6 +473,23 @@ ol {
     letter-spacing: 0.04em;
 }
 
+/* Education cards pair an institution emblem with the text. */
+.card-edu {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.125rem;
+}
+
+.edu-emblem {
+    /* Sources are trimmed to their content and scaled to a common height, so both
+       marks read at the same optical size. The box stays square and `contain`
+       centers the narrower shield in it, keeping the text aligned across cards. */
+    flex: 0 0 auto;
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+}
+
 /* --- Achievements & chips ----------------------------------------------- */
 
 .achievements {
