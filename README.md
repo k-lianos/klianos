@@ -2,6 +2,8 @@
 
 Source for my personal site — a single page about my work as a software architect and frontend specialist.
 
+**Live at [k-lianos.github.io/klianos](https://k-lianos.github.io/klianos/)**
+
 Built with [Vite](https://vite.dev/) and nothing else. **No JavaScript ships**: the navigation, sticky header, theming, and
 responsive layout are all plain CSS, and the production build contains zero `<script>` tags. The whole site is about 100 KB.
 
@@ -27,10 +29,12 @@ Then open http://localhost:5173/.
 ## Structure
 
 ```
-index.html      the page — Vite's entry point
-styles.css      the only stylesheet
-public/         portrait images, copied to dist/ verbatim
-docs/           CV and original photo (reference only, never built)
+index.html         the page — Vite's entry point
+styles.css         the only stylesheet
+vite.config.js     sets the Pages base path
+public/            portrait images, copied to dist/ verbatim
+docs/              CV and original photo (reference only, never built)
+.github/workflows/ build and deploy to Pages on push to main
 ```
 
 `docs/` holds the source material the page content was written from. It is not a build input — Vite only ships `public/` and files
@@ -38,8 +42,14 @@ reachable from the import graph.
 
 ## Deployment
 
-`npm run build` produces a fully static `dist/` directory with no server-side requirements, so it deploys as-is to GitHub Pages,
-Netlify, Cloudflare Pages, or any static host.
+Pushing to `main` builds and publishes to GitHub Pages automatically via `.github/workflows/deploy.yml`. Nothing manual, and no
+`gh-pages` branch — the workflow uploads `dist/` as a Pages artifact.
+
+Because the site is served from the `/klianos/` subpath rather than a root domain, `vite.config.js` sets `base: '/klianos/'` so
+asset URLs resolve. If the site ever moves to a root domain or the repo is renamed to `k-lianos.github.io`, drop that setting.
+
+The build output is plain static files with no server-side requirements, so it works equally well on Netlify, Cloudflare Pages, or
+any static host.
 
 ## Conventions
 

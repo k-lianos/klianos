@@ -21,6 +21,16 @@ first. `npm run build && grep -c '<script' dist/index.html` should stay at 0.
 
 `npm test` is a placeholder that always passes — there are no tests yet.
 
+## Deployment
+
+Live at https://k-lianos.github.io/klianos/. Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and uploads
+`dist/` as a Pages artifact — there is no `gh-pages` branch.
+
+It is served from a subpath, so `vite.config.js` sets `base: '/klianos/'`. Vite rewrites `src`, `href`, and `srcset` in
+`index.html` accordingly, which is why the source can keep writing plain `/profile-400.jpg`. **Don't hand-prefix asset paths with
+`/klianos/`** — that would double up. If the repo is renamed to `k-lianos.github.io` or moves to a root domain, delete the `base`
+line.
+
 ## Layout
 
 - `index.html`, `styles.css` — the site. `styles.css` is linked as `./styles.css` so Vite processes and hashes it.
