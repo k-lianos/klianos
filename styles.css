@@ -1,0 +1,653 @@
+/* ============================================================================
+   Konstantinos Lianos — personal site
+   Plain CSS, no build step beyond Vite's asset handling. Mobile-first.
+   ========================================================================== */
+
+/* --- Design tokens ------------------------------------------------------- */
+
+:root {
+    --paper: #fbf8f5;
+    --paper-alt: #f4eee8;
+    --card: #ffffff;
+    --ink: #16232e;
+    --ink-soft: #3d5567;
+    --muted: #6b8092;
+    --line: #e6ddd5;
+    --accent: #b0532c;
+    --accent-ink: #ffffff;
+    --accent-soft: #f7e8df;
+
+    --radius: 10px;
+    --shadow: 0 1px 2px rgb(22 35 46 / 6%), 0 8px 24px rgb(22 35 46 / 6%);
+
+    --container: 68rem;
+    --container-narrow: 46rem;
+
+    --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+    --step-1: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+    --step-2: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+    --step-3: clamp(2rem, 1.5rem + 2.4vw, 3.5rem);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --paper: #101a22;
+        --paper-alt: #16232e;
+        --card: #1b2937;
+        --ink: #eaf1f6;
+        --ink-soft: #b8cad8;
+        --muted: #8ba1b2;
+        --line: #27394a;
+        --accent: #e2865b;
+        --accent-ink: #16232e;
+        --accent-soft: #24343f;
+        --shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 8px 24px rgb(0 0 0 / 24%);
+    }
+}
+
+/* --- Base --------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Keep anchored headings clear of the sticky header. */
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family:
+        'Inter',
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        'Segoe UI',
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+    font-size: var(--step-0);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    line-height: 1.15;
+    font-weight: 650;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+a {
+    color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+}
+
+a:hover {
+    text-decoration-thickness: 2px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+/* --- Layout helpers ------------------------------------------------------ */
+
+.container {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+}
+
+/* Narrow sections keep the page's left edge — shrinking the container itself
+   would leave prose sections indented relative to the full-width card grids.
+   Cap the children instead so line length stays readable. */
+.container.narrow > * {
+    max-width: var(--container-narrow);
+}
+
+.center {
+    text-align: center;
+}
+
+.container.narrow.center > * {
+    margin-inline: auto;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    padding: 0.6rem 1rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    left: 0.5rem;
+    top: 0.5rem;
+}
+
+/* --- Header ------------------------------------------------------------- */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 4rem;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--ink);
+    font-weight: 650;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-size: 0.8125rem;
+    letter-spacing: 0.02em;
+}
+
+/* Nav scrolls sideways on narrow screens rather than wrapping or vanishing. */
+.site-nav {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin-inline: -0.5rem;
+}
+
+.site-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.site-nav ul {
+    display: flex;
+    gap: 0.25rem;
+    padding-inline: 0.5rem;
+}
+
+.site-nav a {
+    display: block;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    color: var(--ink-soft);
+    font-size: 0.9375rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.site-nav a:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+/* Below the point where the full name plus nav fit on one line, drop the name
+   and keep the initials mark. */
+@media (max-width: 34rem) {
+    .brand {
+        font-size: 0;
+        gap: 0;
+    }
+
+    .brand-mark {
+        font-size: 0.8125rem;
+    }
+}
+
+/* --- Hero --------------------------------------------------------------- */
+
+.hero {
+    padding-block: clamp(2.5rem, 6vw, 5rem);
+    border-bottom: 1px solid var(--line);
+}
+
+.hero-inner {
+    display: grid;
+    gap: clamp(1.75rem, 5vw, 3.5rem);
+    align-items: center;
+}
+
+@media (min-width: 48rem) {
+    .hero-inner {
+        grid-template-columns: 1fr auto;
+    }
+}
+
+.eyebrow {
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: var(--step-3);
+    margin-bottom: 1rem;
+}
+
+.lede {
+    max-width: 34rem;
+    color: var(--ink-soft);
+    font-size: var(--step-1);
+    line-height: 1.55;
+}
+
+.location {
+    color: var(--muted);
+    font-size: 0.9375rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+}
+
+.center-actions {
+    justify-content: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        transform 0.15s ease,
+        background-color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--accent-ink);
+}
+
+.btn-primary:hover {
+    background: color-mix(in srgb, var(--accent) 88%, black);
+}
+
+.btn-ghost {
+    border-color: var(--line);
+    background: var(--card);
+    color: var(--ink);
+}
+
+.btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.hero-figure {
+    margin: 0;
+    justify-self: center;
+}
+
+.hero-figure img {
+    width: clamp(11rem, 55vw, 21.25rem);
+    border-radius: var(--radius);
+    /* The portrait's own background is a warm cream, so a soft ring reads
+       better than a hard edge. */
+    box-shadow:
+        var(--shadow),
+        0 0 0 1px var(--line);
+    object-fit: cover;
+}
+
+/* --- Sections ----------------------------------------------------------- */
+
+.section {
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+}
+
+.section-alt {
+    background: var(--paper-alt);
+    border-block: 1px solid var(--line);
+}
+
+.section-title {
+    font-size: var(--step-2);
+    margin-bottom: 1.5rem;
+}
+
+.section-title-spaced {
+    margin-top: 3rem;
+}
+
+.prose {
+    max-width: 42rem;
+    color: var(--ink-soft);
+}
+
+/* --- Facts -------------------------------------------------------------- */
+
+.facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 1px;
+    margin: 2.5rem 0 0;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.fact {
+    padding: 1rem 1.125rem;
+    background: var(--card);
+}
+
+.fact dt {
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.fact dd {
+    margin: 0.35rem 0 0;
+    font-weight: 600;
+}
+
+/* --- Cards -------------------------------------------------------------- */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+}
+
+.cards-two {
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.card {
+    padding: 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.card h3 {
+    font-size: var(--step-1);
+    margin-bottom: 0.6rem;
+}
+
+.card p {
+    color: var(--ink-soft);
+}
+
+.card-date {
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+/* --- Achievements & chips ----------------------------------------------- */
+
+.achievements {
+    display: grid;
+    gap: 0.9rem;
+    max-width: 46rem;
+    color: var(--ink-soft);
+}
+
+.achievements li {
+    position: relative;
+    padding-left: 1.6rem;
+}
+
+.achievements li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.chips li {
+    padding: 0.35rem 0.75rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink-soft);
+    font-size: 0.875rem;
+}
+
+/* --- Timeline ----------------------------------------------------------- */
+
+.timeline {
+    display: grid;
+    gap: 2.5rem;
+}
+
+.role {
+    position: relative;
+    padding-left: 1.75rem;
+    border-left: 2px solid var(--line);
+}
+
+.role::before {
+    content: '';
+    position: absolute;
+    left: -0.4375rem;
+    top: 0.5rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--paper);
+}
+
+.role-meta {
+    margin-bottom: 0.3rem;
+    color: var(--muted);
+    font-size: 0.875rem;
+}
+
+.role-date {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.role h3 {
+    font-size: var(--step-1);
+    margin-bottom: 0.2rem;
+}
+
+.role-prior {
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.role-company {
+    margin-bottom: 0.85rem;
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.role p:not(.role-meta):not(.role-company) {
+    color: var(--ink-soft);
+}
+
+/* --- Split (languages / honors) ----------------------------------------- */
+
+.split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1rem 3rem;
+}
+
+.plain-list {
+    display: grid;
+    gap: 0.6rem;
+    color: var(--ink-soft);
+}
+
+.plain-list li {
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.plain-list li:last-child {
+    border-bottom: 0;
+}
+
+/* --- Contact & footer --------------------------------------------------- */
+
+.section-contact .lede {
+    max-width: 36rem;
+    margin-inline: auto;
+}
+
+.site-footer {
+    padding-block: 2rem;
+    background: var(--paper-alt);
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.875rem;
+}
+
+.footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.footer-inner p {
+    margin: 0;
+}
+
+/* --- Print -------------------------------------------------------------- */
+
+@media print {
+    .site-header,
+    .site-footer,
+    .hero-actions,
+    .skip-link {
+        display: none;
+    }
+
+    body {
+        background: #fff;
+        color: #000;
+        font-size: 11pt;
+    }
+
+    .section,
+    .hero {
+        padding-block: 1rem;
+        border: 0;
+    }
+
+    .section-alt {
+        background: none;
+    }
+
+    .role {
+        break-inside: avoid;
+    }
+}
