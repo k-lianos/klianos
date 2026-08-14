@@ -9,7 +9,7 @@ trim_trailing_whitespace = true
 indent_size = 4
 end_of_line = lf
 
-[*.ts]
+[*.{js,cjs,mjs,ts,cts,mts}]
 quote_type = single
 
 [*.md]
