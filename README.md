@@ -33,12 +33,10 @@ index.html         the page — Vite's entry point
 styles.css         the only stylesheet
 vite.config.js     sets the Pages base path
 public/            portrait images, copied to dist/ verbatim
-docs/              CV and original photo (reference only, never built)
 .github/workflows/ build and deploy to Pages on push to main
 ```
 
-`docs/` holds the source material the page content was written from. It is not a build input — Vite only ships `public/` and files
-reachable from the import graph.
+Vite ships only `public/` and files reachable from the import graph, so anything else in the repo stays out of the build.
 
 ## Deployment
 

@@ -36,29 +36,29 @@ line.
 - `index.html`, `styles.css` — the site. `styles.css` is linked as `./styles.css` so Vite processes and hashes it.
 - `public/profile-400.jpg`, `public/profile-800.jpg` — the portrait, served via `srcset`. Vite copies `public/` verbatim, so
   these keep stable URLs.
-- `docs/` — reference material only, never a build input. See below.
 
-To regenerate the portrait from the original after replacing it:
+To regenerate the portrait after replacing it, from a full-size original at `<source>`:
 
 ```sh
-convert docs/profile.jpg -auto-orient -strip -resize 400x -quality 82 -interlace Plane public/profile-400.jpg
-convert docs/profile.jpg -auto-orient -strip -resize 800x -quality 80 -interlace Plane public/profile-800.jpg
+convert <source> -auto-orient -strip -resize 400x -quality 82 -interlace Plane public/profile-400.jpg
+convert <source> -auto-orient -strip -resize 800x -quality 80 -interlace Plane public/profile-800.jpg
 ```
 
 `-strip` matters: it drops EXIF so no camera or GPS metadata is published.
 
-## Reference
+## Site content
 
-Source material for site content. Read these before drafting any bio, about section, work history, or skills list — do not invent
-or paraphrase career details from elsewhere.
+The page content was written from the owner's CV (a LinkedIn profile export) and his headshot. **Neither is in the repo any
+more** — they lived in `docs/` and were removed once the content was written. Ask him for them if you need to check a career
+detail; do not invent or paraphrase work history from elsewhere.
 
-- `docs/Profile.pdf` — CV (a LinkedIn profile export). Source of truth for work history, roles, dates, education, and skills.
-- `docs/profile.jpg` — original 3072×4096 portrait. Reference and resize source; don't link it into the page directly.
+The two files are still reachable in git history at `590b649` (`docs/Profile.pdf`, `docs/profile.jpg`) if you need to consult
+them.
 
 ### Deliberate departures from the CV
 
 The site does not reproduce the CV verbatim. These choices were made with the owner and should not be silently "corrected" back
-by re-reading the PDF:
+if you go digging for the source:
 
 - **Angular 6 → 21.** The CV contradicts itself: the summary says "Angular 6 to 14", the TRASYS entry says "6 to 21". The site
   uses 21. The CV itself still needs fixing.
@@ -68,6 +68,7 @@ by re-reading the PDF:
   Agricultural Development "CERT Meat Technician" (off-topic for a software site).
 - **"BSc" for Liverpool** is an inference — the CV lists no degree type.
 - **Contact is the gmail address** from the CV, not the vimachem.com work address.
+- **Location reads "Vouliagmeni"**, not the CV's "Voúla" — corrected by the owner.
 
 ## Conventions
 
