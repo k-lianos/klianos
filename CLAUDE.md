@@ -28,7 +28,8 @@ npm run build && ls dist/assets/*.js   # expect exactly one small bundle
 | `npm run format`       | Prettier over the whole repo                  |
 | `npm run format:check` | Verify formatting without writing             |
 
-`npm test` is a placeholder that always passes — there are no tests yet.
+`npm test` is a placeholder that always passes — there are no tests yet. `TESTING.md` records the agreed plan for adding them
+(what to build, and what to skip). It is future work: read it if asked about testing, but **don't implement it unprompted.**
 
 ## Deployment
 
