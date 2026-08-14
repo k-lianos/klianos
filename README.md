@@ -4,8 +4,25 @@ Source for my personal site — a single page about my work as a software archit
 
 **Live at [k-lianos.github.io/klianos](https://k-lianos.github.io/klianos/)**
 
-Built with [Vite](https://vite.dev/) and nothing else. **No JavaScript ships**: the navigation, sticky header, theming, and
-responsive layout are all plain CSS, and the production build contains zero `<script>` tags. The whole site is about 100 KB.
+Built with [Vite](https://vite.dev/) and nothing else. **No executable JavaScript ships**: the navigation, sticky header, theming,
+and responsive layout are all plain CSS. The only `<script>` tag holds inert `application/ld+json` structured data. The whole site
+is about 220 KB, most of that images.
+
+## Discoverability
+
+- **Meta tags** — Open Graph and Twitter Card tags with a generated 1200×630 preview image, canonical URL, `robots` directives,
+  and per-scheme `theme-color`.
+- **Structured data** — a schema.org [`Person`](https://schema.org/Person) block covering role, employer, education, languages,
+  skills, and linked profiles.
+- **[`llms.txt`](https://llmstxt.org/)** — a plain-Markdown summary at `/llms.txt` for language models reading the site.
+- **`robots.txt` and `sitemap.xml`** — crawler directives and a sitemap.
+- **Icons** — an SVG favicon with `.ico` and Apple touch icon fallbacks.
+- **A real 404 page** rather than GitHub's default.
+
+One caveat: `robots.txt` and `llms.txt` are only honored at a **domain root**. Because this is a GitHub project page they are
+served from `/klianos/`, where crawlers will not look for them. They become effective if the site moves to a root domain or the
+repo is renamed to `k-lianos.github.io`. The meta tags, structured data, and sitemap all work regardless — a sitemap just has to
+be submitted directly to Search Console instead of being auto-discovered.
 
 ## Getting started
 
@@ -32,7 +49,7 @@ Then open http://localhost:5173/.
 index.html         the page — Vite's entry point
 styles.css         the only stylesheet
 vite.config.js     sets the Pages base path
-public/            portrait images, copied to dist/ verbatim
+public/            images, icons, 404, llms.txt, robots.txt, sitemap.xml — copied to dist/ verbatim
 .github/workflows/ build and deploy to Pages on push to main
 ```
 

@@ -1,16 +1,129 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <title>Konstantinos Lianos — Software Architect &amp; Angular Specialist</title>
         <meta
             name="description"
             content="Konstantinos Lianos is a software architect and frontend specialist in Athens, Greece, with over a decade of experience architecting, optimizing, and modernizing large-scale Angular applications."
         />
         <meta name="author" content="Konstantinos Lianos" />
+        <link rel="canonical" href="https://k-lianos.github.io/klianos/" />
+
+        <!-- Crawlers. max-image-preview:large opts into full-size thumbnails in results. -->
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+        <!-- Theming. color-scheme tells the browser to style form controls and
+             scrollbars for both; theme-color paints mobile browser chrome. -->
         <meta name="color-scheme" content="light dark" />
+        <meta name="theme-color" content="#fbf8f5" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#101a22" media="(prefers-color-scheme: dark)" />
+
+        <!-- Open Graph. Absolute URLs are required here, and Vite does not rewrite
+             `content` attributes, so these are hardcoded rather than base-relative. -->
+        <meta property="og:type" content="profile" />
+        <meta property="og:site_name" content="Konstantinos Lianos" />
+        <meta property="og:url" content="https://k-lianos.github.io/klianos/" />
+        <meta property="og:title" content="Konstantinos Lianos — Software Architect &amp; Angular Specialist" />
+        <meta
+            property="og:description"
+            content="Software architect and frontend specialist in Athens, Greece. A decade-plus architecting, optimizing, and modernizing large-scale Angular applications."
+        />
+        <meta property="og:image" content="https://k-lianos.github.io/klianos/og-image.jpg" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Konstantinos Lianos, Software Architect and Angular Specialist" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="profile:first_name" content="Konstantinos" />
+        <meta property="profile:last_name" content="Lianos" />
+
+        <!-- Twitter/X reads most og:* tags but needs its own card type. -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Konstantinos Lianos — Software Architect &amp; Angular Specialist" />
+        <meta
+            name="twitter:description"
+            content="Software architect and frontend specialist in Athens, Greece. A decade-plus architecting, optimizing, and modernizing large-scale Angular applications."
+        />
+        <meta name="twitter:image" content="https://k-lianos.github.io/klianos/og-image.jpg" />
+        <meta name="twitter:image:alt" content="Konstantinos Lianos, Software Architect and Angular Specialist" />
+
+        <!-- Icons -->
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+        <!-- IndieWeb identity consolidation: marks the LinkedIn profile as the same person. -->
+        <link rel="me" href="https://www.linkedin.com/in/klianos" />
+        <link rel="me" href="https://github.com/k-lianos" />
+
         <link rel="stylesheet" href="./styles.css" />
+
+        <!-- The portrait is the largest-contentful-paint element, so fetch it in
+             parallel with the stylesheet instead of after layout. -->
+        <link
+            rel="preload"
+            as="image"
+            href="/profile-400.jpg"
+            imagesrcset="/profile-400.jpg 400w, /profile-800.jpg 800w"
+            imagesizes="(min-width: 900px) 340px, (min-width: 600px) 280px, 60vw"
+        />
+
+        <!-- Structured data. Inert JSON, not executable script — see CLAUDE.md. -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Konstantinos Lianos",
+                "givenName": "Konstantinos",
+                "familyName": "Lianos",
+                "url": "https://k-lianos.github.io/klianos/",
+                "image": "https://k-lianos.github.io/klianos/profile-800.jpg",
+                "email": "konstantinos.lianos@gmail.com",
+                "jobTitle": ["Software Architect", "Senior Frontend Software Engineer"],
+                "description": "Software architect and frontend specialist with over a decade of experience architecting, optimizing, and modernizing large-scale web applications in the Angular and JavaScript ecosystem.",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Vouliagmeni",
+                    "addressRegion": "Attiki",
+                    "addressCountry": "GR"
+                },
+                "sameAs": ["https://www.linkedin.com/in/klianos", "https://github.com/k-lianos"],
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Vimachem"
+                },
+                "alumniOf": [
+                    {
+                        "@type": "CollegeOrUniversity",
+                        "name": "London School of Economics and Political Science"
+                    },
+                    {
+                        "@type": "CollegeOrUniversity",
+                        "name": "University of Liverpool"
+                    }
+                ],
+                "knowsLanguage": [
+                    { "@type": "Language", "name": "Greek" },
+                    { "@type": "Language", "name": "English" },
+                    { "@type": "Language", "name": "French" }
+                ],
+                "knowsAbout": [
+                    "Angular",
+                    "TypeScript",
+                    "JavaScript",
+                    "Frontend architecture",
+                    "Web performance optimization",
+                    "Nrwl Nx",
+                    "Node.js",
+                    "Jest",
+                    "WebdriverIO",
+                    "Agile software development"
+                ]
+            }
+        </script>
     </head>
     <body id="top">
         <a class="skip-link" href="#main">Skip to content</a>

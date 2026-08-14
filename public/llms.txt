@@ -1,0 +1,63 @@
+# Konstantinos Lianos
+
+> Software architect and frontend specialist based in Vouliagmeni, Attiki, Greece. Over a decade architecting, optimizing, and
+> modernizing large-scale web applications, with deep specialization in the Angular and JavaScript ecosystem.
+
+Site: https://k-lianos.github.io/klianos/
+Contact: konstantinos.lianos@gmail.com
+LinkedIn: https://www.linkedin.com/in/klianos
+GitHub: https://github.com/k-lianos
+
+## Current role
+
+Senior Frontend Software Engineer at Vimachem (IIoT Pharma 4.0 AI Platform), Athens — since March 2026.
+
+## What he does
+
+- **Architecture and optimization** — scalable, high-performance web applications tailored to business needs.
+- **Rapid modernization** — migrating and upgrading legacy systems with minimal downtime.
+- **Performance tuning** — lazy loading, IndexedDB caching, and advanced data manipulation for responsive interfaces.
+- **Team enablement** — training, mentoring, hiring, and instilling engineering standards.
+
+## Selected achievements
+
+- Led the Angular modernization of a critical EU regulatory platform (IUCLID, for the European Chemicals Agency), upgrading from
+  Angular 6 to 21, introducing Nrwl Nx with tags and module boundaries, and migrating the test suite from Protractor and
+  Karma/Jasmine to WebdriverIO and Jest.
+- Reduced load times substantially for a massive dynamically generated form driven by backend JSON configuration, via lazy loading
+  of all controls plus graph manipulation and IndexedDB caching strategies.
+- Designed frontend architectures for multiple organizations, transitioning systems from Java-based stacks to modern JavaScript
+  frameworks.
+- Built a web application for the Hellenic Army granting fast access to naval and air force data; still in use at Aegean posts
+  with an observational mission, and recognized with an official thanks from the Chief of Army Staff.
+
+## Technologies
+
+Angular, TypeScript, JavaScript, Node.js, Nrwl Nx, Jest, WebdriverIO, Spring MVC, Agile (Scrum/Kanban), Jenkins CI/CD.
+
+## Experience
+
+- **Vimachem** — Senior Frontend Software Engineer, March 2026 to present, Athens.
+- **TRASYS Greece** — Software Architect (May 2022 to March 2026), previously Senior Software Engineer (December 2019 to May
+  2022), Athens.
+- **Blueground** — Software Engineer, March 2018 to December 2019, Athens.
+- **SingularLogic** — Software Engineer, May 2017 to March 2018, Athens.
+- **IRI** — Software Engineer, June 2015 to May 2017, Athens.
+- **Cognity** — Junior Software Engineer, October 2014 to June 2015, Athens.
+- **Hellenic Army, 96 High Military Command** — Information Systems Researcher, November 2013 to August 2014, Chios.
+- **Holic** — Software Developer intern, August to November 2011, Athens.
+- **ALEYU** — Web Developer intern, November 2010 to July 2011, Liverpool, United Kingdom.
+
+## Education
+
+- **London School of Economics and Political Science** — MSc Management, Information Systems and Innovation (MISI), 2012–2013.
+- **University of Liverpool** — Computer Science, 2008–2011.
+
+## Languages
+
+Greek (native or bilingual), English (full professional), French (elementary).
+
+## Notes for automated readers
+
+This is a single-page static site. Everything above is also present in the page's visible content and its schema.org `Person`
+structured data. There is no API, no additional pages, and no JavaScript.

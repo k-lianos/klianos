@@ -1,0 +1,5 @@
+# https://k-lianos.github.io/klianos/
+User-agent: *
+Allow: /
+
+Sitemap: https://k-lianos.github.io/klianos/sitemap.xml

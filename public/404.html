@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Page not found — Konstantinos Lianos</title>
+        <meta name="robots" content="noindex" />
+        <meta name="color-scheme" content="light dark" />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <!-- Standalone: this file lives in public/ so Vite copies it verbatim and
+             never rewrites a hashed stylesheet link into it. Styles stay inline. -->
+        <style>
+            :root {
+                --paper: #fbf8f5;
+                --ink: #16232e;
+                --muted: #6b8092;
+                --accent: #b0532c;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --paper: #101a22;
+                    --ink: #eaf1f6;
+                    --muted: #8ba1b2;
+                    --accent: #e2865b;
+                }
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                display: grid;
+                place-items: center;
+                min-height: 100vh;
+                margin: 0;
+                padding: 2rem;
+                background: var(--paper);
+                color: var(--ink);
+                font-family:
+                    ui-sans-serif,
+                    system-ui,
+                    -apple-system,
+                    'Segoe UI',
+                    Roboto,
+                    Helvetica,
+                    Arial,
+                    sans-serif;
+                line-height: 1.65;
+                text-align: center;
+            }
+
+            .code {
+                margin: 0;
+                color: var(--accent);
+                font-size: 0.875rem;
+                font-weight: 600;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+            }
+
+            h1 {
+                margin: 0.5rem 0 0.75rem;
+                font-size: clamp(1.75rem, 1.2rem + 2.4vw, 2.75rem);
+                letter-spacing: -0.015em;
+            }
+
+            p {
+                max-width: 30rem;
+                margin: 0 auto;
+                color: var(--muted);
+            }
+
+            a {
+                display: inline-block;
+                margin-top: 2rem;
+                padding: 0.7rem 1.25rem;
+                border-radius: 10px;
+                background: var(--accent);
+                color: var(--paper);
+                font-size: 0.9375rem;
+                font-weight: 600;
+                text-decoration: none;
+            }
+
+            a:focus-visible {
+                outline: 2px solid var(--ink);
+                outline-offset: 3px;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <p class="code">Error 404</p>
+            <h1>Page not found</h1>
+            <p>There is only one page on this site, and this isn't it.</p>
+            <a href="/klianos/">Go to the homepage</a>
+        </main>
+    </body>
+</html>

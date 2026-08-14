@@ -5,9 +5,16 @@ entry point and the only page; `styles.css` sits next to it and is the only styl
 
 ## Hard constraint: no JavaScript
 
-The site is HTML and CSS only, by explicit request. Nav, sticky header, theming, and responsiveness are all pure CSS, and the
-build ships zero `<script>` tags. Do not reach for JS to solve a layout or interaction problem here — find the CSS answer, or ask
-first. `npm run build && grep -c '<script' dist/index.html` should stay at 0.
+The site is HTML and CSS only, by explicit request. Nav, sticky header, theming, and responsiveness are all pure CSS. Do not reach
+for JS to solve a layout or interaction problem here — find the CSS answer, or ask first.
+
+There is exactly one `<script>` tag: the `application/ld+json` block of schema.org structured data in `index.html`. It holds inert
+JSON that browsers never execute, and it is how search engines and LLMs identify the site's subject — so it is a deliberate
+exception, not a lapse. Verify the invariant by excluding it:
+
+```sh
+npm run build && grep -oE '<script[^>]*>' dist/index.html | grep -vcF 'application/ld+json'   # must print 0
+```
 
 ## Commands
 
@@ -36,6 +43,15 @@ line.
 - `index.html`, `styles.css` — the site. `styles.css` is linked as `./styles.css` so Vite processes and hashes it.
 - `public/profile-400.jpg`, `public/profile-800.jpg` — the portrait, served via `srcset`. Vite copies `public/` verbatim, so
   these keep stable URLs.
+- `public/og-image.jpg` — 1200×630 social preview card. Generated, not hand-drawn; see below.
+- `public/favicon.svg`, `favicon.ico`, `apple-touch-icon.png` — the KL monogram. The SVG is the source; the raster ones are
+  derived from it.
+- `public/llms.txt`, `robots.txt`, `sitemap.xml` — machine-readable descriptions of the site.
+- `public/404.html` — standalone error page. It lives in `public/`, so Vite never rewrites a hashed stylesheet link into it; its
+  CSS is inlined and its homepage link is hardcoded to `/klianos/` for the same reason.
+
+**Absolute URLs are hardcoded in three places** and must be updated together if the site moves: the `og:*`/`twitter:*`/`canonical`
+tags in `index.html` (Vite does not rewrite `content` attributes), the JSON-LD block, and `robots.txt`/`sitemap.xml`/`llms.txt`.
 
 To regenerate the portrait after replacing it, from a full-size original at `<source>`:
 
@@ -45,6 +61,13 @@ convert <source> -auto-orient -strip -resize 800x -quality 80 -interlace Plane p
 ```
 
 `-strip` matters: it drops EXIF so no camera or GPS metadata is published.
+
+The social card and icons are generated too. Measure text before sizing it — guessing overflows the portrait panel:
+
+```sh
+convert -font /usr/share/fonts/opentype/fira/FiraSans-Bold.otf -pointsize 66 label:'Konstantinos Lianos' -format '%w' info:
+inkscape public/favicon.svg -w 512 -h 512 -o /tmp/fav512.png   # then resize into favicon.ico / apple-touch-icon.png
+```
 
 ## Site content
 
