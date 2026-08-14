@@ -363,10 +363,16 @@ ol {
 }
 
 /* While the drawer is open, stop the page behind it from scrolling. Scoped to the
-   drawer's own breakpoint so a stale .nav-open class can never lock desktop. */
+   drawer's own breakpoint so a stale .nav-open class can never lock desktop.
+
+   Only the root element — NEVER also `body`. Overflow on the root propagates to
+   the viewport, which leaves the sticky header sticking to the viewport as usual.
+   Setting it on body instead makes body a scroll container, and the header then
+   sticks to body's scrollport (top of the document) rather than the viewport, so
+   opening the drawer while scrolled down flings the header off-screen and leaves
+   nothing on the page to click. */
 @media (max-width: 47.9375rem) {
-    .nav-open,
-    .nav-open body {
+    .nav-open {
         overflow: hidden;
     }
 }
