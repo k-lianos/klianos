@@ -1,0 +1,16 @@
+# Add files here to ignore them from prettier formatting
+/dist
+/coverage
+/.nx/cache
+/.nx/workspace-data
+/.angular
+/node_modules
+/.husky
+/.git
+/.idea
+/.vscode
+/tmp
+
+package-lock.json
+
+.angular

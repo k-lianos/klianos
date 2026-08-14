@@ -1,21 +1,22 @@
 {
-  "name": "klianos",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test": "echo \"no tests yet\"",
-    "prepare": "husky"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "husky": "^9.1.7",
-    "prettier": "^3.9.6",
-    "vite": "^8.2.1"
-  }
+    "name": "klianos",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "test": "echo \"no tests yet\"",
+        "prepare": "husky"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "husky": "^9.1.7",
+        "lint-staged": "^17.3.0",
+        "prettier": "^3.9.6",
+        "vite": "^8.2.1"
+    }
 }
