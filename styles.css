@@ -445,10 +445,6 @@ ol {
     gap: 1rem;
 }
 
-.cards-two {
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-}
-
 .card {
     padding: 1.5rem;
     background: var(--card);
@@ -473,21 +469,55 @@ ol {
     letter-spacing: 0.04em;
 }
 
-/* Education cards pair an institution emblem with the text. */
-.card-edu {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.125rem;
+/* --- Education ---------------------------------------------------------- */
+
+/* No card chrome here. The section already sits on its own tinted band, and two
+   more bordered boxes would just repeat the card grid above it. Hairline-separated
+   rows read as credentials and echo the Experience timeline's rhythm. */
+
+.edu-list {
+    --mark: clamp(3.25rem, 9vw, 4.5rem);
+
+    display: grid;
+    max-width: 52rem;
 }
 
-.edu-emblem {
-    /* Sources are trimmed to their content and scaled to a common height, so both
-       marks read at the same optical size. The box stays square and `contain`
-       centers the narrower shield in it, keeping the text aligned across cards. */
+.edu-item {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.125rem, 3vw, 1.875rem);
+    padding-block: clamp(1.375rem, 3vw, 1.875rem);
+    border-block-start: 1px solid var(--line);
+}
+
+.edu-item:last-child {
+    border-block-end: 1px solid var(--line);
+}
+
+.edu-mark {
+    /* Sources are trimmed to their content and share a 128px height, so a square
+       box plus `contain` renders a square logo and a shield at the same optical
+       size while keeping both text columns aligned. */
     flex: 0 0 auto;
-    width: 3rem;
-    height: 3rem;
+    width: var(--mark);
+    height: var(--mark);
     object-fit: contain;
+}
+
+.edu-date {
+    margin-bottom: 0.2rem;
+    color: var(--accent);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.edu-school {
+    margin-bottom: 0.3rem;
+    font-size: var(--step-1);
+}
+
+.edu-degree {
+    color: var(--ink-soft);
 }
 
 /* --- Achievements & chips ----------------------------------------------- */
