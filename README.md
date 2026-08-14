@@ -26,7 +26,8 @@ be submitted directly to Search Console instead of being auto-discovered.
 
 ## Getting started
 
-Requires Node.js `^20.19.0 || >=22.12.0`, per Vite 8.
+Requires **Node.js 22** (22.12 or newer) and **npm 10** — the versions declared in `engines`, and what CI builds with. Vite 8 would
+also accept Node 20.19+, but the project standardizes on the 22 line.
 
 ```sh
 npm install
