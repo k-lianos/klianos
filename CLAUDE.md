@@ -3,17 +3,19 @@
 Konstantinos Lianos' personal site — a single page about him. Vanilla Vite, no framework. `index.html` at the repo root is the
 entry point and the only page; `styles.css` sits next to it and is the only stylesheet.
 
-## Hard constraint: no JavaScript
+## Hard constraint: keep JavaScript minimal
 
-The site is HTML and CSS only, by explicit request. Nav, sticky header, theming, and responsiveness are all pure CSS. Do not reach
-for JS to solve a layout or interaction problem here — find the CSS answer, or ask first.
+JavaScript is allowed but strictly rationed. Solve layout, theming, and state-driven styling in CSS; reach for JS only when CSS
+genuinely cannot do the job, and say so when you do.
 
-There is exactly one `<script>` tag: the `application/ld+json` block of schema.org structured data in `index.html`. It holds inert
-JSON that browsers never execute, and it is how search engines and LLMs identify the site's subject — so it is a deliberate
-exception, not a lapse. Verify the invariant by excluding it:
+Today the entire budget is `menu.js` — roughly twenty lines that toggle `aria-expanded` on the burger button and a `.nav-open`
+class on `<html>`. Every transition, transform, and layout change hangs off that class in `styles.css`. Keep it that way: JS flips
+state, CSS owns appearance.
+
+The other `<script>` is the `application/ld+json` block in `index.html`, which is inert data, not code.
 
 ```sh
-npm run build && grep -oE '<script[^>]*>' dist/index.html | grep -vcF 'application/ld+json'   # must print 0
+npm run build && ls dist/assets/*.js   # expect exactly one small bundle
 ```
 
 ## Commands
@@ -41,6 +43,7 @@ line.
 ## Layout
 
 - `index.html`, `styles.css` — the site. `styles.css` is linked as `./styles.css` so Vite processes and hashes it.
+- `menu.js` — the mobile drawer toggle, the only script. Linked as `./menu.js` so Vite bundles it.
 - `public/profile-400.jpg`, `public/profile-800.jpg` — the portrait, served via `srcset`. Vite copies `public/` verbatim, so
   these keep stable URLs.
 - `public/og-image.jpg` — 1200×630 social preview card. Generated, not hand-drawn; see below.
@@ -92,6 +95,17 @@ if you go digging for the source:
 - **"BSc" for Liverpool** is an inference — the CV lists no degree type.
 - **Contact is the gmail address** from the CV, not the vimachem.com work address.
 - **Location reads "Vouliagmeni"**, not the CV's "Voúla" — corrected by the owner.
+
+## Header and drawer gotchas
+
+Two constraints trapped earlier attempts at the mobile menu. Both are verified, not guessed:
+
+- **The header cannot host a `position: fixed` child.** `.site-header` has `backdrop-filter`, which makes it the containing block
+  for fixed descendants — a fixed panel gets clamped to the header's box. And `position: sticky` makes it a stacking context, so
+  no descendant can paint _behind_ its background either. The drawer therefore grows `max-height` from 0 with `overflow: hidden`,
+  unfurling downward from the header's edge and never overlapping it.
+- **The drawer's `left`/`right` must be `0`, not `-1.25rem`.** Absolute offsets resolve against the containing block's _padding_
+  box, which already contains `.container`'s inline padding. Negative values overhang the viewport and cause sideways scrolling.
 
 ## Conventions
 

@@ -167,6 +167,19 @@ ol {
     color: var(--muted);
 }
 
+/* Available to screen readers, invisible on screen. */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
 .skip-link {
     position: absolute;
     left: -9999px;
@@ -195,6 +208,9 @@ ol {
 }
 
 .header-inner {
+    /* Positioning context for the mobile nav panel, which is taken out of flow so
+       it overlays the page rather than pushing the hero down. */
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -225,49 +241,175 @@ ol {
     letter-spacing: 0.02em;
 }
 
-/* Nav scrolls sideways on narrow screens rather than wrapping or vanishing. */
-.site-nav {
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    margin-inline: -0.5rem;
+/* --- Navigation ---------------------------------------------------------- */
+
+.nav-toggle {
+    display: grid;
+    place-items: center;
+    /* 44px, the minimum comfortable touch target. */
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-inline-end: -0.5rem;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: none;
+    color: inherit;
+    cursor: pointer;
 }
 
-.site-nav::-webkit-scrollbar {
-    display: none;
-}
-
-.site-nav ul {
-    display: flex;
-    gap: 0.25rem;
-    padding-inline: 0.5rem;
-}
-
-.site-nav a {
-    display: block;
-    padding: 0.4rem 0.6rem;
-    border-radius: 6px;
-    color: var(--ink-soft);
-    font-size: 0.9375rem;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-.site-nav a:hover {
+.nav-toggle:hover {
     background: var(--accent-soft);
+}
+
+/* Three bars from one element: the span plus its two pseudo-elements, which are
+   positioned against the span itself rather than the .nav wrapper. */
+.nav-burger {
+    position: relative;
+}
+
+.nav-burger,
+.nav-burger::before,
+.nav-burger::after {
+    display: block;
+    width: 1.25rem;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--ink);
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.nav-burger::before,
+.nav-burger::after {
+    content: '';
+    position: absolute;
+}
+
+.nav-burger::before {
+    transform: translateY(-6px);
+}
+
+.nav-burger::after {
+    transform: translateY(6px);
+}
+
+/* Open state folds the bars into an X: the middle bar disappears and the outer
+   two rotate onto each other. */
+.nav-open .nav-burger {
+    background: transparent;
+}
+
+.nav-open .nav-burger::before {
+    transform: rotate(45deg);
+}
+
+.nav-open .nav-burger::after {
+    transform: rotate(-45deg);
+}
+
+/* The drawer unfurls downward from the header's bottom edge rather than sliding
+   in from off-screen. A translated panel would have to pass over the header, and
+   it cannot paint behind it: sticky positioning makes the header a stacking
+   context, so any descendant paints above its background. Growing max-height
+   from zero with overflow clipped gives the same downward motion with no overlap
+   to manage — and it keeps the header's backdrop-filter, which would otherwise
+   trap a position:fixed panel inside the header's box. */
+.nav-panel {
+    position: absolute;
+    top: 100%;
+    /* Offsets resolve against the containing block's padding box, which already
+       includes .container's inline padding — so 0 is already full-bleed here.
+       Negative values would overhang the viewport and cause sideways scroll. */
+    left: 0;
+    right: 0;
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    transition:
+        max-height 0.34s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0.34s;
+}
+
+.nav-open .nav-panel {
+    /* Generous ceiling: five links plus padding come to roughly 17rem. */
+    max-height: 30rem;
+    visibility: visible;
+}
+
+.nav-panel ul {
+    padding: 0.5rem 1.25rem 1rem;
+}
+
+.nav-panel li + li {
+    border-block-start: 1px solid var(--line);
+}
+
+.nav-panel a {
+    display: block;
+    padding: 0.9rem 0.25rem;
+    color: var(--ink);
+    font-size: 1.0625rem;
+    font-weight: 550;
+    text-decoration: none;
+}
+
+.nav-panel a:hover {
     color: var(--accent);
 }
 
-/* Below the point where the full name plus nav fit on one line, drop the name
-   and keep the initials mark. */
-@media (max-width: 34rem) {
-    .brand {
-        font-size: 0;
-        gap: 0;
+/* While the drawer is open, stop the page behind it from scrolling. Scoped to the
+   drawer's own breakpoint so a stale .nav-open class can never lock desktop. */
+@media (max-width: 47.9375rem) {
+    .nav-open,
+    .nav-open body {
+        overflow: hidden;
+    }
+}
+
+/* Wide screens: no burger, and the panel reverts to inline links. */
+@media (min-width: 48rem) {
+    .nav-toggle {
+        display: none;
     }
 
-    .brand-mark {
-        font-size: 0.8125rem;
+    .nav-panel {
+        position: static;
+        max-height: none;
+        overflow: visible;
+        visibility: visible;
+        background: none;
+        border: 0;
+        box-shadow: none;
+        transition: none;
+    }
+
+    .nav-panel ul {
+        display: flex;
+        gap: 0.25rem;
+        padding: 0;
+    }
+
+    .nav-panel li + li {
+        border-block-start: 0;
+    }
+
+    .nav-panel a {
+        padding: 0.4rem 0.6rem;
+        border-radius: 6px;
+        color: var(--ink-soft);
+        font-size: 0.9375rem;
+        font-weight: 400;
+        white-space: nowrap;
+    }
+
+    .nav-panel a:hover {
+        background: var(--accent-soft);
+        color: var(--accent);
     }
 }
 

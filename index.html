@@ -131,7 +131,12 @@
         <header class="site-header">
             <div class="container header-inner">
                 <a class="brand" href="#top"><span class="brand-mark">KL</span> Konstantinos Lianos</a>
-                <nav class="site-nav" aria-label="Sections">
+
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+                    <span class="nav-burger" aria-hidden="true"></span>
+                    <span class="visually-hidden">Menu</span>
+                </button>
+                <nav class="nav-panel" id="site-menu" aria-label="Sections">
                     <ul>
                         <li><a href="#about">About</a></li>
                         <li><a href="#expertise">Expertise</a></li>
@@ -456,5 +461,7 @@
                 <p><a href="#top">Back to top ↑</a></p>
             </div>
         </footer>
+
+        <script type="module" src="./menu.js"></script>
     </body>
 </html>

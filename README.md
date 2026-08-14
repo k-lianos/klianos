@@ -4,9 +4,9 @@ Source for my personal site — a single page about my work as a software archit
 
 **Live at [k-lianos.github.io/klianos](https://k-lianos.github.io/klianos/)**
 
-Built with [Vite](https://vite.dev/) and nothing else. **No executable JavaScript ships**: the navigation, sticky header, theming,
-and responsive layout are all plain CSS. The only `<script>` tag holds inert `application/ld+json` structured data. The whole site
-is about 220 KB, most of that images.
+Built with [Vite](https://vite.dev/) and nothing else. **Almost no JavaScript ships** — 0.6 KB gzipped, and its only job is
+toggling the mobile menu. The sticky header, theming, responsive layout, and every transition are plain CSS. The whole site is
+about 220 KB, most of that images.
 
 ## Discoverability
 
@@ -48,6 +48,7 @@ Then open http://localhost:5173/.
 ```
 index.html         the page — Vite's entry point
 styles.css         the only stylesheet
+menu.js            mobile menu toggle — the only script
 vite.config.js     sets the Pages base path
 public/            images, icons, 404, llms.txt, robots.txt, sitemap.xml — copied to dist/ verbatim
 .github/workflows/ build and deploy to Pages on push to main
