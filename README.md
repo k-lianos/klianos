@@ -2,7 +2,7 @@
 
 Source for my personal site — a single page about my work as a software architect and frontend specialist.
 
-**Live at [k-lianos.github.io/klianos](https://k-lianos.github.io/klianos/)**
+**Live at [klianos.com](https://klianos.com/)**
 
 Built with [Vite](https://vite.dev/) and nothing else. **Almost no JavaScript ships** — 0.6 KB gzipped, and its only job is
 toggling the mobile menu. The sticky header, theming, responsive layout, and every transition are plain CSS. The whole site is
@@ -19,10 +19,8 @@ about 220 KB, most of that images.
 - **Icons** — an SVG favicon with `.ico` and Apple touch icon fallbacks.
 - **A real 404 page** rather than GitHub's default.
 
-One caveat: `robots.txt` and `llms.txt` are only honored at a **domain root**. Because this is a GitHub project page they are
-served from `/klianos/`, where crawlers will not look for them. They become effective if the site moves to a root domain or the
-repo is renamed to `k-lianos.github.io`. The meta tags, structured data, and sitemap all work regardless — a sitemap just has to
-be submitted directly to Search Console instead of being auto-discovered.
+`robots.txt` and `llms.txt` are only honored at a **domain root**, which is why the site is custom-domained onto
+`klianos.com` rather than left at its GitHub Pages subpath.
 
 ## Getting started
 
@@ -50,8 +48,7 @@ Then open http://localhost:5173/.
 index.html         the page — Vite's entry point
 styles.css         the only stylesheet
 menu.js            mobile menu toggle — the only script
-vite.config.js     sets the Pages base path
-public/            images, icons, 404, llms.txt, robots.txt, sitemap.xml — copied to dist/ verbatim
+public/            images, icons, 404, llms.txt, robots.txt, sitemap.xml, CNAME — copied to dist/ verbatim
 .github/workflows/ build and deploy to Pages on push to main
 ```
 
@@ -62,8 +59,8 @@ Vite ships only `public/` and files reachable from the import graph, so anything
 Pushing to `main` builds and publishes to GitHub Pages automatically via `.github/workflows/deploy.yml`. Nothing manual, and no
 `gh-pages` branch — the workflow uploads `dist/` as a Pages artifact.
 
-Because the site is served from the `/klianos/` subpath rather than a root domain, `vite.config.js` sets `base: '/klianos/'` so
-asset URLs resolve. If the site ever moves to a root domain or the repo is renamed to `k-lianos.github.io`, drop that setting.
+It's custom-domained onto `klianos.com` via GitHub Pages: DNS (on GoDaddy) points at GitHub's IPs, and `public/CNAME` ships the
+domain in every build since deploys go through the Actions artifact rather than a branch GitHub manages itself.
 
 The build output is plain static files with no server-side requirements, so it works equally well on Netlify, Cloudflare Pages, or
 any static host.

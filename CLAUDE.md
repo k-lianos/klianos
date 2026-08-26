@@ -33,13 +33,19 @@ npm run build && ls dist/assets/*.js   # expect exactly one small bundle
 
 ## Deployment
 
-Live at https://k-lianos.github.io/klianos/. Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and uploads
-`dist/` as a Pages artifact — there is no `gh-pages` branch.
+Live at https://klianos.com/, custom-domained onto GitHub Pages (the project still lives at
+https://k-lianos.github.io/klianos/, which now redirects). Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds
+and uploads `dist/` as a Pages artifact — there is no `gh-pages` branch.
 
-It is served from a subpath, so `vite.config.js` sets `base: '/klianos/'`. Vite rewrites `src`, `href`, and `srcset` in
-`index.html` accordingly, which is why the source can keep writing plain `/profile-400.jpg`. **Don't hand-prefix asset paths with
-`/klianos/`** — that would double up. If the repo is renamed to `k-lianos.github.io` or moves to a root domain, delete the `base`
-line.
+The site is served from the domain root, and there's no `vite.config.js` — it carried only a `base` path setting, which a root
+domain doesn't need, so the file was deleted rather than left empty. Don't reintroduce one just to set `base`. `public/CNAME`
+(containing `klianos.com`) is what makes GitHub Pages honor the custom domain; because deploys go through the Actions artifact
+workflow rather than a branch GitHub manages itself, that file has to ship in every build, which is why it lives in `public/`
+alongside the other verbatim-copied assets rather than being set only via the repo's Pages dashboard setting.
+
+DNS is on GoDaddy (registrar and nameservers both — nothing moved to Cloudflare): four `A` records and four `AAAA` records on `@`
+point at GitHub Pages' IPs, and `www` is a `CNAME` to `k-lianos.github.io`. GoDaddy's own email (`mx` records,
+`email.secureserver.net` CNAME) shares this zone — **don't touch those** when editing DNS here.
 
 ## Layout
 
@@ -52,10 +58,12 @@ line.
   derived from it.
 - `public/llms.txt`, `robots.txt`, `sitemap.xml` — machine-readable descriptions of the site.
 - `public/404.html` — standalone error page. It lives in `public/`, so Vite never rewrites a hashed stylesheet link into it; its
-  CSS is inlined and its homepage link is hardcoded to `/klianos/` for the same reason.
+  CSS is inlined and its homepage link is hardcoded to `/` for the same reason.
+- `public/CNAME` — one line, `klianos.com`. See Deployment above.
 
 **Absolute URLs are hardcoded in three places** and must be updated together if the site moves: the `og:*`/`twitter:*`/`canonical`
 tags in `index.html` (Vite does not rewrite `content` attributes), the JSON-LD block, and `robots.txt`/`sitemap.xml`/`llms.txt`.
+They currently all point at `https://klianos.com/`.
 
 To regenerate the portrait after replacing it, from a full-size original at `<source>`:
 
