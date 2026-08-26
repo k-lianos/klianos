@@ -1,5 +1,7 @@
 # klianos
 
+[![Deploy to GitHub Pages](https://github.com/k-lianos/klianos/actions/workflows/deploy.yml/badge.svg)](https://github.com/k-lianos/klianos/actions/workflows/deploy.yml)
+
 Source for my personal site — a single page about my work as a software architect and frontend specialist.
 
 **Live at [klianos.com](https://klianos.com/)**
