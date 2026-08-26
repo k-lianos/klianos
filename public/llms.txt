@@ -3,7 +3,7 @@
 > Software architect and frontend specialist based in Vouliagmeni, Attiki, Greece. Over a decade architecting, optimizing, and
 > modernizing large-scale web applications, with deep specialization in the Angular and JavaScript ecosystem.
 
-Site: https://k-lianos.github.io/klianos/
+Site: https://klianos.com/
 Contact: konstantinos.lianos@gmail.com
 LinkedIn: https://www.linkedin.com/in/klianos
 GitHub: https://github.com/k-lianos
