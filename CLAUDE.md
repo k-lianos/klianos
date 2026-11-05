@@ -121,6 +121,8 @@ if you go digging for the source:
   before adding either. The CV's "Flexibility & Efficiency" offering stays omitted.
 - **Omitted from Education:** 4th General Lyceum of Chalandri (high school, superseded by the MSc) and the Ministry of
   Agricultural Development "CERT Meat Technician" (off-topic for a software site).
+- **Work is not tied to clients.** The page and `llms.txt` name employers, titles, and dates, but describe the work in general terms.
+  Proof points such as the Angular 6 → 21 upgrade stay unattributed. Do not add client, project, or employer names to them.
 - **Contact is the gmail address** from the CV, not the vimachem.com work address.
 - **Location reads "Vouliagmeni"**, not the CV's "Voúla" — corrected by the owner.
 

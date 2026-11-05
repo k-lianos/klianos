@@ -25,17 +25,16 @@ Pharma 4.0 AI Platform), Athens — since March 2026.
 
 ## Selected achievements
 
-- Led the Angular modernization of a critical EU regulatory platform (IUCLID, for the European Chemicals Agency), upgrading from
+- Led the Angular modernization of a critical EU regulatory platform, upgrading from
   Angular 6 to 21, introducing Nrwl Nx with tags and module boundaries, and migrating the test suite from Protractor and
   Karma/Jasmine to WebdriverIO and Jest.
-- Migrated the entire UI codebase at Vimachem from dozens of separate repositories to a single Nx monorepo, and set up its CI pipeline with
+- Migrated an entire UI codebase from dozens of separate repositories to a single Nx monorepo, and set up its CI pipeline with
   unit tests, linting rules, and incremental builds.
 - Reduced load times substantially for a massive dynamically generated form driven by backend JSON configuration, via lazy loading
   of all controls plus graph manipulation and IndexedDB caching strategies.
 - Designed frontend architectures for multiple organizations, transitioning systems from Java-based stacks to modern JavaScript
   frameworks.
-- Built a web application for the Hellenic Army granting fast access to naval and air force data; still in use at Aegean posts
-  with an observational mission, and recognized with an official thanks from the Chief of Army Staff.
+- Built, as sole developer, a web application that remains in use and earned an official thanks from a national chief of staff.
 
 ## Technologies
 
