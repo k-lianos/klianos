@@ -1995,197 +1995,275 @@
             </section>
 
             <!-- ──────────────────────  Education & extras  ────────────────────── -->
-            <section id="education" class="bg-surface py-16 md:py-24">
+            <section id="education" class="border-t border-line bg-surface py-16 md:py-24">
                 <div class="mx-auto max-w-6xl px-5 md:px-8">
-                    <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
-                        <h2 class="text-4xl font-bold tracking-tight md:text-5xl">Education</h2>
-                        <p class="text-sm text-muted tabular-nums">2008 – 2013 · United Kingdom</p>
+                    <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
+                        <div>
+                            <p class="flex items-center gap-2 font-mono text-sm text-accent print:hidden">
+                                <svg
+                                    class="size-4"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+                                    <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                    <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"></path>
+                                </svg>
+                                education.md
+                            </p>
+                            <h2 class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">Education</h2>
+                        </div>
+                        <p class="font-mono text-sm text-muted tabular-nums">2008 – 2013 · United Kingdom</p>
                     </div>
 
                     <div class="mt-10 grid gap-4 lg:grid-cols-12">
-                        <!-- Degrees, newest first. alt is empty by design: the institution name follows in the heading. -->
+                        <!-- Degrees, newest first: each opened like a file -->
                         <ol class="flex flex-col gap-4 lg:col-span-7">
                             <li
-                                class="relative isolate flex flex-col lg:flex-1 overflow-hidden rounded-3xl border border-line bg-elevated p-5 transition duration-300 hover:-translate-y-1 hover:border-accent/40 sm:p-6 md:p-8 print:break-inside-avoid"
+                                class="relative isolate flex flex-col overflow-hidden rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 lg:flex-1 print:break-inside-avoid"
                             >
-                                <span
-                                    class="pointer-events-none absolute -top-5 -right-1 -z-10 text-[6rem]/none sm:text-[8rem]/none font-bold tracking-tighter text-ink/[0.04] select-none md:text-[10rem]/none print:hidden"
-                                    aria-hidden="true"
-                                    >MSc</span
+                                <div
+                                    class="flex items-center justify-between gap-3 border-b border-line px-5 py-2.5 font-mono text-xs text-muted print:hidden"
                                 >
-                                <div class="mb-5 flex items-start gap-4 sm:mb-6 sm:gap-5">
-                                    <span class="grid size-12 shrink-0 place-items-center sm:size-16"
-                                        ><img
-                                            class="size-full rounded-xl object-contain sm:rounded-2xl"
-                                            src="/images/edu-lse.png"
-                                            width="72"
-                                            height="72"
-                                            alt=""
-                                    /></span>
-                                    <div class="min-w-0">
-                                        <p class="text-sm font-semibold text-accent tabular-nums">
-                                            2012 – 2013 <span class="font-normal text-muted">· London</span>
-                                        </p>
-                                        <h3 class="mt-1 text-lg/6 font-bold sm:text-xl/7 text-pretty text-ink">
-                                            <a
-                                                class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                href="https://www.lse.ac.uk/"
-                                                rel="noopener"
-                                                target="_blank"
-                                                >London School of Economics and Political Science</a
-                                            >
-                                        </h3>
-                                    </div>
+                                    <span class="flex min-w-0 items-center gap-2">
+                                        <span class="size-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                                        <span class="truncate">degrees/msc-lse.md</span>
+                                    </span>
+                                    <span class="shrink-0 text-accent">✓ graduated</span>
                                 </div>
-                                <div class="mt-auto flex flex-wrap items-baseline gap-x-3 gap-y-2 border-t border-line pt-5">
-                                    <span class="rounded-full px-2.5 py-0.5 text-xs font-semibold text-accent ring-1 ring-accent/40"
+                                <div class="relative isolate flex flex-1 flex-col p-5 sm:p-6 md:p-8">
+                                    <span
+                                        class="pointer-events-none absolute -top-3 -right-1 -z-10 text-[6rem]/none font-bold tracking-tighter text-ink/[0.04] select-none sm:text-[8rem]/none md:text-[10rem]/none print:hidden"
+                                        aria-hidden="true"
                                         >MSc</span
                                     >
-                                    <p class="text-pretty text-ink">
-                                        Management, Information Systems and Innovation <span class="text-muted">(MISI)</span>
-                                    </p>
+                                    <div class="mb-5 flex items-start gap-4 sm:mb-6 sm:gap-5">
+                                        <span class="grid size-12 shrink-0 place-items-center sm:size-16"
+                                            ><img
+                                                class="size-full rounded-xl object-contain sm:rounded-2xl"
+                                                src="/images/edu-lse.png"
+                                                width="72"
+                                                height="72"
+                                                alt=""
+                                        /></span>
+                                        <div class="min-w-0">
+                                            <p class="font-mono text-sm text-accent tabular-nums">
+                                                2012 – 2013 <span class="text-muted">· London</span>
+                                            </p>
+                                            <h3 class="mt-1 text-lg/6 font-bold text-pretty text-ink sm:text-xl/7">
+                                                <a
+                                                    class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
+                                                    href="https://www.lse.ac.uk/"
+                                                    rel="noopener"
+                                                    target="_blank"
+                                                    >London School of Economics and Political Science</a
+                                                >
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="mt-auto flex flex-wrap items-baseline gap-x-3 gap-y-2 border-t border-line pt-5">
+                                        <span
+                                            class="rounded-full px-2.5 py-0.5 font-mono text-xs font-semibold text-accent ring-1 ring-accent/40"
+                                            >MSc</span
+                                        >
+                                        <p class="text-pretty text-ink">
+                                            Management, Information Systems and Innovation <span class="text-muted">(MISI)</span>
+                                        </p>
+                                    </div>
                                 </div>
                             </li>
                             <li
-                                class="relative isolate flex flex-col lg:flex-1 overflow-hidden rounded-3xl border border-line bg-elevated p-5 transition duration-300 hover:-translate-y-1 hover:border-accent/40 sm:p-6 md:p-8 print:break-inside-avoid"
+                                class="relative isolate flex flex-col overflow-hidden rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 lg:flex-1 print:break-inside-avoid"
                             >
-                                <span
-                                    class="pointer-events-none absolute -top-5 -right-1 -z-10 text-[6rem]/none sm:text-[8rem]/none font-bold tracking-tighter text-ink/[0.04] select-none md:text-[10rem]/none print:hidden"
-                                    aria-hidden="true"
-                                    >BSc</span
+                                <div
+                                    class="flex items-center justify-between gap-3 border-b border-line px-5 py-2.5 font-mono text-xs text-muted print:hidden"
                                 >
-                                <div class="mb-5 flex items-start gap-4 sm:mb-6 sm:gap-5">
-                                    <span class="grid size-12 shrink-0 place-items-center sm:size-16"
-                                        ><img
-                                            class="size-full object-contain"
-                                            src="/images/edu-liverpool.png"
-                                            width="96"
-                                            height="134"
-                                            alt=""
-                                    /></span>
-                                    <div class="min-w-0">
-                                        <p class="text-sm font-semibold text-accent tabular-nums">
-                                            2008 – 2011 <span class="font-normal text-muted">· Liverpool</span>
-                                        </p>
-                                        <h3 class="mt-1 text-lg/6 font-bold sm:text-xl/7 text-pretty text-ink">
-                                            <a
-                                                class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                href="https://www.liverpool.ac.uk/"
-                                                rel="noopener"
-                                                target="_blank"
-                                                >University of Liverpool</a
-                                            >
-                                        </h3>
-                                    </div>
+                                    <span class="flex min-w-0 items-center gap-2">
+                                        <span class="size-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                                        <span class="truncate">degrees/bsc-liverpool.md</span>
+                                    </span>
+                                    <span class="shrink-0 text-accent">✓ graduated</span>
                                 </div>
-                                <div class="mt-auto flex flex-wrap items-baseline gap-x-3 gap-y-2 border-t border-line pt-5">
-                                    <span class="rounded-full px-2.5 py-0.5 text-xs font-semibold text-accent ring-1 ring-accent/40"
+                                <div class="relative isolate flex flex-1 flex-col p-5 sm:p-6 md:p-8">
+                                    <span
+                                        class="pointer-events-none absolute -top-3 -right-1 -z-10 text-[6rem]/none font-bold tracking-tighter text-ink/[0.04] select-none sm:text-[8rem]/none md:text-[10rem]/none print:hidden"
+                                        aria-hidden="true"
                                         >BSc</span
                                     >
-                                    <p class="text-ink">Computer Science</p>
+                                    <div class="mb-5 flex items-start gap-4 sm:mb-6 sm:gap-5">
+                                        <span class="grid size-12 shrink-0 place-items-center sm:size-16"
+                                            ><img
+                                                class="size-full object-contain"
+                                                src="/images/edu-liverpool.png"
+                                                width="96"
+                                                height="134"
+                                                alt=""
+                                        /></span>
+                                        <div class="min-w-0">
+                                            <p class="font-mono text-sm text-accent tabular-nums">
+                                                2008 – 2011 <span class="text-muted">· Liverpool</span>
+                                            </p>
+                                            <h3 class="mt-1 text-lg/6 font-bold text-pretty text-ink sm:text-xl/7">
+                                                <a
+                                                    class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
+                                                    href="https://www.liverpool.ac.uk/"
+                                                    rel="noopener"
+                                                    target="_blank"
+                                                    >University of Liverpool</a
+                                                >
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="mt-auto flex flex-wrap items-baseline gap-x-3 gap-y-2 border-t border-line pt-5">
+                                        <span
+                                            class="rounded-full px-2.5 py-0.5 font-mono text-xs font-semibold text-accent ring-1 ring-accent/40"
+                                            >BSc</span
+                                        >
+                                        <p class="text-ink">Computer Science</p>
+                                    </div>
                                 </div>
                             </li>
                         </ol>
 
                         <div class="flex flex-col gap-4 md:grid md:grid-cols-2 lg:col-span-5 lg:flex">
-                            <!-- Languages. The five-step meter mirrors LinkedIn's proficiency scale; it is decorative, the label carries the level. -->
-                            <div class="rounded-3xl border border-line bg-elevated lg:flex-1 p-5 sm:p-6 md:p-8">
-                                <h3 class="text-2xl font-bold tracking-tight">Languages</h3>
-                                <ul class="mt-6 space-y-5">
-                                    <li>
-                                        <p class="flex items-baseline justify-between gap-3">
-                                            <span class="font-semibold text-ink">Greek</span>
-                                            <span class="text-sm text-muted">Native or bilingual</span>
-                                        </p>
-                                        <span class="mt-2 grid grid-cols-5 gap-1 print:hidden" aria-hidden="true">
-                                            <span class="h-1.5 rounded-full bg-accent"></span
-                                            ><span class="h-1.5 rounded-full bg-accent"></span
-                                            ><span class="h-1.5 rounded-full bg-accent"></span
-                                            ><span class="h-1.5 rounded-full bg-accent"></span
-                                            ><span class="h-1.5 rounded-full bg-accent"></span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <p class="flex items-baseline justify-between gap-3">
-                                            <span class="font-semibold text-ink">English</span>
-                                            <span class="text-sm text-muted">Full professional</span>
-                                        </p>
-                                        <span class="mt-2 grid grid-cols-5 gap-1 print:hidden" aria-hidden="true">
-                                            <span class="h-1.5 rounded-full bg-accent"></span
-                                            ><span class="h-1.5 rounded-full bg-accent"></span
-                                            ><span class="h-1.5 rounded-full bg-accent"></span
-                                            ><span class="h-1.5 rounded-full bg-accent"></span
-                                            ><span class="h-1.5 rounded-full bg-line"></span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <p class="flex items-baseline justify-between gap-3">
-                                            <span class="font-semibold text-ink">French</span>
-                                            <span class="text-sm text-muted">Elementary</span>
-                                        </p>
-                                        <span class="mt-2 grid grid-cols-5 gap-1 print:hidden" aria-hidden="true">
-                                            <span class="h-1.5 rounded-full bg-accent"></span
-                                            ><span class="h-1.5 rounded-full bg-line"></span><span class="h-1.5 rounded-full bg-line"></span
-                                            ><span class="h-1.5 rounded-full bg-line"></span
-                                            ><span class="h-1.5 rounded-full bg-line"></span>
-                                        </span>
-                                    </li>
-                                </ul>
+                            <!-- Languages as a locale file. The five-step meter is decorative; the label carries the level. -->
+                            <div class="overflow-hidden rounded-3xl border border-line bg-elevated lg:flex-1 print:break-inside-avoid">
+                                <div
+                                    class="flex items-center justify-between gap-3 border-b border-line px-5 py-2.5 font-mono text-xs text-muted print:hidden"
+                                >
+                                    <span>i18n/locales.json</span>
+                                    <span>3 locales</span>
+                                </div>
+                                <div class="p-5 sm:p-6 md:p-8">
+                                    <h3 class="text-2xl font-bold tracking-tight">Languages</h3>
+                                    <ul class="mt-6 space-y-5">
+                                        <li>
+                                            <p class="flex items-baseline justify-between gap-3">
+                                                <span class="flex items-baseline gap-2.5"
+                                                    ><span
+                                                        class="rounded-md bg-canvas px-1.5 py-0.5 font-mono text-xs text-accent ring-1 ring-line"
+                                                        >el</span
+                                                    ><span class="font-semibold text-ink">Greek</span></span
+                                                >
+                                                <span class="text-right text-sm text-muted">Native or bilingual</span>
+                                            </p>
+                                            <span class="mt-2.5 grid grid-cols-5 gap-1 print:hidden" aria-hidden="true"
+                                                ><span class="h-1.5 rounded-full bg-accent"></span
+                                                ><span class="h-1.5 rounded-full bg-accent"></span
+                                                ><span class="h-1.5 rounded-full bg-accent"></span
+                                                ><span class="h-1.5 rounded-full bg-accent"></span
+                                                ><span class="h-1.5 rounded-full bg-accent"></span
+                                            ></span>
+                                        </li>
+                                        <li>
+                                            <p class="flex items-baseline justify-between gap-3">
+                                                <span class="flex items-baseline gap-2.5"
+                                                    ><span
+                                                        class="rounded-md bg-canvas px-1.5 py-0.5 font-mono text-xs text-accent ring-1 ring-line"
+                                                        >en</span
+                                                    ><span class="font-semibold text-ink">English</span></span
+                                                >
+                                                <span class="text-right text-sm text-muted">Full professional</span>
+                                            </p>
+                                            <span class="mt-2.5 grid grid-cols-5 gap-1 print:hidden" aria-hidden="true"
+                                                ><span class="h-1.5 rounded-full bg-accent"></span
+                                                ><span class="h-1.5 rounded-full bg-accent"></span
+                                                ><span class="h-1.5 rounded-full bg-accent"></span
+                                                ><span class="h-1.5 rounded-full bg-accent"></span
+                                                ><span class="h-1.5 rounded-full bg-line"></span
+                                            ></span>
+                                        </li>
+                                        <li>
+                                            <p class="flex items-baseline justify-between gap-3">
+                                                <span class="flex items-baseline gap-2.5"
+                                                    ><span
+                                                        class="rounded-md bg-canvas px-1.5 py-0.5 font-mono text-xs text-accent ring-1 ring-line"
+                                                        >fr</span
+                                                    ><span class="font-semibold text-ink">French</span></span
+                                                >
+                                                <span class="text-right text-sm text-muted">Elementary</span>
+                                            </p>
+                                            <span class="mt-2.5 grid grid-cols-5 gap-1 print:hidden" aria-hidden="true"
+                                                ><span class="h-1.5 rounded-full bg-accent"></span
+                                                ><span class="h-1.5 rounded-full bg-line"></span
+                                                ><span class="h-1.5 rounded-full bg-line"></span
+                                                ><span class="h-1.5 rounded-full bg-line"></span
+                                                ><span class="h-1.5 rounded-full bg-line"></span
+                                            ></span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
 
-                            <div class="rounded-3xl border border-line bg-elevated lg:flex-1 p-5 sm:p-6 md:p-8">
-                                <h3 class="text-2xl font-bold tracking-tight">Honors &amp; awards</h3>
-                                <ul class="mt-5 divide-y divide-line">
-                                    <li class="flex flex-wrap items-center gap-x-3 gap-y-1 py-3 first:pt-0 last:pb-0">
-                                        <svg
-                                            class="size-5 shrink-0 text-accent"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            aria-hidden="true"
-                                        >
-                                            <circle cx="12" cy="8" r="6" />
-                                            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
-                                        </svg>
-                                        <span class="text-ink">Deloitte’s Boot Camp</span>
-                                    </li>
-                                    <li class="flex flex-wrap items-center gap-x-3 gap-y-1 py-3 first:pt-0 last:pb-0">
-                                        <svg
-                                            class="size-5 shrink-0 text-accent"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            aria-hidden="true"
-                                        >
-                                            <circle cx="12" cy="8" r="6" />
-                                            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
-                                        </svg>
-                                        <span class="text-ink">Attainment Scholarship</span>
-                                        <span class="ml-auto text-sm text-muted tabular-nums">2008–2009</span>
-                                    </li>
-                                    <li class="flex flex-wrap items-center gap-x-3 gap-y-1 py-3 first:pt-0 last:pb-0">
-                                        <svg
-                                            class="size-5 shrink-0 text-accent"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            aria-hidden="true"
-                                        >
-                                            <circle cx="12" cy="8" r="6" />
-                                            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
-                                        </svg>
-                                        <span class="text-ink">Official Volunteering Hours</span>
-                                    </li>
-                                </ul>
+                            <!-- Honors as a passing test run -->
+                            <div class="overflow-hidden rounded-3xl border border-line bg-elevated lg:flex-1 print:break-inside-avoid">
+                                <div
+                                    class="flex items-center justify-between gap-3 border-b border-line px-5 py-2.5 font-mono text-xs text-muted print:hidden"
+                                >
+                                    <span>honors.spec.ts</span>
+                                    <span class="rounded bg-accent px-1.5 py-px font-semibold text-canvas">PASS</span>
+                                </div>
+                                <div class="p-5 sm:p-6 md:p-8">
+                                    <h3 class="text-2xl font-bold tracking-tight">Honors &amp; awards</h3>
+                                    <ul class="mt-5 divide-y divide-line">
+                                        <li class="flex flex-wrap items-center gap-x-3 gap-y-1 py-3 first:pt-0 last:pb-0">
+                                            <svg
+                                                class="size-5 shrink-0 text-accent"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                aria-hidden="true"
+                                            >
+                                                <circle cx="12" cy="12" r="9"></circle>
+                                                <path d="m8.5 12.5 2.5 2.5 4.5-5"></path>
+                                            </svg>
+                                            <span class="text-ink">Deloitte’s Boot Camp</span>
+                                        </li>
+                                        <li class="flex flex-wrap items-center gap-x-3 gap-y-1 py-3 first:pt-0 last:pb-0">
+                                            <svg
+                                                class="size-5 shrink-0 text-accent"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                aria-hidden="true"
+                                            >
+                                                <circle cx="12" cy="12" r="9"></circle>
+                                                <path d="m8.5 12.5 2.5 2.5 4.5-5"></path>
+                                            </svg>
+                                            <span class="text-ink">Attainment Scholarship</span>
+                                            <span class="ml-auto font-mono text-sm text-muted tabular-nums">2008–2009</span>
+                                        </li>
+                                        <li class="flex flex-wrap items-center gap-x-3 gap-y-1 py-3 first:pt-0 last:pb-0">
+                                            <svg
+                                                class="size-5 shrink-0 text-accent"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                aria-hidden="true"
+                                            >
+                                                <circle cx="12" cy="12" r="9"></circle>
+                                                <path d="m8.5 12.5 2.5 2.5 4.5-5"></path>
+                                            </svg>
+                                            <span class="text-ink">Official Volunteering Hours</span>
+                                        </li>
+                                    </ul>
+                                    <p class="mt-5 border-t border-line pt-4 font-mono text-xs text-muted print:hidden">
+                                        <span class="text-accent">3 passed</span>, 3 total
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2195,7 +2273,7 @@
             <!-- ────────────────────────────  Contact  ─────────────────────────── -->
             <section id="contact" class="px-3 py-16 md:py-24">
                 <div
-                    class="relative isolate mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] border border-line bg-surface px-6 py-16 text-center md:py-24 print:py-6"
+                    class="relative isolate mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] border border-line bg-surface shadow-xl shadow-black/30 print:shadow-none"
                 >
                     <div class="absolute inset-0 -z-10 print:hidden" aria-hidden="true">
                         <div class="absolute -top-32 left-1/4 size-96 animate-drift rounded-full bg-accent/5 blur-3xl"></div>
@@ -2203,95 +2281,271 @@
                             class="absolute -right-20 -bottom-40 size-96 animate-drift rounded-full bg-accent/10 blur-3xl [animation-delay:-8s]"
                         ></div>
                     </div>
-                    <h2 class="text-[clamp(2.75rem,10vw,6rem)] leading-none font-extrabold tracking-tight print:text-3xl">Let's talk</h2>
-                    <p class="mx-auto mt-6 max-w-2xl text-lg/8 text-balance text-muted">
-                        If your team is wrestling with frontend performance, an aging Angular codebase, or an architecture that needs to
-                        scale, I can help on a contract basis through
-                        <a
-                            class="font-medium text-ink underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent whitespace-nowrap"
-                            href="https://quokka-dev.com/"
-                            rel="noopener"
-                            target="_blank"
-                            >Quokka L.P.</a
-                        >
-                    </p>
-                    <p class="mx-auto mt-4 max-w-2xl text-lg/8 text-balance text-muted">
-                        I am always open to talking about new opportunities. If my own time is committed to another client, a colleague from
-                        my team at Quokka takes on the work, always with my supervision and support.
-                    </p>
-                    <div class="mt-8 flex flex-col items-center gap-6">
-                        <a
-                            class="max-w-full wrap-anywhere rounded-full bg-accent px-6 py-3 font-semibold text-canvas transition hover:bg-accent-hover"
-                            href="mailto:konstantinos.lianos@gmail.com?subject=Angular%20enquiry%20(contact)&amp;body=Angular%20version%3A%0AApp%20size%20and%20team%3A%0AMain%20problem%3A%0ADeadline%3A"
-                            >konstantinos.lianos@gmail.com</a
-                        >
-                        <div class="flex max-w-full flex-wrap justify-center gap-x-6 gap-y-3">
-                            <a
-                                class="group inline-flex max-w-full items-center gap-2 font-medium text-ink transition hover:text-accent"
-                                href="https://wa.me/306972260029?text=Hi%20Konstantinos%2C%20I%27d%20like%20to%20talk%20about%20my%20Angular%20app."
-                                rel="noopener"
-                                target="_blank"
-                                ><svg class="size-4 shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path
-                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
-                                    /></svg
-                                ><span
-                                    class="min-w-0 wrap-anywhere underline decoration-line underline-offset-4 group-hover:decoration-accent"
-                                    >WhatsApp<span class="hidden print:inline"> +30 697 226 0029</span></span
-                                ></a
+
+                    <!-- Terminal title bar -->
+                    <div
+                        class="flex items-center justify-between gap-3 border-b border-line px-6 py-3 font-mono text-xs text-muted md:px-10 print:hidden"
+                    >
+                        <span class="flex items-center gap-2">
+                            <svg
+                                class="size-4 text-accent"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
                             >
+                                <path d="m4 17 6-6-6-6"></path>
+                                <path d="M12 19h8"></path>
+                            </svg>
+                            contact.sh
+                        </span>
+                        <span>bash</span>
+                    </div>
+
+                    <div class="grid items-center gap-12 px-6 py-12 md:px-10 md:py-20 lg:grid-cols-[minmax(0,1fr)_26rem] print:py-6">
+                        <div class="min-w-0">
+                            <p class="font-mono text-sm text-muted print:hidden">
+                                <span class="text-accent">~/klianos</span> <span aria-hidden="true">❯</span> ./contact.sh
+                            </p>
+                            <h2 class="mt-4 text-[clamp(2.75rem,10vw,6rem)] leading-none font-extrabold tracking-tight print:text-3xl">
+                                Let's talk<span
+                                    class="ml-2 inline-block h-[0.78em] w-[0.09em] translate-y-[0.06em] animate-blink bg-accent align-baseline print:hidden"
+                                    aria-hidden="true"
+                                ></span>
+                            </h2>
+                            <p class="mt-6 max-w-2xl text-lg/8 text-pretty text-muted">
+                                If your team is wrestling with frontend performance, an aging Angular codebase, or an architecture that
+                                needs to scale, I can help on a contract basis through
+                                <a
+                                    class="font-medium whitespace-nowrap text-ink underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
+                                    href="https://quokka-dev.com/"
+                                    rel="noopener"
+                                    target="_blank"
+                                    >Quokka L.P.</a
+                                >
+                            </p>
+                            <p class="mt-4 max-w-2xl text-lg/8 text-pretty text-muted">
+                                I am always open to talking about new opportunities. If my own time is committed to another client, a
+                                colleague from my team at Quokka takes on the work, always with my supervision and support.
+                            </p>
                             <a
-                                class="group inline-flex max-w-full items-center gap-2 font-medium text-ink transition hover:text-accent"
-                                href="https://quokka-dev.com/"
-                                rel="noopener"
-                                target="_blank"
-                                ><svg class="size-4 shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path
-                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"
-                                    /></svg
-                                ><span
-                                    class="min-w-0 wrap-anywhere underline decoration-line underline-offset-4 group-hover:decoration-accent"
-                                    >quokka-dev.com</span
-                                ></a
+                                class="mt-8 inline-flex max-w-full items-center gap-3 rounded-full bg-accent px-6 py-3 font-semibold wrap-anywhere text-canvas transition hover:bg-accent-hover"
+                                href="mailto:konstantinos.lianos@gmail.com?subject=Angular%20enquiry%20(contact)&amp;body=Angular%20version%3A%0AApp%20size%20and%20team%3A%0AMain%20problem%3A%0ADeadline%3A"
                             >
-                            <a
-                                class="group inline-flex max-w-full items-center gap-2 font-medium text-ink transition hover:text-accent"
-                                href="https://www.linkedin.com/in/klianos"
-                                rel="me noopener"
-                                target="_blank"
-                                ><svg class="size-4 shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path
-                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                                    /></svg
-                                ><span
-                                    class="min-w-0 wrap-anywhere underline decoration-line underline-offset-4 group-hover:decoration-accent"
-                                    >linkedin.com/in/klianos</span
-                                ></a
+                                <svg
+                                    class="size-5 shrink-0"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+                                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                    <path d="m22 7-10 6L2 7"></path>
+                                </svg>
+                                konstantinos.lianos@gmail.com
+                            </a>
+                        </div>
+
+                        <!-- Other channels -->
+                        <div class="overflow-hidden rounded-3xl border border-line bg-elevated print:break-inside-avoid">
+                            <p
+                                class="flex items-center justify-between border-b border-line px-5 py-2.5 font-mono text-xs text-muted print:hidden"
                             >
-                            <a
-                                class="group inline-flex max-w-full items-center gap-2 font-medium text-ink transition hover:text-accent"
-                                href="https://github.com/k-lianos"
-                                rel="me noopener"
-                                target="_blank"
-                                ><svg class="size-4 shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path
-                                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-                                    /></svg
-                                ><span
-                                    class="min-w-0 wrap-anywhere underline decoration-line underline-offset-4 group-hover:decoration-accent"
-                                    >github.com/k-lianos</span
-                                ></a
-                            >
+                                <span>channels --list</span>
+                                <span>4</span>
+                            </p>
+                            <ul class="divide-y divide-line">
+                                <li>
+                                    <a
+                                        class="group flex min-h-16 items-center gap-4 px-5 py-3 transition hover:bg-surface"
+                                        href="https://wa.me/306972260029?text=Hi%20Konstantinos%2C%20I%27d%20like%20to%20talk%20about%20my%20Angular%20app."
+                                        rel="noopener"
+                                        target="_blank"
+                                    >
+                                        <span
+                                            class="grid size-10 shrink-0 place-items-center rounded-full bg-canvas text-ink ring-1 ring-line transition group-hover:text-accent group-hover:ring-accent/40"
+                                            ><svg class="size-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path
+                                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                                                ></path></svg
+                                        ></span>
+                                        <span class="min-w-0 flex-1">
+                                            <span class="block font-semibold text-ink">WhatsApp</span>
+                                            <span class="block truncate font-mono text-xs text-muted"
+                                                >Message me directly<span class="hidden print:inline"> · +30 697 226 0029</span></span
+                                            >
+                                        </span>
+                                        <svg
+                                            class="size-4 shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-accent print:hidden"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            aria-hidden="true"
+                                        >
+                                            <path d="M7 17 17 7"></path>
+                                            <path d="M8 7h9v9"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="group flex min-h-16 items-center gap-4 px-5 py-3 transition hover:bg-surface"
+                                        href="https://quokka-dev.com/"
+                                        rel="noopener"
+                                        target="_blank"
+                                    >
+                                        <span
+                                            class="grid size-10 shrink-0 place-items-center rounded-full bg-canvas text-ink ring-1 ring-line transition group-hover:text-accent group-hover:ring-accent/40"
+                                            ><svg class="size-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path
+                                                    d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.950c-.32-1.250-.78-2.450-1.380-3.560 1.840.63 3.370 1.910 4.330 3.560zM12 4.040c.83 1.200 1.480 2.530 1.910 3.960h-3.820c.43-1.430 1.080-2.760 1.910-3.960zM4.260 14C4.100 13.360 4 12.690 4 12s.1-1.360.26-2h3.380c-.08.66-.14 1.320-.14 2s.06 1.340.14 2H4.260zm.82 2h2.950c.32 1.250.78 2.450 1.380 3.560-1.840-.63-3.370-1.900-4.330-3.560zm2.950-8H5.080c.96-1.660 2.490-2.930 4.330-3.560C8.810 5.550 8.350 6.750 8.030 8zM12 19.960c-.83-1.200-1.480-2.530-1.910-3.960h3.820c-.43 1.430-1.080 2.760-1.910 3.960zM14.340 14H9.660c-.09-.66-.16-1.320-.16-2s.07-1.350.16-2h4.680c.09.65.16 1.320.16 2s-.07 1.340-.16 2zm.25 5.560c.6-1.110 1.060-2.310 1.380-3.560h2.950c-.96 1.650-2.490 2.930-4.330 3.560zM16.360 14c.08-.66.14-1.320.14-2s-.06-1.340-.14-2h3.380c.16.64.26 1.310.26 2s-.1 1.360-.26 2h-3.380z"
+                                                ></path></svg
+                                        ></span>
+                                        <span class="min-w-0 flex-1">
+                                            <span class="block font-semibold text-ink">Quokka L.P.</span>
+                                            <span class="block truncate font-mono text-xs text-muted">quokka-dev.com</span>
+                                        </span>
+                                        <svg
+                                            class="size-4 shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-accent print:hidden"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            aria-hidden="true"
+                                        >
+                                            <path d="M7 17 17 7"></path>
+                                            <path d="M8 7h9v9"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="group flex min-h-16 items-center gap-4 px-5 py-3 transition hover:bg-surface"
+                                        href="https://www.linkedin.com/in/klianos"
+                                        rel="me noopener"
+                                        target="_blank"
+                                    >
+                                        <span
+                                            class="grid size-10 shrink-0 place-items-center rounded-full bg-canvas text-ink ring-1 ring-line transition group-hover:text-accent group-hover:ring-accent/40"
+                                            ><svg class="size-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path
+                                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                                                ></path></svg
+                                        ></span>
+                                        <span class="min-w-0 flex-1">
+                                            <span class="block font-semibold text-ink">LinkedIn</span>
+                                            <span class="block truncate font-mono text-xs text-muted">linkedin.com/in/klianos</span>
+                                        </span>
+                                        <svg
+                                            class="size-4 shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-accent print:hidden"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            aria-hidden="true"
+                                        >
+                                            <path d="M7 17 17 7"></path>
+                                            <path d="M8 7h9v9"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="group flex min-h-16 items-center gap-4 px-5 py-3 transition hover:bg-surface"
+                                        href="https://github.com/k-lianos"
+                                        rel="me noopener"
+                                        target="_blank"
+                                    >
+                                        <span
+                                            class="grid size-10 shrink-0 place-items-center rounded-full bg-canvas text-ink ring-1 ring-line transition group-hover:text-accent group-hover:ring-accent/40"
+                                            ><svg class="size-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path
+                                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                                                ></path></svg
+                                        ></span>
+                                        <span class="min-w-0 flex-1">
+                                            <span class="block font-semibold text-ink">GitHub</span>
+                                            <span class="block truncate font-mono text-xs text-muted">github.com/k-lianos</span>
+                                        </span>
+                                        <svg
+                                            class="size-4 shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-accent print:hidden"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            aria-hidden="true"
+                                        >
+                                            <path d="M7 17 17 7"></path>
+                                            <path d="M8 7h9v9"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
 
-        <footer class="print:hidden">
-            <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-5 pb-10 text-sm text-muted md:px-8">
-                <p>© 2026 Konstantinos Lianos</p>
-                <p><a class="underline underline-offset-4 transition hover:text-accent" href="#top">Back to top</a></p>
+        <!-- ────────────────────────────  Footer: editor status bar  ─────────────────────────── -->
+        <footer class="border-t border-line bg-surface print:hidden">
+            <div
+                class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-1 px-5 py-2 font-mono text-xs text-muted md:px-8"
+            >
+                <p class="flex items-center gap-4 py-2">
+                    <span class="flex items-center gap-1.5 text-accent">
+                        <svg
+                            class="size-3.5"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                        >
+                            <circle cx="6" cy="6" r="2.5"></circle>
+                            <circle cx="6" cy="18" r="2.5"></circle>
+                            <circle cx="18" cy="8" r="2.5"></circle>
+                            <path d="M6 8.5v7"></path>
+                            <path d="M18 10.5c0 4-6 3-10.5 6"></path>
+                        </svg>
+                        main
+                    </span>
+                    <span>© 2026 Konstantinos Lianos</span>
+                </p>
+                <p class="hidden py-2 md:block">Vite · Tailwind · 0 KB JavaScript</p>
+                <a class="inline-flex min-h-11 items-center gap-1.5 text-ink transition hover:text-accent" href="#top"
+                    >Back to top
+                    <svg
+                        class="size-3.5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M12 19V5"></path>
+                        <path d="m5 12 7-7 7 7"></path>
+                    </svg>
+                </a>
             </div>
         </footer>
 
