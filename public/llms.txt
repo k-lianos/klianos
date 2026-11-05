@@ -7,6 +7,7 @@ Site: https://klianos.com/
 Contact: konstantinos.lianos@gmail.com
 LinkedIn: https://www.linkedin.com/in/klianos
 GitHub: https://github.com/k-lianos
+Instagram: https://www.instagram.com/const.lianos/
 
 ## Current role
 
