@@ -18,13 +18,12 @@ Every bug this site has actually had was geometry, build output, or browser beha
 Read those commits before rewriting this plan; the diffs explain the failures better than prose can, and they stay readable no
 matter how much the current code changes.
 
-The load-bearing conclusion: **a unit test on `menu.js` would have caught none of them.** Twenty lines with no branching and no
-data transformation has nothing worth isolating. Spend the effort where the risk is — rendered geometry and the contents of
-`dist/`.
+The load-bearing conclusion: **a unit test would have caught none of them.** The drawer and its script have since been removed, and
+the page has no logic left to isolate. Spend the effort where the risk is — rendered geometry and the contents of `dist/`.
 
 ## Assumptions, and when to revisit
 
-This plan is shaped by the site being: **one page, no forms, no user input, no API or data source, one small script, deployed to a
+This plan is shaped by the site being: **one page, no forms, no user input, no API or data source, no scripts, deployed to a
 static host.**
 
 If any of those stops being true, the plan needs **rethinking rather than extending**:
@@ -37,7 +36,7 @@ If any of those stops being true, the plan needs **rethinking rather than extend
 ## Tiers, in value-per-effort order
 
 Each item is written as an **invariant**, deliberately not as an implementation. `no horizontal scroll at any supported width`
-survives a CSS rewrite; `assert .nav-panel left is 0` does not.
+survives a CSS rewrite; `assert nav left is 0` does not.
 
 ### 1. Build-output assertions — start here
 
@@ -47,8 +46,7 @@ A plain Node script over `dist/`. No browser, runs in under a second.
 - The JSON-LD block parses, and has `@type`, `name`, `url`
 - `sitemap.xml` and `favicon.svg` are well-formed XML
 - Required meta present: `canonical`, `og:image`, `og:title`, `description`
-- Exactly one JS bundle, under ~2 KB — this is the "minimal JavaScript" rule in `CLAUDE.md`, enforced instead of merely written
-  down
+- No JS bundle — this is the "no JavaScript" rule in `CLAUDE.md`, enforced instead of merely written down
 - Total page weight stays under a stated ceiling
 
 Cheapest possible protection against a broken `base`, which would silently break every asset on the live site while the build
@@ -56,14 +54,12 @@ still reports success.
 
 ### 2. A small Playwright spec — best coverage of real bugs
 
-One file, roughly eight assertions, mapping directly onto the failures above.
+One small file, mapping directly onto the failures above.
 
 - **No horizontal overflow**: `scrollWidth <= clientWidth` at 320, 390, 768, 1280
-- **Header stays put**: scroll down, open the drawer, assert the header's box is still at the top of the viewport and the burger is
-  hit-testable — this is `813850d` expressed as a test
-- Burger toggles `aria-expanded`; Escape closes it and returns focus; activating a link closes the drawer and navigates
-- Wide viewport: links visible, burger hidden
-- Both color schemes render (Playwright takes `colorScheme` as a context option)
+- **Header stays put**: scroll down, assert the header's box is still at the top of the viewport and its links are hit-testable
+- Every nav link is fully visible at 360 and wider
+- Reduced motion renders cleanly (Playwright takes `reducedMotion` as a context option)
 
 ### 3. Accessibility and Lighthouse floors
 
@@ -81,12 +77,12 @@ If it is ever added: scope it to two viewports in one theme, and treat baseline 
 ## Separate from the above: a post-deploy smoke test
 
 The riskiest moment is not a code change, it is the deploy. A step after `deploy-pages` that requests the live URL and asserts 200s
-on the page, the CSS, the JS, both portraits, `og-image.jpg`, and `sitemap.xml` catches GitHub Pages misconfiguration — which no
+on the page, the font, both portraits, `og-image.jpg`, and `sitemap.xml` catches GitHub Pages misconfiguration — which no
 local test can. Roughly ten lines of shell.
 
 ## Not worth doing
 
-- **Unit tests on `menu.js`** — see above
+- **Unit tests** — see above
 - **Content assertions** (`the page contains "LSE"`) — content changes are intentional, so these only ever produce false failures
 - **Anything reaching linkedin.com or github.com** — flaky, and not this codebase's behavior
 - **Coverage percentages** — meaningless for a document

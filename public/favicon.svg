@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="KL">
-    <circle cx="32" cy="32" r="32" fill="#b0532c" />
+    <circle cx="32" cy="32" r="32" fill="#193cb8" />
     <!-- Monogram drawn as paths rather than <text>, so it renders identically
          everywhere instead of depending on a font being present. -->
     <g fill="#ffffff">
