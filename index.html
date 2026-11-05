@@ -75,11 +75,13 @@
                 --color-ink: #f1f5f9;
                 --color-muted: #9ca3af;
                 --color-line: #2b363b;
+                --color-keyword: #c4b5fd;
+                --color-string: #fcd38d;
 
                 --animate-rise: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
                 --animate-edge: edge 6s linear infinite;
                 --animate-drift: drift 16s ease-in-out infinite alternate;
-                --animate-float: float 6s ease-in-out infinite alternate;
+                --animate-blink: blink 1.1s steps(1, end) infinite;
                 --animate-fill: fill 6s ease-in-out infinite;
                 --animate-grow-x: grow-x linear both;
                 --animate-grow-y: grow-y linear both;
@@ -104,9 +106,9 @@
                         transform: translate(6rem, 3rem) scale(1.15);
                     }
                 }
-                @keyframes float {
-                    to {
-                        transform: translateY(-0.6rem);
+                @keyframes blink {
+                    50% {
+                        opacity: 0;
                     }
                 }
                 @keyframes fill {
@@ -311,28 +313,36 @@
                 </a>
                 <!-- Every link stays visible, so there is no menu state and no script. -->
                 <nav class="min-w-0 overflow-x-auto" aria-label="Sections">
-                    <ul class="flex text-sm font-medium">
+                    <ul class="flex font-mono text-xs sm:text-sm">
                         <li>
-                            <a class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent md:px-3" href="#about"
-                                >About</a
+                            <a class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-2 lg:px-3" href="#about"
+                                >about<span class="hidden text-muted/60 sm:inline">.md</span></a
                             >
                         </li>
                         <li>
-                            <a class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent md:px-3" href="#expertise"
-                                >Skills</a
+                            <a
+                                class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-2 lg:px-3"
+                                href="#expertise"
+                                >skills<span class="hidden text-muted/60 sm:inline">.json</span></a
                             >
                         </li>
                         <li>
-                            <a class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent md:px-3" href="#work">Work</a>
-                        </li>
-                        <li>
-                            <a class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent md:px-3" href="#education"
-                                >Education</a
+                            <a class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-2 lg:px-3" href="#work"
+                                >work<span class="hidden text-muted/60 sm:inline">.log</span></a
                             >
                         </li>
                         <li>
-                            <a class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent md:px-3" href="#contact"
-                                >Contact</a
+                            <a
+                                class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-2 lg:px-3"
+                                href="#education"
+                                >education<span class="hidden text-muted/60 sm:inline">.md</span></a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-2 lg:px-3"
+                                href="#contact"
+                                >contact<span class="hidden text-muted/60 sm:inline">.sh</span></a
                             >
                         </li>
                     </ul>
@@ -430,118 +440,252 @@
                 <div
                     class="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-[minmax(0,1fr)_20rem] md:px-8 lg:grid-cols-[minmax(0,1fr)_24rem]"
                 >
-                    <div>
-                        <h1
-                            class="mt-6 animate-rise text-[clamp(2.75rem,12.5vw,6.75rem)] md:text-[7vw] lg:text-[min(8.4vw,6.75rem)] leading-[0.98] font-extrabold tracking-tight [animation-delay:100ms] print:text-5xl"
+                    <div class="flex gap-6">
+                        <!-- Editor gutter. contain-size keeps it from adding height: it stretches to the column and clips the spare numbers. -->
+                        <ol
+                            class="hidden w-10 shrink-0 overflow-hidden border-r border-line pr-4 text-right font-mono text-sm/[2.25rem] text-line contain-size select-none sm:block print:hidden"
+                            aria-hidden="true"
                         >
-                            Konstantinos<br />Lianos
-                        </h1>
-                        <p class="mt-6 animate-rise text-xl/8 font-semibold text-ink [animation-delay:200ms]">
-                            Angular modernization and performance consultant
-                        </p>
-                        <p class="mt-3 max-w-xl animate-rise text-lg/8 text-muted [animation-delay:300ms]">
-                            I help teams modernize old or slow Angular applications. I have led the upgrade of IUCLID, built for the
-                            European Chemicals Agency, from Angular 6 to 21, and moved a UI codebase spread across dozens of repositories
-                            into a single Nx monorepo, with a CI pipeline for tests, linting, and incremental builds. I take on contract
-                            work for teams in the EU, UK, US, or anywhere else through my company,
-                            <a
-                                class="font-medium text-ink underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent whitespace-nowrap"
-                                href="https://quokka-dev.com/"
-                                rel="noopener"
-                                target="_blank"
-                                >Quokka L.P.</a
+                            <li>01</li>
+                            <li>02</li>
+                            <li>03</li>
+                            <li>04</li>
+                            <li>05</li>
+                            <li>06</li>
+                            <li>07</li>
+                            <li>08</li>
+                            <li>09</li>
+                            <li>10</li>
+                            <li>11</li>
+                            <li>12</li>
+                            <li>13</li>
+                            <li>14</li>
+                            <li>15</li>
+                            <li>16</li>
+                            <li>17</li>
+                            <li>18</li>
+                            <li>19</li>
+                            <li>20</li>
+                            <li>21</li>
+                            <li>22</li>
+                            <li>23</li>
+                            <li>24</li>
+                            <li>25</li>
+                            <li>26</li>
+                            <li>27</li>
+                            <li>28</li>
+                            <li>29</li>
+                            <li>30</li>
+                            <li>31</li>
+                            <li>32</li>
+                            <li>33</li>
+                            <li>34</li>
+                            <li>35</li>
+                            <li>36</li>
+                        </ol>
+                        <div class="min-w-0">
+                            <p
+                                class="inline-flex animate-rise items-center gap-2.5 rounded-full border border-line bg-surface px-4 py-1.5 text-sm font-medium text-ink"
                             >
-                            I am always happy to talk about new opportunities.
-                        </p>
-                        <p class="mt-3 animate-rise text-muted [animation-delay:300ms]">Vouliagmeni, Attiki, Greece</p>
-                        <div class="mt-8 flex animate-rise flex-wrap items-center gap-x-4 gap-y-3 [animation-delay:400ms] print:hidden">
-                            <a
-                                class="rounded-full bg-accent px-6 py-3 font-semibold text-canvas transition hover:bg-accent-hover"
-                                href="mailto:konstantinos.lianos@gmail.com?subject=Angular%20enquiry%20(hero)&amp;body=Angular%20version%3A%0AApp%20size%20and%20team%3A%0AMain%20problem%3A%0ADeadline%3A"
-                                >Tell me about your Angular app</a
+                                <span class="relative flex size-2 print:hidden" aria-hidden="true">
+                                    <span
+                                        class="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60 motion-reduce:hidden"
+                                    ></span>
+                                    <span class="relative inline-flex size-2 rounded-full bg-accent"></span>
+                                </span>
+                                Available for contract work
+                            </p>
+                            <p class="mt-8 animate-rise font-mono text-sm text-muted [animation-delay:50ms] print:hidden">
+                                <span class="text-accent">~/klianos</span> <span aria-hidden="true">❯</span> whoami
+                            </p>
+                            <h1
+                                class="mt-3 animate-rise text-[clamp(2.75rem,12.5vw,6.75rem)] leading-[0.98] font-extrabold tracking-tight [animation-delay:100ms] md:text-[5.9vw] lg:text-[min(7.5vw,6rem)] print:text-5xl"
                             >
-                            <div class="flex gap-1">
+                                Konstantinos<br />Lianos<span
+                                    class="ml-2 inline-block h-[0.78em] w-[0.09em] translate-y-[0.06em] animate-blink bg-accent align-baseline print:hidden"
+                                    aria-hidden="true"
+                                ></span>
+                            </h1>
+                            <p class="mt-6 animate-rise text-xl/8 font-semibold text-ink [animation-delay:200ms]">
+                                <span class="font-mono text-base text-accent print:hidden">//</span> Angular modernization and performance
+                                consultant
+                            </p>
+                            <p class="mt-3 max-w-xl animate-rise text-lg/8 text-muted [animation-delay:300ms]">
+                                I help teams modernize old or slow Angular applications. I have led the upgrade of IUCLID, built for the
+                                European Chemicals Agency, from Angular 6 to 21, and moved a UI codebase spread across dozens of
+                                repositories into a single Nx monorepo, with a CI pipeline for tests, linting, and incremental builds. I
+                                take on contract work for teams in the EU, UK, US, or anywhere else through my company,
                                 <a
-                                    class="flex size-11 items-center justify-center rounded-full text-ink transition hover:bg-elevated hover:text-accent"
-                                    href="https://wa.me/306972260029?text=Hi%20Konstantinos%2C%20I%27d%20like%20to%20talk%20about%20my%20Angular%20app."
+                                    class="font-medium text-ink underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent whitespace-nowrap"
+                                    href="https://quokka-dev.com/"
                                     rel="noopener"
                                     target="_blank"
-                                    aria-label="WhatsApp"
-                                    ><svg class="size-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path
-                                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
-                                        /></svg
-                                ></a>
+                                    >Quokka L.P.</a
+                                >
+                                I am always happy to talk about new opportunities.
+                            </p>
+                            <p class="mt-3 flex animate-rise items-center gap-2 font-mono text-sm text-muted [animation-delay:300ms]">
+                                <svg
+                                    class="size-4 text-accent print:hidden"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Vouliagmeni, Attiki, Greece
+                            </p>
+                            <div class="mt-8 flex animate-rise flex-wrap items-center gap-x-4 gap-y-3 [animation-delay:400ms] print:hidden">
                                 <a
-                                    class="flex size-11 items-center justify-center rounded-full text-ink transition hover:bg-elevated hover:text-accent"
-                                    href="https://www.linkedin.com/in/klianos"
-                                    rel="me noopener"
-                                    target="_blank"
-                                    aria-label="LinkedIn"
-                                    ><svg class="size-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path
-                                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                                        /></svg
-                                ></a>
+                                    class="rounded-full bg-accent px-6 py-3 font-semibold text-canvas transition hover:bg-accent-hover"
+                                    href="mailto:konstantinos.lianos@gmail.com?subject=Angular%20enquiry%20(hero)&amp;body=Angular%20version%3A%0AApp%20size%20and%20team%3A%0AMain%20problem%3A%0ADeadline%3A"
+                                    >Tell me about your Angular app</a
+                                >
                                 <a
-                                    class="flex size-11 items-center justify-center rounded-full text-ink transition hover:bg-elevated hover:text-accent"
-                                    href="https://github.com/k-lianos"
-                                    rel="me noopener"
-                                    target="_blank"
-                                    aria-label="GitHub"
-                                    ><svg class="size-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path
-                                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-                                        /></svg
-                                ></a>
+                                    class="rounded-full border border-line px-5 py-3 font-mono text-sm text-ink transition hover:border-accent/60 hover:text-accent"
+                                    href="#work"
+                                    ><span class="text-accent">$</span> cat work.log</a
+                                >
+                                <div class="flex gap-1">
+                                    <a
+                                        class="flex size-11 items-center justify-center rounded-full text-ink transition hover:bg-elevated hover:text-accent"
+                                        href="https://wa.me/306972260029?text=Hi%20Konstantinos%2C%20I%27d%20like%20to%20talk%20about%20my%20Angular%20app."
+                                        rel="noopener"
+                                        target="_blank"
+                                        aria-label="WhatsApp"
+                                        ><svg class="size-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                                            /></svg
+                                    ></a>
+                                    <a
+                                        class="flex size-11 items-center justify-center rounded-full text-ink transition hover:bg-elevated hover:text-accent"
+                                        href="https://www.linkedin.com/in/klianos"
+                                        rel="me noopener"
+                                        target="_blank"
+                                        aria-label="LinkedIn"
+                                        ><svg class="size-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                                            /></svg
+                                    ></a>
+                                    <a
+                                        class="flex size-11 items-center justify-center rounded-full text-ink transition hover:bg-elevated hover:text-accent"
+                                        href="https://github.com/k-lianos"
+                                        rel="me noopener"
+                                        target="_blank"
+                                        aria-label="GitHub"
+                                        ><svg class="size-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                                            /></svg
+                                    ></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                     <figure class="relative mx-auto w-full max-w-xs animate-rise [animation-delay:300ms] md:max-w-none print:hidden">
                         <div class="absolute -inset-6 -z-10 rounded-[3rem] bg-accent/5 blur-2xl" aria-hidden="true"></div>
-                        <div class="relative overflow-hidden rounded-[2rem] p-0.5">
+                        <div class="overflow-hidden rounded-3xl border border-line bg-surface shadow-xl shadow-black/40">
                             <div
-                                class="absolute top-1/2 left-1/2 aspect-square w-[180%] -translate-x-1/2 -translate-y-1/2"
-                                aria-hidden="true"
+                                class="flex items-center justify-between border-b border-line px-4 py-2.5 font-mono text-xs text-muted print:hidden"
                             >
-                                <div
-                                    class="size-full animate-[spin_7s_linear_infinite] bg-conic from-accent via-line via-40% to-accent"
-                                ></div>
+                                <span class="flex items-center gap-2">
+                                    <svg
+                                        class="size-3.5 text-accent"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        aria-hidden="true"
+                                    >
+                                        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                                        <circle cx="9" cy="9" r="2"></circle>
+                                        <path d="m21 15-5-5L5 21"></path>
+                                    </svg>
+                                    profile.jpg
+                                </span>
+                                <span>400 × 500</span>
                             </div>
-                            <img
-                                class="relative rounded-[1.9rem] brightness-90"
-                                src="/images/profile-400.jpg"
-                                srcset="/images/profile-400.jpg 400w, /images/profile-800.jpg 800w"
-                                sizes="(min-width: 64rem) 24rem, (min-width: 48rem) 20rem, 80vw"
-                                width="400"
-                                height="500"
-                                alt="Portrait of Konstantinos Lianos"
-                            />
+                            <div class="p-3">
+                                <div class="relative overflow-hidden rounded-[1.4rem] p-0.5">
+                                    <div
+                                        class="absolute top-1/2 left-1/2 aspect-square w-[180%] -translate-x-1/2 -translate-y-1/2"
+                                        aria-hidden="true"
+                                    >
+                                        <div
+                                            class="size-full animate-[spin_7s_linear_infinite] bg-conic from-accent via-line via-40% to-accent"
+                                        ></div>
+                                    </div>
+                                    <img
+                                        class="relative block w-full rounded-[1.3rem] brightness-90"
+                                        src="/images/profile-400.jpg"
+                                        srcset="/images/profile-400.jpg 400w, /images/profile-800.jpg 800w"
+                                        sizes="(min-width: 64rem) 24rem, (min-width: 48rem) 20rem, 80vw"
+                                        width="400"
+                                        height="500"
+                                        alt="Portrait of Konstantinos Lianos"
+                                    />
+                                </div>
+                            </div>
+                            <dl class="grid grid-cols-2 gap-x-4 gap-y-3 border-t border-line px-4 py-4 font-mono text-xs">
+                                <div>
+                                    <dt class="text-muted">experience</dt>
+                                    <dd class="mt-1 text-sm text-ink">10+ years</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-muted">upgraded</dt>
+                                    <dd class="mt-1 text-sm text-accent">Angular 6 → 21</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-muted">focus</dt>
+                                    <dd class="mt-1 text-sm text-ink">Angular · TS</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-muted">education</dt>
+                                    <dd class="mt-1 text-sm text-ink">MSc, LSE</dd>
+                                </div>
+                            </dl>
                         </div>
-                        <p
-                            class="absolute -left-3 bottom-10 animate-float rounded-2xl border border-line bg-elevated px-4 py-2 text-sm font-semibold text-ink shadow-xl shadow-black/40 backdrop-blur md:-left-8"
-                        >
-                            Angular 6 → 21
-                        </p>
-                        <p
-                            class="absolute -right-2 top-10 animate-float rounded-2xl border border-line bg-elevated px-4 py-2 text-sm font-semibold text-ink shadow-xl shadow-black/40 backdrop-blur [animation-delay:-3s] md:-right-5"
-                        >
-                            10+ years
-                        </p>
                     </figure>
                 </div>
             </section>
 
             <!-- ─────────────────────────────  About  ──────────────────────────── -->
-            <section id="about" class="py-16 md:py-24">
-                <div class="mx-auto grid max-w-6xl gap-x-16 gap-y-10 px-5 md:px-8 lg:grid-cols-[1fr_24rem]">
+            <section id="about" class="border-t border-line bg-surface py-16 md:py-24">
+                <div class="mx-auto grid max-w-6xl items-start gap-x-16 gap-y-12 px-5 md:px-8 lg:grid-cols-[minmax(0,1fr)_28rem]">
                     <div>
-                        <h2 class="text-4xl font-bold tracking-tight md:text-5xl">About</h2>
+                        <p class="flex items-center gap-2 font-mono text-sm text-accent print:hidden">
+                            <svg
+                                class="size-4"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"></path>
+                            </svg>
+                            about.md
+                        </p>
+                        <h2 class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">About</h2>
+                        <p class="mt-6 max-w-2xl text-2xl/9 font-semibold tracking-tight text-ink md:text-3xl/10">
+                            My work sits where architecture meets performance: designing systems that scale,
+                            <span class="text-accent">then making them fast.</span>
+                        </p>
                         <div class="mt-6 max-w-2xl space-y-4 text-lg/8 text-muted">
                             <p>
                                 I am a software architect and frontend specialist with over a decade of experience in software development.
-                                My work sits where architecture meets performance: designing systems that scale, then making them fast.
                             </p>
                             <p>
                                 Most of that decade has been spent in the Angular and JavaScript ecosystem — leading modernization efforts,
@@ -551,37 +695,54 @@
                             </p>
                         </div>
                     </div>
-                    <dl class="grid grid-cols-2 content-start gap-3">
-                        <div
-                            class="rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 p-5"
-                        >
-                            <dt class="text-sm text-muted">Experience</dt>
-                            <dd class="mt-2 text-lg/6 font-semibold text-ink">10+ years</dd>
+                    <div
+                        class="overflow-hidden rounded-3xl border border-line bg-elevated shadow-xl shadow-black/30 transition duration-300 hover:-translate-y-1 hover:border-accent/40 print:break-inside-avoid"
+                    >
+                        <div class="flex border-b border-line font-mono text-xs print:hidden">
+                            <span class="border-b-2 border-accent px-4 py-3 text-ink">konstantinos.ts</span>
+                            <span class="px-4 py-3 text-muted">engineer.d.ts</span>
+                        </div>
+                        <div class="flex overflow-x-auto py-5 font-mono text-[0.6875rem]/6 sm:text-[0.8125rem]/7">
+                            <ol
+                                class="shrink-0 pr-2 pl-3 text-right text-muted/40 select-none sm:pr-4 sm:pl-5 print:hidden"
+                                aria-hidden="true"
+                            >
+                                <li>1</li>
+                                <li>2</li>
+                                <li>3</li>
+                                <li>4</li>
+                                <li>5</li>
+                                <li>6</li>
+                                <li>7</li>
+                                <li>8</li>
+                                <li>9</li>
+                                <li>10</li>
+                            </ol>
+                            <pre class="pr-3 text-ink sm:pr-5 print:pl-4"><span class="text-keyword">export const</span> konstantinos = {
+  role: <span class="text-string">'Software architect'</span>,
+  experience: <span class="text-string">'10+ years'</span>,
+  focus: [<span class="text-string">'Angular'</span>, <span class="text-string">'TypeScript'</span>, <span class="text-string">'Nx'</span>],
+  upgraded: { from: <span class="text-accent">6</span>, to: <span class="text-accent">21</span> },
+  basedIn: <span class="text-string">'Athens, Greece'</span>,
+  education: [<span class="text-string">'MSc, LSE'</span>, <span class="text-string">'BSc, Liverpool'</span>],
+  speaks: [<span class="text-string">'el'</span>, <span class="text-string">'en'</span>, <span class="text-string">'fr'</span>],
+} <span class="text-keyword">satisfies</span> <span class="text-accent">Engineer</span>;
+<span class="text-muted">// open to contract work via Quokka L.P.</span></pre>
                         </div>
                         <div
-                            class="rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 p-5"
+                            class="flex items-center justify-between border-t border-line px-5 py-2.5 font-mono text-xs text-muted print:hidden"
                         >
-                            <dt class="text-sm text-muted">Focus</dt>
-                            <dd class="mt-2 text-lg/6 font-semibold text-ink">Angular &amp; frontend architecture</dd>
+                            <span class="flex items-center gap-2"
+                                ><span class="size-1.5 rounded-full bg-accent" aria-hidden="true"></span>0 problems</span
+                            >
+                            <span>TypeScript · UTF-8</span>
                         </div>
-                        <div
-                            class="rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 p-5"
-                        >
-                            <dt class="text-sm text-muted">Based in</dt>
-                            <dd class="mt-2 text-lg/6 font-semibold text-ink">Athens, Greece</dd>
-                        </div>
-                        <div
-                            class="rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 p-5"
-                        >
-                            <dt class="text-sm text-muted">Education</dt>
-                            <dd class="mt-2 text-lg/6 font-semibold text-ink">MSc, LSE</dd>
-                        </div>
-                    </dl>
+                    </div>
                 </div>
             </section>
 
             <!-- ───────────────────────────  Expertise  ────────────────────────── -->
-            <section id="expertise" class="bg-surface py-16 md:py-24">
+            <section id="expertise" class="border-t border-line bg-surface py-16 md:py-24">
                 <div class="mx-auto max-w-6xl px-5 md:px-8">
                     <h2 class="text-4xl font-bold tracking-tight md:text-5xl">What I do</h2>
                     <ul class="mt-10 grid gap-4 lg:grid-cols-3">
