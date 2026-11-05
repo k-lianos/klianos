@@ -79,7 +79,6 @@
                 --animate-edge: edge 6s linear infinite;
                 --animate-drift: drift 16s ease-in-out infinite alternate;
                 --animate-float: float 6s ease-in-out infinite alternate;
-                --animate-marquee: marquee 40s linear infinite;
                 --animate-fill: fill 6s ease-in-out infinite;
                 --animate-grow-x: grow-x linear both;
                 --animate-grow-y: grow-y linear both;
@@ -107,11 +106,6 @@
                 @keyframes float {
                     to {
                         transform: translateY(-0.6rem);
-                    }
-                }
-                @keyframes marquee {
-                    to {
-                        transform: translateX(-50%);
                     }
                 }
                 @keyframes fill {
@@ -221,13 +215,19 @@
                             "Legacy frontend modernization",
                             "Frontend architecture",
                             "Web performance optimization",
+                            "AngularJS",
                             "TypeScript",
                             "JavaScript",
+                            "React",
                             "Node.js",
                             "Nrwl Nx",
                             "Nx monorepo migration",
                             "Jest",
+                            "Vitest",
                             "WebdriverIO",
+                            "Playwright",
+                            "Protractor",
+                            "Azure DevOps",
                             "Agile software development"
                         ]
                     },
@@ -768,118 +768,171 @@
                     </ul>
                 </div>
 
-                <div class="mx-auto mt-20 max-w-6xl px-5 md:px-8"><h2 class="text-3xl font-bold tracking-tight">Tech stack</h2></div>
-                <div
-                    class="mt-8 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)] motion-reduce:[mask-image:none] print:[mask-image:none]"
-                >
-                    <div
-                        class="flex w-max animate-marquee gap-3 hover:[animation-play-state:paused] motion-reduce:w-auto motion-reduce:px-5 print:w-auto"
-                    >
-                        <ul class="flex shrink-0 gap-3 motion-reduce:shrink motion-reduce:flex-wrap print:shrink print:flex-wrap">
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                <div class="mx-auto mt-20 max-w-6xl px-5 text-center md:px-8">
+                    <p class="text-sm font-medium tracking-widest text-accent uppercase">Expertise</p>
+                    <h2 class="mt-2 text-4xl font-semibold tracking-tight text-ink">Tech stack</h2>
+                    <ul class="mt-12 flex flex-wrap justify-center gap-3">
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://angular.dev/"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-sky-400 print:hidden" aria-hidden="true"></span>Angular</a
                             >
-                                Angular
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://docs.angularjs.org/"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-sky-400 print:hidden" aria-hidden="true"></span>AngularJS</a
                             >
-                                TypeScript
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://www.typescriptlang.org/"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-sky-400 print:hidden" aria-hidden="true"></span>TypeScript</a
                             >
-                                JavaScript
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-sky-400 print:hidden" aria-hidden="true"></span>JavaScript</a
                             >
-                                Node.js
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://react.dev/"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-sky-400 print:hidden" aria-hidden="true"></span>React</a
                             >
-                                Nrwl Nx
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://nx.dev/"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-violet-400 print:hidden" aria-hidden="true"></span>Nrwl Nx</a
                             >
-                                Jest
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://jestjs.io/"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-violet-400 print:hidden" aria-hidden="true"></span>Jest</a
                             >
-                                WebdriverIO
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://vitest.dev/"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-violet-400 print:hidden" aria-hidden="true"></span>Vitest</a
                             >
-                                Spring MVC
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://webdriver.io/"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-violet-400 print:hidden" aria-hidden="true"></span>WebdriverIO</a
                             >
-                                Agile (Scrum/Kanban)
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://playwright.dev/"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-violet-400 print:hidden" aria-hidden="true"></span>Playwright</a
                             >
-                                Jenkins CI/CD
-                            </li>
-                        </ul>
-                        <ul class="flex shrink-0 gap-3 motion-reduce:hidden print:hidden" aria-hidden="true">
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://www.protractortest.org/"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-violet-400 print:hidden" aria-hidden="true"></span>Protractor</a
                             >
-                                Angular
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://nodejs.org/"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-emerald-400 print:hidden" aria-hidden="true"></span>Node.js</a
                             >
-                                TypeScript
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://docs.spring.io/spring-framework/reference/web/webmvc.html"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-emerald-400 print:hidden" aria-hidden="true"></span>Spring MVC</a
                             >
-                                JavaScript
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://www.jenkins.io/"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-amber-400 print:hidden" aria-hidden="true"></span>Jenkins CI/CD</a
                             >
-                                Node.js
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://azure.microsoft.com/en-us/products/devops/"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-amber-400 print:hidden" aria-hidden="true"></span>Azure DevOps</a
                             >
-                                Nrwl Nx
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-3 rounded-full border border-line bg-elevated px-5 py-3 text-lg font-medium text-ink transition hover:border-accent/40 hover:text-accent"
+                                href="https://agilemanifesto.org/"
+                                rel="noopener"
+                                target="_blank"
+                                ><span class="size-2 rounded-full bg-amber-400 print:hidden" aria-hidden="true"></span>Agile
+                                (Scrum/Kanban)</a
                             >
-                                Jest
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
-                            >
-                                WebdriverIO
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
-                            >
-                                Spring MVC
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
-                            >
-                                Agile (Scrum/Kanban)
-                            </li>
-                            <li
-                                class="shrink-0 rounded-full border border-line bg-elevated px-5 py-2.5 font-medium whitespace-nowrap text-ink"
-                            >
-                                Jenkins CI/CD
-                            </li>
-                        </ul>
-                    </div>
+                        </li>
+                    </ul>
+                    <!-- Colour key; meaningless on paper, where the dots are gone. -->
+                    <ul class="mt-12 flex flex-wrap justify-center gap-6 text-sm text-muted print:hidden">
+                        <li class="flex items-center gap-2">
+                            <span class="size-2 rounded-full bg-sky-400" aria-hidden="true"></span>Frontend
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="size-2 rounded-full bg-violet-400" aria-hidden="true"></span>Tooling &amp; testing
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="size-2 rounded-full bg-emerald-400" aria-hidden="true"></span>Backend
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="size-2 rounded-full bg-amber-400" aria-hidden="true"></span>Delivery
+                        </li>
+                    </ul>
                 </div>
             </section>
 
