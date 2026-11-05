@@ -10,7 +10,7 @@ Vite compiles and inlines into the built HTML:
 
 - **Style with utility classes on the element.** The `<style>` block holds only the imports, `@source`, and `@theme`. The site is dark only, so there are no `dark:` variants. `@theme` sets
   the font, the animations, and the charcoal and teal palette as tokens (`canvas`, `surface`, `elevated`, `accent`, `accent-hover`,
-  `ink`, `muted`, `line`). Use those tokens for color, not Tailwind's default palette.
+  `ink`, `muted`, `line`, `keyword`, `string`). Use those tokens for color, not Tailwind's default palette.
 - **Animation is CSS only and must stop cleanly.** `<body>` turns off every animation under `motion-reduce:` and `print:`, so each
   element's resting state has to look right with no animation running; hide anything that doesn't (`motion-reduce:hidden`). Gate
   scroll-linked animation behind `supports-[animation-timeline:...]:`, since not every browser has scroll timelines.
