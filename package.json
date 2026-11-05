@@ -19,9 +19,11 @@
         "npm": ">=10.9.0 <11"
     },
     "devDependencies": {
+        "@tailwindcss/vite": "^4.3.4",
         "husky": "^9.1.7",
         "lint-staged": "^17.3.0",
         "prettier": "^3.9.6",
+        "tailwindcss": "^4.3.4",
         "vite": "^8.2.1"
     }
 }

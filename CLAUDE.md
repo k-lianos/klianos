@@ -1,7 +1,21 @@
 # klianos
 
-Konstantinos Lianos' personal site — a single page about him. Vanilla Vite, no framework. `index.html` at the repo root is the
-entry point and the only page; `styles.css` sits next to it and is the only stylesheet.
+Konstantinos Lianos' personal site — a single page about him. Vite and Tailwind CSS, no JS framework. `index.html` at the repo root
+is the entry point and the only page; `styles.css` sits next to it and is the only stylesheet.
+
+## Tailwind
+
+Tailwind v4 runs through `@tailwindcss/vite`, imported at the top of `styles.css`. The site's existing styles are hand-written, and
+the setup keeps them rendering unchanged:
+
+- **Unlayered rules beat utilities.** Utilities live in `@layer utilities`, and the hand-written rules are unlayered, so they win
+  regardless of specificity. A utility has no effect on a property an existing rule already sets on that element: move or delete
+  that declaration when converting an element to utilities.
+- **Preflight is off.** The hand-written rules depend on browser defaults it would reset. Turning it on is a whole-page visual
+  change, to be checked in the browser.
+- **Only `index.html` is scanned for classes** (`@source`). Add an `@source` line for any new file that contains classes.
+- **`.container` is both a site class and a Tailwind utility.** Tailwind emits its version because `index.html` uses the name, and
+  the site's unlayered rule overrides it.
 
 ## Hard constraint: keep JavaScript minimal
 
@@ -37,8 +51,7 @@ Live at https://klianos.com/, custom-domained onto GitHub Pages (the project sti
 https://k-lianos.github.io/klianos/, which now redirects). Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds
 and uploads `dist/` as a Pages artifact — there is no `gh-pages` branch.
 
-The site is served from the domain root, and there's no `vite.config.js` — it carried only a `base` path setting, which a root
-domain doesn't need, so the file was deleted rather than left empty. Don't reintroduce one just to set `base`. `public/CNAME`
+The site is served from the domain root, so `vite.config.js` sets no `base` path; it exists only to load the Tailwind plugin. `public/CNAME`
 (containing `klianos.com`) is what makes GitHub Pages honor the custom domain; because deploys go through the Actions artifact
 workflow rather than a branch GitHub manages itself, that file has to ship in every build, which is why it lives in `public/`
 alongside the other verbatim-copied assets rather than being set only via the repo's Pages dashboard setting.

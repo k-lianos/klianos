@@ -6,9 +6,9 @@ Source for my personal site — a single page about my work as a software archit
 
 **Live at [klianos.com](https://klianos.com/)**
 
-Built with [Vite](https://vite.dev/) and nothing else. **Almost no JavaScript ships** — 0.6 KB gzipped, and its only job is
-toggling the mobile menu. The sticky header, theming, responsive layout, and every transition are plain CSS. The whole site is
-about 220 KB, most of that images.
+Built with [Vite](https://vite.dev/) and [Tailwind CSS](https://tailwindcss.com/). **Almost no JavaScript ships** — 0.6 KB gzipped,
+and its only job is toggling the mobile menu. The sticky header, theming, responsive layout, and every transition are CSS. The whole
+site is about 220 KB, most of that images.
 
 ## Discoverability
 

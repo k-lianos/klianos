@@ -1,7 +1,17 @@
 /* ============================================================================
    Konstantinos Lianos — personal site
-   Plain CSS, no build step beyond Vite's asset handling. Mobile-first.
+   Hand-written CSS plus Tailwind utilities, compiled by Vite. Mobile-first.
    ========================================================================== */
+
+/* --- Tailwind ------------------------------------------------------------ */
+
+/* Preflight (tailwindcss/preflight.css) is left out on purpose: the rules below
+   rely on browser defaults it would reset. source(none) stops Tailwind scanning
+   the whole repo, so words in the Markdown docs don't generate CSS. */
+@layer theme, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities) source(none);
+@source './index.html';
 
 /* --- Design tokens ------------------------------------------------------- */
 
