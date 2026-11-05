@@ -1836,50 +1836,182 @@
             <!-- ──────────────────────  Education & extras  ────────────────────── -->
             <section id="education" class="bg-surface py-16 md:py-24">
                 <div class="mx-auto max-w-6xl px-5 md:px-8">
-                    <h2 class="text-4xl font-bold tracking-tight md:text-5xl">Education</h2>
-                    <ul class="mt-10 grid gap-4 md:grid-cols-2">
-                        <!-- alt is empty by design: the institution name follows in the heading, so announcing the emblem would just repeat it. -->
-                        <li
-                            class="rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 flex items-center gap-5 p-6"
-                        >
-                            <span class="grid size-16 shrink-0 place-items-center rounded-2xl bg-white"
-                                ><img class="size-12 object-contain" src="/images/edu-lse.png" width="72" height="72" alt=""
-                            /></span>
-                            <div>
-                                <p class="text-sm font-semibold text-accent">2012 – 2013</p>
-                                <h3 class="mt-1 text-lg/6 font-bold text-ink">London School of Economics and Political Science</h3>
-                                <p class="mt-1 text-sm text-muted">MSc Management, Information Systems and Innovation (MISI)</p>
+                    <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
+                        <h2 class="text-4xl font-bold tracking-tight md:text-5xl">Education</h2>
+                        <p class="text-sm text-muted tabular-nums">2008 – 2013 · United Kingdom</p>
+                    </div>
+
+                    <div class="mt-10 grid gap-4 lg:grid-cols-12">
+                        <!-- Degrees, newest first. alt is empty by design: the institution name follows in the heading. -->
+                        <ol class="flex flex-col gap-4 lg:col-span-7">
+                            <li
+                                class="relative isolate flex flex-col lg:flex-1 overflow-hidden rounded-3xl border border-line bg-elevated p-5 transition duration-300 hover:-translate-y-1 hover:border-accent/40 sm:p-6 md:p-8"
+                            >
+                                <span
+                                    class="pointer-events-none absolute -top-5 -right-1 -z-10 text-[6rem]/none sm:text-[8rem]/none font-bold tracking-tighter text-ink/[0.04] select-none md:text-[10rem]/none print:hidden"
+                                    aria-hidden="true"
+                                    >MSc</span
+                                >
+                                <div class="mb-5 flex items-start gap-4 sm:mb-6 sm:gap-5">
+                                    <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-white sm:size-16 sm:rounded-2xl"
+                                        ><img
+                                            class="size-9 object-contain sm:size-12"
+                                            src="/images/edu-lse.png"
+                                            width="72"
+                                            height="72"
+                                            alt=""
+                                    /></span>
+                                    <div class="min-w-0">
+                                        <p class="text-sm font-semibold text-accent tabular-nums">
+                                            2012 – 2013 <span class="font-normal text-muted">· London</span>
+                                        </p>
+                                        <h3 class="mt-1 text-lg/6 font-bold sm:text-xl/7 text-pretty text-ink">
+                                            London School of Economics and Political Science
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="mt-auto flex flex-wrap items-baseline gap-x-3 gap-y-2 border-t border-line pt-5">
+                                    <span class="rounded-full px-2.5 py-0.5 text-xs font-semibold text-accent ring-1 ring-accent/40"
+                                        >MSc</span
+                                    >
+                                    <p class="text-pretty text-ink">
+                                        Management, Information Systems and Innovation <span class="text-muted">(MISI)</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li
+                                class="relative isolate flex flex-col lg:flex-1 overflow-hidden rounded-3xl border border-line bg-elevated p-5 transition duration-300 hover:-translate-y-1 hover:border-accent/40 sm:p-6 md:p-8"
+                            >
+                                <span
+                                    class="pointer-events-none absolute -top-5 -right-1 -z-10 text-[6rem]/none sm:text-[8rem]/none font-bold tracking-tighter text-ink/[0.04] select-none md:text-[10rem]/none print:hidden"
+                                    aria-hidden="true"
+                                    >BSc</span
+                                >
+                                <div class="mb-5 flex items-start gap-4 sm:mb-6 sm:gap-5">
+                                    <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-white sm:size-16 sm:rounded-2xl"
+                                        ><img
+                                            class="size-9 object-contain sm:size-12"
+                                            src="/images/edu-liverpool.png"
+                                            width="51"
+                                            height="72"
+                                            alt=""
+                                    /></span>
+                                    <div class="min-w-0">
+                                        <p class="text-sm font-semibold text-accent tabular-nums">
+                                            2008 – 2011 <span class="font-normal text-muted">· Liverpool</span>
+                                        </p>
+                                        <h3 class="mt-1 text-lg/6 font-bold sm:text-xl/7 text-pretty text-ink">University of Liverpool</h3>
+                                    </div>
+                                </div>
+                                <div class="mt-auto flex flex-wrap items-baseline gap-x-3 gap-y-2 border-t border-line pt-5">
+                                    <span class="rounded-full px-2.5 py-0.5 text-xs font-semibold text-accent ring-1 ring-accent/40"
+                                        >BSc</span
+                                    >
+                                    <p class="text-ink">Computer Science</p>
+                                </div>
+                            </li>
+                        </ol>
+
+                        <div class="flex flex-col gap-4 md:grid md:grid-cols-2 lg:col-span-5 lg:flex">
+                            <!-- Languages. The five-step meter mirrors LinkedIn's proficiency scale; it is decorative, the label carries the level. -->
+                            <div class="rounded-3xl border border-line bg-elevated lg:flex-1 p-5 sm:p-6 md:p-8">
+                                <h3 class="text-2xl font-bold tracking-tight">Languages</h3>
+                                <ul class="mt-6 space-y-5">
+                                    <li>
+                                        <p class="flex items-baseline justify-between gap-3">
+                                            <span class="font-semibold text-ink">Greek</span>
+                                            <span class="text-sm text-muted">Native or bilingual</span>
+                                        </p>
+                                        <span class="mt-2 grid grid-cols-5 gap-1 print:hidden" aria-hidden="true">
+                                            <span class="h-1.5 rounded-full bg-accent"></span
+                                            ><span class="h-1.5 rounded-full bg-accent"></span
+                                            ><span class="h-1.5 rounded-full bg-accent"></span
+                                            ><span class="h-1.5 rounded-full bg-accent"></span
+                                            ><span class="h-1.5 rounded-full bg-accent"></span>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <p class="flex items-baseline justify-between gap-3">
+                                            <span class="font-semibold text-ink">English</span>
+                                            <span class="text-sm text-muted">Full professional</span>
+                                        </p>
+                                        <span class="mt-2 grid grid-cols-5 gap-1 print:hidden" aria-hidden="true">
+                                            <span class="h-1.5 rounded-full bg-accent"></span
+                                            ><span class="h-1.5 rounded-full bg-accent"></span
+                                            ><span class="h-1.5 rounded-full bg-accent"></span
+                                            ><span class="h-1.5 rounded-full bg-accent"></span
+                                            ><span class="h-1.5 rounded-full bg-line"></span>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <p class="flex items-baseline justify-between gap-3">
+                                            <span class="font-semibold text-ink">French</span>
+                                            <span class="text-sm text-muted">Elementary</span>
+                                        </p>
+                                        <span class="mt-2 grid grid-cols-5 gap-1 print:hidden" aria-hidden="true">
+                                            <span class="h-1.5 rounded-full bg-accent"></span
+                                            ><span class="h-1.5 rounded-full bg-line"></span><span class="h-1.5 rounded-full bg-line"></span
+                                            ><span class="h-1.5 rounded-full bg-line"></span
+                                            ><span class="h-1.5 rounded-full bg-line"></span>
+                                        </span>
+                                    </li>
+                                </ul>
                             </div>
-                        </li>
-                        <li
-                            class="rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 flex items-center gap-5 p-6"
-                        >
-                            <span class="grid size-16 shrink-0 place-items-center rounded-2xl bg-white"
-                                ><img class="size-12 object-contain" src="/images/edu-liverpool.png" width="51" height="72" alt=""
-                            /></span>
-                            <div>
-                                <p class="text-sm font-semibold text-accent">2008 – 2011</p>
-                                <h3 class="mt-1 text-lg/6 font-bold text-ink">University of Liverpool</h3>
-                                <p class="mt-1 text-sm text-muted">BSc Computer Science</p>
+
+                            <div class="rounded-3xl border border-line bg-elevated lg:flex-1 p-5 sm:p-6 md:p-8">
+                                <h3 class="text-2xl font-bold tracking-tight">Honors &amp; awards</h3>
+                                <ul class="mt-5 divide-y divide-line">
+                                    <li class="flex flex-wrap items-center gap-x-3 gap-y-1 py-3 first:pt-0 last:pb-0">
+                                        <svg
+                                            class="size-5 shrink-0 text-accent"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            aria-hidden="true"
+                                        >
+                                            <circle cx="12" cy="8" r="6" />
+                                            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+                                        </svg>
+                                        <span class="text-ink">Deloitte’s Boot Camp</span>
+                                    </li>
+                                    <li class="flex flex-wrap items-center gap-x-3 gap-y-1 py-3 first:pt-0 last:pb-0">
+                                        <svg
+                                            class="size-5 shrink-0 text-accent"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            aria-hidden="true"
+                                        >
+                                            <circle cx="12" cy="8" r="6" />
+                                            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+                                        </svg>
+                                        <span class="text-ink">Attainment Scholarship</span>
+                                        <span class="ml-auto text-sm text-muted tabular-nums">2008–2009</span>
+                                    </li>
+                                    <li class="flex flex-wrap items-center gap-x-3 gap-y-1 py-3 first:pt-0 last:pb-0">
+                                        <svg
+                                            class="size-5 shrink-0 text-accent"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            aria-hidden="true"
+                                        >
+                                            <circle cx="12" cy="8" r="6" />
+                                            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+                                        </svg>
+                                        <span class="text-ink">Official Volunteering Hours</span>
+                                    </li>
+                                </ul>
                             </div>
-                        </li>
-                    </ul>
-                    <div class="mt-4 grid gap-4 md:grid-cols-2">
-                        <div class="rounded-3xl border border-line bg-elevated p-6 md:p-8">
-                            <h2 class="text-2xl font-bold tracking-tight">Languages</h2>
-                            <ul class="mt-4 space-y-1 text-muted">
-                                <li><strong class="font-semibold text-ink">Greek</strong>, native or bilingual</li>
-                                <li><strong class="font-semibold text-ink">English</strong>, full professional</li>
-                                <li><strong class="font-semibold text-ink">French</strong>, elementary</li>
-                            </ul>
-                        </div>
-                        <div class="rounded-3xl border border-line bg-elevated p-6 md:p-8">
-                            <h2 class="text-2xl font-bold tracking-tight">Honors &amp; awards</h2>
-                            <ul class="mt-4 space-y-1 text-muted">
-                                <li>Deloitte's Boot Camp</li>
-                                <li>Attainment Scholarship, 2008–2009</li>
-                                <li>Official Volunteering Hours</li>
-                            </ul>
                         </div>
                     </div>
                 </div>
