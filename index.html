@@ -4,10 +4,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>Konstantinos Lianos — Software Architect &amp; Angular Specialist</title>
+        <title>Angular Upgrade &amp; Performance Consultant — Konstantinos Lianos</title>
         <meta
             name="description"
-            content="Konstantinos Lianos is a software architect and frontend specialist in Athens, Greece, with over a decade of experience architecting, optimizing, and modernizing large-scale Angular applications. Available for contract work through his company, Quokka L.P."
+            content="Athens-based Angular consultant who led an EU regulatory platform's upgrade from Angular 6 to 21. Contract work for teams in the EU, UK, US, and beyond."
         />
         <meta name="author" content="Konstantinos Lianos" />
         <link rel="canonical" href="https://klianos.com/" />
@@ -24,10 +24,10 @@
         <meta property="og:type" content="profile" />
         <meta property="og:site_name" content="Konstantinos Lianos" />
         <meta property="og:url" content="https://klianos.com/" />
-        <meta property="og:title" content="Konstantinos Lianos — Software Architect &amp; Angular Specialist" />
+        <meta property="og:title" content="Angular Upgrade &amp; Performance Consultant — Konstantinos Lianos" />
         <meta
             property="og:description"
-            content="Software architect and frontend specialist in Athens, Greece. A decade-plus architecting, optimizing, and modernizing large-scale Angular applications."
+            content="Athens-based Angular consultant who led an EU regulatory platform's upgrade from Angular 6 to 21. Contract work for teams in the EU, UK, US, and beyond."
         />
         <meta property="og:image" content="https://klianos.com/og-image.jpg" />
         <meta property="og:image:type" content="image/jpeg" />
@@ -40,10 +40,10 @@
 
         <!-- Twitter/X reads most og:* tags but needs its own card type. -->
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Konstantinos Lianos — Software Architect &amp; Angular Specialist" />
+        <meta name="twitter:title" content="Angular Upgrade &amp; Performance Consultant — Konstantinos Lianos" />
         <meta
             name="twitter:description"
-            content="Software architect and frontend specialist in Athens, Greece. A decade-plus architecting, optimizing, and modernizing large-scale Angular applications."
+            content="Athens-based Angular consultant who led an EU regulatory platform's upgrade from Angular 6 to 21. Contract work for teams in the EU, UK, US, and beyond."
         />
         <meta name="twitter:image" content="https://klianos.com/og-image.jpg" />
         <meta name="twitter:image:alt" content="Konstantinos Lianos, Software Architect and Angular Specialist" />
@@ -157,52 +157,121 @@
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
-                "@type": "Person",
-                "name": "Konstantinos Lianos",
-                "givenName": "Konstantinos",
-                "familyName": "Lianos",
-                "url": "https://klianos.com/",
-                "image": "https://klianos.com/profile-800.jpg",
-                "email": "konstantinos.lianos@gmail.com",
-                "jobTitle": ["Software Architect", "Senior Frontend Software Engineer"],
-                "description": "Software architect and frontend specialist with over a decade of experience architecting, optimizing, and modernizing large-scale web applications in the Angular and JavaScript ecosystem.",
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Vouliagmeni",
-                    "addressRegion": "Attiki",
-                    "addressCountry": "GR"
-                },
-                "sameAs": ["https://www.linkedin.com/in/klianos", "https://github.com/k-lianos", "https://www.instagram.com/const.lianos/"],
-                "worksFor": [
-                    { "@type": "Organization", "name": "Quokka L.P.", "url": "https://quokka-dev.com/" },
-                    { "@type": "Organization", "name": "Vimachem" }
-                ],
-                "alumniOf": [
+                "@graph": [
                     {
-                        "@type": "CollegeOrUniversity",
-                        "name": "London School of Economics and Political Science"
+                        "@type": "Person",
+                        "@id": "https://klianos.com/#person",
+                        "name": "Konstantinos Lianos",
+                        "givenName": "Konstantinos",
+                        "familyName": "Lianos",
+                        "url": "https://klianos.com/",
+                        "image": "https://klianos.com/profile-800.jpg",
+                        "email": "konstantinos.lianos@gmail.com",
+                        "jobTitle": ["Software Architect", "Senior Frontend Software Engineer"],
+                        "description": "Software architect and Angular consultant with over a decade of experience. Led the Angular modernization of IUCLID for the European Chemicals Agency, from Angular 6 to 21.",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": "Vouliagmeni",
+                            "addressRegion": "Attiki",
+                            "addressCountry": "GR"
+                        },
+                        "sameAs": [
+                            "https://www.linkedin.com/in/klianos",
+                            "https://github.com/k-lianos",
+                            "https://www.instagram.com/const.lianos/"
+                        ],
+                        "worksFor": [
+                            {
+                                "@id": "https://quokka-dev.com/#organization"
+                            },
+                            {
+                                "@type": "Organization",
+                                "name": "Vimachem"
+                            }
+                        ],
+                        "alumniOf": [
+                            {
+                                "@type": "CollegeOrUniversity",
+                                "name": "London School of Economics and Political Science",
+                                "sameAs": "https://en.wikipedia.org/wiki/London_School_of_Economics"
+                            },
+                            {
+                                "@type": "CollegeOrUniversity",
+                                "name": "University of Liverpool",
+                                "sameAs": "https://en.wikipedia.org/wiki/University_of_Liverpool"
+                            }
+                        ],
+                        "knowsLanguage": [
+                            {
+                                "@type": "Language",
+                                "name": "Greek"
+                            },
+                            {
+                                "@type": "Language",
+                                "name": "English"
+                            },
+                            {
+                                "@type": "Language",
+                                "name": "French"
+                            }
+                        ],
+                        "knowsAbout": [
+                            {
+                                "@type": "Thing",
+                                "name": "Angular",
+                                "sameAs": "https://en.wikipedia.org/wiki/Angular_(web_framework)"
+                            },
+                            "Angular version upgrades",
+                            "Legacy frontend modernization",
+                            "Frontend architecture",
+                            "Web performance optimization",
+                            "TypeScript",
+                            "JavaScript",
+                            "Node.js",
+                            "Nrwl Nx",
+                            "Nx monorepo migration",
+                            "Jest",
+                            "WebdriverIO",
+                            "Agile software development"
+                        ]
                     },
                     {
-                        "@type": "CollegeOrUniversity",
-                        "name": "University of Liverpool"
+                        "@type": "Organization",
+                        "@id": "https://quokka-dev.com/#organization",
+                        "name": "Quokka L.P.",
+                        "url": "https://quokka-dev.com/",
+                        "description": "Contract Angular architecture, modernization, and performance consultancy.",
+                        "areaServed": {
+                            "@type": "Place",
+                            "name": "Worldwide"
+                        },
+                        "member": {
+                            "@id": "https://klianos.com/#person"
+                        },
+                        "makesOffer": [
+                            {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Angular upgrade and modernization"
+                                }
+                            },
+                            {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Angular performance tuning"
+                                }
+                            },
+                            {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Frontend architecture consulting"
+                                }
+                            }
+                        ]
                     }
-                ],
-                "knowsLanguage": [
-                    { "@type": "Language", "name": "Greek" },
-                    { "@type": "Language", "name": "English" },
-                    { "@type": "Language", "name": "French" }
-                ],
-                "knowsAbout": [
-                    "Angular",
-                    "TypeScript",
-                    "JavaScript",
-                    "Frontend architecture",
-                    "Web performance optimization",
-                    "Nrwl Nx",
-                    "Node.js",
-                    "Jest",
-                    "WebdriverIO",
-                    "Agile software development"
                 ]
             }
         </script>
@@ -353,26 +422,19 @@
                     class="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-[minmax(0,1fr)_20rem] md:px-8 lg:grid-cols-[minmax(0,1fr)_24rem]"
                 >
                     <div>
-                        <p
-                            class="inline-flex animate-rise items-center gap-2.5 rounded-full border border-line bg-surface px-4 py-1.5 text-sm font-medium text-ink backdrop-blur"
-                        >
-                            <span class="relative flex size-2" aria-hidden="true"
-                                ><span class="absolute size-full animate-ping rounded-full bg-accent"></span
-                                ><span class="size-2 rounded-full bg-accent"></span
-                            ></span>
-                            Available for contract work
-                        </p>
                         <h1
                             class="mt-6 animate-rise text-[clamp(2.75rem,12.5vw,6.75rem)] md:text-[7vw] lg:text-[min(8.4vw,6.75rem)] leading-[0.98] font-extrabold tracking-tight [animation-delay:100ms] print:text-5xl"
                         >
                             Konstantinos<br />Lianos
                         </h1>
                         <p class="mt-6 animate-rise text-xl/8 font-semibold text-ink [animation-delay:200ms]">
-                            Software architect and Angular specialist
+                            Angular modernization and performance consultant
                         </p>
                         <p class="mt-3 max-w-xl animate-rise text-lg/8 text-muted [animation-delay:300ms]">
-                            I architect, optimize, and modernize large-scale web applications — with a decade-plus focus on the Angular and
-                            JavaScript ecosystem. I take on contract work through my company,
+                            I help teams modernize old or slow Angular applications. At TRASYS I led the upgrade of IUCLID, built for the
+                            European Chemicals Agency, from Angular 6 to 21. At Vimachem I moved a UI codebase spread across dozens of
+                            repositories into a single Nx monorepo, with a CI pipeline for tests, linting, and incremental builds. I take on
+                            contract work for teams in the EU, UK, US, or anywhere else through my company,
                             <a
                                 class="font-medium text-ink underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent whitespace-nowrap"
                                 href="https://quokka-dev.com/"
@@ -385,8 +447,8 @@
                         <div class="mt-8 flex animate-rise flex-wrap items-center gap-x-4 gap-y-3 [animation-delay:400ms] print:hidden">
                             <a
                                 class="rounded-full bg-accent px-6 py-3 font-semibold text-canvas transition hover:bg-accent-hover"
-                                href="mailto:konstantinos.lianos@gmail.com"
-                                >Get in touch</a
+                                href="mailto:konstantinos.lianos@gmail.com?subject=Angular%20enquiry%20(hero)&amp;body=Angular%20version%3A%0AApp%20size%20and%20team%3A%0AMain%20problem%3A%0ADeadline%3A"
+                                >Tell me about your Angular app</a
                             >
                             <div class="flex gap-1">
                                 <a
@@ -676,8 +738,15 @@
                             class="rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 relative overflow-hidden p-6 text-muted"
                         >
                             <span class="absolute inset-y-6 left-0 w-0.5 bg-accent" aria-hidden="true"></span>Led the Angular modernization
-                            of a critical EU regulatory platform, upgrading from Angular 6 to 21, introducing Nrwl Nx, and migrating the
-                            test suite to Jest and WebdriverIO.
+                            of IUCLID, a critical EU regulatory platform, upgrading from Angular 6 to 21, introducing Nrwl Nx, and migrating
+                            the test suite to Jest and WebdriverIO.
+                        </li>
+                        <li
+                            class="rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 relative overflow-hidden p-6 text-muted"
+                        >
+                            <span class="absolute inset-y-6 left-0 w-0.5 bg-accent" aria-hidden="true"></span>Consolidated a UI codebase
+                            spread across dozens of repositories into a single Nx monorepo and set up its CI pipeline with unit tests,
+                            linting rules, and incremental builds.
                         </li>
                         <li
                             class="rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 relative overflow-hidden p-6 text-muted"
@@ -694,7 +763,7 @@
                             frameworks.
                         </li>
                         <li
-                            class="rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 relative overflow-hidden p-6 text-muted"
+                            class="md:col-span-2 rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 relative overflow-hidden p-6 text-muted"
                         >
                             <span class="absolute inset-y-6 left-0 w-0.5 bg-accent" aria-hidden="true"></span>Mentored and trained
                             developers, ensuring high coding standards and best practices in Agile environments.
@@ -841,16 +910,23 @@
                                 >
                                     <div class="flex flex-wrap items-start justify-between gap-x-8 gap-y-2">
                                         <div>
-                                            <h3 class="text-xl/7 font-bold text-ink">
-                                                Senior Frontend Software Engineer
-                                                <span class="text-sm font-medium text-muted">(contract)</span>
-                                            </h3>
+                                            <h3 class="text-xl/7 font-bold text-ink">Senior Frontend Software Engineer</h3>
                                             <p class="mt-1 font-medium text-accent">Vimachem — IIoT Pharma 4.0 AI Platform</p>
                                         </div>
                                         <div class="text-sm md:text-right">
                                             <p class="font-semibold text-ink">Mar 2026 – Present</p>
                                             <p class="text-muted">Athens, Greece</p>
                                         </div>
+                                    </div>
+                                    <div class="mt-4 max-w-3xl space-y-3 text-muted">
+                                        <p>
+                                            Migrated the entire UI codebase from a multi-repo architecture of dozens of repositories to a
+                                            single Nx monorepo.
+                                        </p>
+                                        <p>
+                                            Set up the CI pipeline with quality gates for unit tests and linting rules, along with
+                                            incremental builds.
+                                        </p>
                                     </div>
                                 </div>
                             </li>
@@ -878,8 +954,9 @@
                                     </div>
                                     <div class="mt-4 max-w-3xl space-y-3 text-muted">
                                         <p>
-                                            Led UI development and optimization of IUCLID, a major distributed software system for ECHA —
-                                            owning Angular development, architectural decisions, and system performance.
+                                            Led UI development and optimization of IUCLID, a major distributed software system for the
+                                            European Chemicals Agency (ECHA) — owning Angular development, architectural decisions, and
+                                            system performance.
                                         </p>
                                         <p>
                                             Drove the modernization end to end: migrated the end-to-end test suite from Protractor to
@@ -1181,7 +1258,7 @@
                     <div class="mt-8 flex flex-col items-center gap-6">
                         <a
                             class="max-w-full wrap-anywhere rounded-full bg-accent px-6 py-3 font-semibold text-canvas transition hover:bg-accent-hover"
-                            href="mailto:konstantinos.lianos@gmail.com"
+                            href="mailto:konstantinos.lianos@gmail.com?subject=Angular%20enquiry%20(contact)&amp;body=Angular%20version%3A%0AApp%20size%20and%20team%3A%0AMain%20problem%3A%0ADeadline%3A"
                             >konstantinos.lianos@gmail.com</a
                         >
                         <div class="flex max-w-full flex-wrap justify-center gap-x-6 gap-y-3">

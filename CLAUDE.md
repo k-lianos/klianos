@@ -116,12 +116,11 @@ if you go digging for the source:
 
 - **Angular 6 → 21.** The CV contradicts itself: the summary says "Angular 6 to 14", the TRASYS entry says "6 to 21". The site
   uses 21. The CV itself still needs fixing.
-- **Contract work goes through Quokka L.P.** The hero pill, contact section, JSON-LD, and `llms.txt` say he takes contract work
+- **Contract work goes through Quokka L.P.** The hero, contact section, JSON-LD, and `llms.txt` say he takes contract work
   through his company, linking to https://quokka-dev.com/. The company has no dates and no Experience entry on purpose: ask him
   before adding either. The CV's "Flexibility & Efficiency" offering stays omitted.
 - **Omitted from Education:** 4th General Lyceum of Chalandri (high school, superseded by the MSc) and the Ministry of
   Agricultural Development "CERT Meat Technician" (off-topic for a software site).
-- **"BSc" for Liverpool** is an inference — the CV lists no degree type.
 - **Contact is the gmail address** from the CV, not the vimachem.com work address.
 - **Location reads "Vouliagmeni"**, not the CV's "Voúla" — corrected by the owner.
 
