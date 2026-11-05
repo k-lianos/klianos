@@ -48,7 +48,7 @@ Live at https://klianos.com/, custom-domained onto GitHub Pages (the project sti
 https://k-lianos.github.io/klianos/, which now redirects). Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds
 and uploads `dist/` as a Pages artifact — there is no `gh-pages` branch.
 
-The site is served from the domain root, so `vite.config.js` sets no `base` path; it exists only to load the Tailwind plugin. `public/CNAME`
+The site is served from the domain root, so `vite.config.mjs` sets no `base` path; it exists only to load the Tailwind plugin. `public/CNAME`
 (containing `klianos.com`) is what makes GitHub Pages honor the custom domain; because deploys go through the Actions artifact
 workflow rather than a branch GitHub manages itself, that file has to ship in every build, which is why it lives in `public/`
 alongside the other verbatim-copied assets rather than being set only via the repo's Pages dashboard setting.
