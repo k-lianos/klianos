@@ -1,5 +1,8 @@
 <!doctype html>
-<html lang="en-US" class="scroll-pt-24 scroll-smooth bg-canvas scheme-dark motion-reduce:scroll-auto print:bg-white print:scheme-light">
+<html
+    lang="en-US"
+    class="scroll-pt-24 sm:text-[length:106.25%] scroll-smooth bg-canvas scheme-dark motion-reduce:scroll-auto print:bg-white print:scheme-light"
+>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -315,32 +318,34 @@
                 <nav class="min-w-0 overflow-x-auto" aria-label="Sections">
                     <ul class="flex font-mono text-xs sm:text-sm">
                         <li>
-                            <a class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-2 lg:px-3" href="#about"
+                            <a
+                                class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-1.5 lg:px-3"
+                                href="#about"
                                 >about<span class="hidden text-muted/60 sm:inline">.md</span></a
                             >
                         </li>
                         <li>
                             <a
-                                class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-2 lg:px-3"
+                                class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-1.5 lg:px-3"
                                 href="#expertise"
                                 >skills<span class="hidden text-muted/60 sm:inline">.json</span></a
                             >
                         </li>
                         <li>
-                            <a class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-2 lg:px-3" href="#work"
+                            <a class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-1.5 lg:px-3" href="#work"
                                 >work<span class="hidden text-muted/60 sm:inline">.log</span></a
                             >
                         </li>
                         <li>
                             <a
-                                class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-2 lg:px-3"
+                                class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-1.5 lg:px-3"
                                 href="#education"
                                 >education<span class="hidden text-muted/60 sm:inline">.md</span></a
                             >
                         </li>
                         <li>
                             <a
-                                class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-2 lg:px-3"
+                                class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-1.5 lg:px-3"
                                 href="#contact"
                                 >contact<span class="hidden text-muted/60 sm:inline">.sh</span></a
                             >
@@ -772,26 +777,51 @@
                                 >
                                 <span>01</span>
                             </div>
-                            <div class="grid flex-1 items-center gap-6 p-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:p-8">
+                            <div class="grid flex-1 items-center gap-6 p-6 md:grid-cols-[minmax(0,1fr)_auto] md:p-8">
                                 <div>
                                     <h3 class="text-xl/7 font-bold text-ink">Architecture &amp; Optimization</h3>
                                     <p class="mt-2 text-muted">
                                         Crafting scalable, high-performance web applications tailored to business needs.
                                     </p>
+                                    <ul class="mt-4 space-y-1.5 text-sm text-muted">
+                                        <li class="flex gap-2.5">
+                                            <span class="mt-2 size-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>Monorepos
+                                            organized by domain
+                                        </li>
+                                        <li class="flex gap-2.5">
+                                            <span class="mt-2 size-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>Module
+                                            boundaries that prevent circular dependencies
+                                        </li>
+                                        <li class="flex gap-2.5">
+                                            <span class="mt-2 size-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>Lazily
+                                            loaded modules and components
+                                        </li>
+                                        <li class="flex gap-2.5">
+                                            <span class="mt-2 size-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>Minimal
+                                            third-party libraries
+                                        </li>
+                                    </ul>
                                 </div>
+                                <!-- A domain-driven Nx workspace: lazy features, deferred UI, enforced boundaries, few dependencies. -->
                                 <div
-                                    class="overflow-x-auto rounded-2xl border border-line bg-canvas px-5 py-4 print:hidden"
+                                    class="overflow-x-auto rounded-2xl border border-line bg-canvas px-4 py-4 print:hidden"
                                     aria-hidden="true"
                                 >
                                     <pre
                                         class="font-mono text-xs/6 text-ink sm:text-[0.8125rem]/7"
-                                    ><span class="text-accent">src/app/</span>
-├── core/          <span class="text-muted">// singletons</span>
-├── shared/        <span class="text-muted">// ui · pipes</span>
-├── features/
-│   ├── search/    <span class="rounded bg-accent/12 px-1 text-accent">lazy</span>
-│   └── forms/     <span class="rounded bg-accent/12 px-1 text-accent">lazy</span>
-└── app.routes.ts</pre>
+                                    ><span class="text-accent">workspace/</span>            <span class="text-muted">// nx monorepo</span>
+├── apps/
+│   └── shell/        <span class="text-muted">// routes only</span>
+└── libs/
+    ├── orders/       <span class="text-muted">// domain</span>
+    │   ├── feature/  <span class="rounded bg-accent/12 px-1 text-accent">lazy</span>
+    │   ├── data-access/
+    │   └── ui/       <span class="rounded bg-accent/12 px-1 text-accent">@defer</span>
+    ├── billing/      <span class="rounded bg-accent/12 px-1 text-accent">lazy</span>
+    └── shared/       <span class="text-muted">// ui · utils</span>
+
+<span class="text-accent">✓</span> module boundaries <span class="text-muted">0 circular deps</span>
+<span class="text-accent">✓</span> third-party libs  <span class="text-muted">kept minimal</span></pre>
                                 </div>
                             </div>
                         </li>
@@ -817,6 +847,14 @@
                                         <p class="px-3 py-1 text-muted"><span class="mr-2 select-none">−</span>"@angular/core": "^6"</p>
                                         <p class="bg-accent/10 px-3 py-1 text-accent">
                                             <span class="mr-2 select-none">+</span>"@angular/core": "^21"
+                                        </p>
+                                        <p class="px-3 py-1 text-muted"><span class="mr-2 select-none">−</span>"@ngrx/store": "^6"</p>
+                                        <p class="bg-accent/10 px-3 py-1 text-accent">
+                                            <span class="mr-2 select-none">+</span>"@ngrx/store": "^21"
+                                        </p>
+                                        <p class="px-3 py-1 text-muted"><span class="mr-2 select-none">−</span>"rxjs": "^6"</p>
+                                        <p class="bg-accent/10 px-3 py-1 text-accent">
+                                            <span class="mr-2 select-none">+</span>"rxjs": "^7"
                                         </p>
                                     </div>
                                     <p class="mt-4 flex items-baseline justify-between text-5xl font-extrabold tracking-tight">
@@ -850,7 +888,7 @@
                                 </p>
                                 <!-- A network waterfall: chunks arrive one after another instead of all at once. -->
                                 <div class="mt-auto pt-8 print:hidden" aria-hidden="true">
-                                    <div class="rounded-xl border border-line bg-canvas p-3 font-mono text-[11px]/4">
+                                    <div class="rounded-xl border border-line bg-canvas p-3 font-mono text-[0.6875rem]/4">
                                         <p class="mb-2.5 flex justify-between text-muted"><span>network</span><span>waterfall</span></p>
                                         <div class="space-y-2">
                                             <div class="grid grid-cols-[5.5rem_minmax(0,1fr)] items-center gap-2">
@@ -1302,7 +1340,7 @@
                                     >
                                         <span class="relative block" aria-hidden="true">
                                             <span
-                                                class="absolute -top-5 -bottom-5 left-[11px] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
                                             ></span>
                                             <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5">
                                                 <span
@@ -1331,7 +1369,7 @@
                                                     — IIoT Pharma 4.0 AI Platform
                                                 </h3>
                                                 <span
-                                                    class="rounded-full bg-accent/12 px-2 py-0.5 font-mono text-[11px]/4 font-semibold text-accent"
+                                                    class="rounded-full bg-accent/12 px-2 py-0.5 font-mono text-[0.6875rem]/4 font-semibold text-accent"
                                                     >Now</span
                                                 >
                                             </span>
@@ -1371,13 +1409,15 @@
                                     >
                                         <span class="relative block" aria-hidden="true"
                                             ><span
-                                                class="absolute top-0 -bottom-6 left-[11px] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
+                                                class="absolute top-0 -bottom-6 left-[0.6875rem] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
                                             ></span
                                         ></span>
                                         <span class="hidden md:block"></span>
                                         <div class="space-y-3.5 border-t border-dashed border-line pt-4 md:pt-5">
                                             <p class="font-mono text-xs text-muted md:hidden">Athens, Greece</p>
-                                            <div class="max-w-[42.5rem] space-y-3 text-[15px]/6.5 text-pretty text-muted md:text-base/7">
+                                            <div
+                                                class="max-w-[42.5rem] space-y-3 text-[0.9375rem]/6.5 text-pretty text-muted md:text-base/7"
+                                            >
                                                 <p>Frontend architecture, build tooling, and delivery quality across the UI codebase.</p>
                                             </div>
                                             <ul class="flex flex-wrap gap-1.5 md:hidden">
@@ -1408,7 +1448,7 @@
                                     >
                                         <span class="relative block" aria-hidden="true">
                                             <span
-                                                class="absolute -top-5 -bottom-5 left-[11px] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
                                             ></span>
                                             <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
                                                 ><span
@@ -1487,7 +1527,7 @@
                                     >
                                         <span class="relative block" aria-hidden="true"
                                             ><span
-                                                class="absolute top-0 -bottom-6 left-[11px] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
+                                                class="absolute top-0 -bottom-6 left-[0.6875rem] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
                                             ></span
                                         ></span>
                                         <span class="hidden md:block"></span>
@@ -1495,7 +1535,9 @@
                                             <p class="font-mono text-xs text-muted md:hidden">
                                                 Athens, Greece · Senior Software Engineer, 2019–2022
                                             </p>
-                                            <div class="max-w-[42.5rem] space-y-3 text-[15px]/6.5 text-pretty text-muted md:text-base/7">
+                                            <div
+                                                class="max-w-[42.5rem] space-y-3 text-[0.9375rem]/6.5 text-pretty text-muted md:text-base/7"
+                                            >
                                                 <p>
                                                     Led UI development and optimization of IUCLID, a major distributed software system for
                                                     the European Chemicals Agency (ECHA) — owning Angular development, architectural
@@ -1560,7 +1602,7 @@
                                     >
                                         <span class="relative block" aria-hidden="true">
                                             <span
-                                                class="absolute -top-5 -bottom-5 left-[11px] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
                                             ></span>
                                             <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
                                                 ><span
@@ -1632,13 +1674,15 @@
                                     >
                                         <span class="relative block" aria-hidden="true"
                                             ><span
-                                                class="absolute top-0 -bottom-6 left-[11px] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
+                                                class="absolute top-0 -bottom-6 left-[0.6875rem] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
                                             ></span
                                         ></span>
                                         <span class="hidden md:block"></span>
                                         <div class="space-y-3.5 border-t border-dashed border-line pt-4 md:pt-5">
                                             <p class="font-mono text-xs text-muted md:hidden">Athens, Greece</p>
-                                            <div class="max-w-[42.5rem] space-y-3 text-[15px]/6.5 text-pretty text-muted md:text-base/7">
+                                            <div
+                                                class="max-w-[42.5rem] space-y-3 text-[0.9375rem]/6.5 text-pretty text-muted md:text-base/7"
+                                            >
                                                 <p>
                                                     Hired as a Java engineer, then moved into a JavaScript architect role once my JS work
                                                     became the more valuable contribution. Made the architectural and technology decisions
@@ -1684,7 +1728,7 @@
                                     >
                                         <span class="relative block" aria-hidden="true">
                                             <span
-                                                class="absolute -top-5 -bottom-5 left-[11px] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
                                             ></span>
                                             <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
                                                 ><span
@@ -1752,13 +1796,15 @@
                                     >
                                         <span class="relative block" aria-hidden="true"
                                             ><span
-                                                class="absolute top-0 -bottom-6 left-[11px] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
+                                                class="absolute top-0 -bottom-6 left-[0.6875rem] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
                                             ></span
                                         ></span>
                                         <span class="hidden md:block"></span>
                                         <div class="space-y-3.5 border-t border-dashed border-line pt-4 md:pt-5">
                                             <p class="font-mono text-xs text-muted md:hidden">Athens, Greece</p>
-                                            <div class="max-w-[42.5rem] space-y-3 text-[15px]/6.5 text-pretty text-muted md:text-base/7">
+                                            <div
+                                                class="max-w-[42.5rem] space-y-3 text-[0.9375rem]/6.5 text-pretty text-muted md:text-base/7"
+                                            >
                                                 <p>
                                                     Part of a newly formed team chartered to deliver fully web-based solutions with modern
                                                     tooling. Worked daily in Angular 4 with TypeScript and Webpack, building enterprise
@@ -1798,7 +1844,7 @@
                                     >
                                         <span class="relative block" aria-hidden="true">
                                             <span
-                                                class="absolute -top-5 -bottom-5 left-[11px] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
                                             ></span>
                                             <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
                                                 ><span
@@ -1866,13 +1912,15 @@
                                     >
                                         <span class="relative block" aria-hidden="true"
                                             ><span
-                                                class="absolute top-0 -bottom-6 left-[11px] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
+                                                class="absolute top-0 -bottom-6 left-[0.6875rem] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
                                             ></span
                                         ></span>
                                         <span class="hidden md:block"></span>
                                         <div class="space-y-3.5 border-t border-dashed border-line pt-4 md:pt-5">
                                             <p class="font-mono text-xs text-muted md:hidden">Athens, Greece</p>
-                                            <div class="max-w-[42.5rem] space-y-3 text-[15px]/6.5 text-pretty text-muted md:text-base/7">
+                                            <div
+                                                class="max-w-[42.5rem] space-y-3 text-[0.9375rem]/6.5 text-pretty text-muted md:text-base/7"
+                                            >
                                                 <p>
                                                     Built analytics web solutions, focused on a frontend architecture that had to handle big
                                                     data by the nature of the industry. My work was recognized with a shift in remit — from
@@ -1913,7 +1961,7 @@
                                     >
                                         <span class="relative block" aria-hidden="true">
                                             <span
-                                                class="absolute -top-5 -bottom-5 left-[11px] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
                                             ></span>
                                             <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
                                                 ><span
@@ -1981,13 +2029,15 @@
                                     >
                                         <span class="relative block" aria-hidden="true"
                                             ><span
-                                                class="absolute top-0 -bottom-6 left-[11px] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
+                                                class="absolute top-0 -bottom-6 left-[0.6875rem] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
                                             ></span
                                         ></span>
                                         <span class="hidden md:block"></span>
                                         <div class="space-y-3.5 border-t border-dashed border-line pt-4 md:pt-5">
                                             <p class="font-mono text-xs text-muted md:hidden">Athens, Greece</p>
-                                            <div class="max-w-[42.5rem] space-y-3 text-[15px]/6.5 text-pretty text-muted md:text-base/7">
+                                            <div
+                                                class="max-w-[42.5rem] space-y-3 text-[0.9375rem]/6.5 text-pretty text-muted md:text-base/7"
+                                            >
                                                 <p>
                                                     Developed and maintained TELCO projects for OTE–Cosmote (now Telekom), Greece’s largest
                                                     telecommunications organization. Heavy Java Spring work integrating with third-party
@@ -2028,7 +2078,7 @@
                                     >
                                         <span class="relative block" aria-hidden="true">
                                             <span
-                                                class="absolute -top-5 -bottom-5 left-[11px] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
                                             ></span>
                                             <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
                                                 ><span
@@ -2090,13 +2140,15 @@
                                     >
                                         <span class="relative block" aria-hidden="true"
                                             ><span
-                                                class="absolute top-0 -bottom-6 left-[11px] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
+                                                class="absolute top-0 -bottom-6 left-[0.6875rem] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
                                             ></span
                                         ></span>
                                         <span class="hidden md:block"></span>
                                         <div class="space-y-3.5 border-t border-dashed border-line pt-4 md:pt-5">
                                             <p class="font-mono text-xs text-muted md:hidden">Chios, Greece</p>
-                                            <div class="max-w-[42.5rem] space-y-3 text-[15px]/6.5 text-pretty text-muted md:text-base/7">
+                                            <div
+                                                class="max-w-[42.5rem] space-y-3 text-[0.9375rem]/6.5 text-pretty text-muted md:text-base/7"
+                                            >
                                                 <p>
                                                     Solely developed a web application granting fast access to operational data, built with
                                                     HTML5, JavaScript, jQuery, and JSON data structures. It remains in use and earned an
@@ -2136,7 +2188,7 @@
                                     >
                                         <span class="relative block" aria-hidden="true">
                                             <span
-                                                class="absolute -top-5 -bottom-5 left-[11px] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
                                             ></span>
                                             <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
                                                 ><span
@@ -2196,13 +2248,15 @@
                                     >
                                         <span class="relative block" aria-hidden="true"
                                             ><span
-                                                class="absolute top-0 -bottom-6 left-[11px] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
+                                                class="absolute top-0 -bottom-6 left-[0.6875rem] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
                                             ></span
                                         ></span>
                                         <span class="hidden md:block"></span>
                                         <div class="space-y-3.5 border-t border-dashed border-line pt-4 md:pt-5">
                                             <p class="font-mono text-xs text-muted md:hidden">Athens, Greece</p>
-                                            <div class="max-w-[42.5rem] space-y-3 text-[15px]/6.5 text-pretty text-muted md:text-base/7">
+                                            <div
+                                                class="max-w-[42.5rem] space-y-3 text-[0.9375rem]/6.5 text-pretty text-muted md:text-base/7"
+                                            >
                                                 <p>
                                                     Assisted a friend’s startup with back-end infrastructure, working in C#, .NET, and WCF
                                                     for a REST API.
@@ -2241,7 +2295,7 @@
                                     >
                                         <span class="relative block" aria-hidden="true">
                                             <span
-                                                class="absolute -top-5 -bottom-5 left-[11px] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
                                             ></span>
                                             <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
                                                 ><span
@@ -2268,7 +2322,8 @@
                                                         >ALEYU</a
                                                     >
                                                 </h3>
-                                                <span class="rounded-full border border-line px-2 py-0.5 font-mono text-[11px]/4 text-muted"
+                                                <span
+                                                    class="rounded-full border border-line px-2 py-0.5 font-mono text-[0.6875rem]/4 text-muted"
                                                     >initial commit</span
                                                 >
                                             </span>
@@ -2308,13 +2363,15 @@
                                     >
                                         <span class="relative block" aria-hidden="true"
                                             ><span
-                                                class="absolute top-0 -bottom-6 left-[11px] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
+                                                class="absolute top-0 -bottom-6 left-[0.6875rem] w-0.5 bg-line group-last/row:hidden md:-bottom-8 print:hidden"
                                             ></span
                                         ></span>
                                         <span class="hidden md:block"></span>
                                         <div class="space-y-3.5 border-t border-dashed border-line pt-4 md:pt-5">
                                             <p class="font-mono text-xs text-muted md:hidden">Liverpool, United Kingdom</p>
-                                            <div class="max-w-[42.5rem] space-y-3 text-[15px]/6.5 text-pretty text-muted md:text-base/7">
+                                            <div
+                                                class="max-w-[42.5rem] space-y-3 text-[0.9375rem]/6.5 text-pretty text-muted md:text-base/7"
+                                            >
                                                 <p>
                                                     While studying in Liverpool, I joined a business started by Chinese classmates
                                                     converting Chinese-styled websites to European conventions, both visually and
@@ -2373,7 +2430,7 @@
                         <p class="font-mono text-sm text-muted tabular-nums">2008 – 2013 · United Kingdom</p>
                     </div>
 
-                    <div class="mt-10 grid gap-4 lg:grid-cols-12">
+                    <div class="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-12">
                         <!-- Degrees, newest first: each opened like a file -->
                         <ol class="flex flex-col gap-4 lg:col-span-7">
                             <li
