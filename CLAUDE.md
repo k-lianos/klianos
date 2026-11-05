@@ -8,16 +8,15 @@ is the entry point and the only page. There is no stylesheet file and no script:
 Tailwind v4 runs through `@tailwindcss/vite`. Its entry point is the inline `<style>` block in the `<head>` of `index.html`, which
 Vite compiles and inlines into the built HTML:
 
-- **Style with utility classes on the element.** The `<style>` block holds only the imports, `@source`, and `@theme`. Colors are
-  Tailwind's default palette (cyan and amber on slate-950), and the site is dark only, so there are no `dark:` variants. `@theme`
-  sets the font and defines the animations.
+- **Style with utility classes on the element.** The `<style>` block holds only the imports, `@source`, and `@theme`. The site is dark only, so there are no `dark:` variants. `@theme` sets
+  the font, the animations, and the charcoal and teal palette as tokens (`canvas`, `surface`, `elevated`, `accent`, `accent-hover`,
+  `ink`, `muted`, `line`). Use those tokens for color, not Tailwind's default palette.
 - **Animation is CSS only and must stop cleanly.** `<body>` turns off every animation under `motion-reduce:` and `print:`, so each
   element's resting state has to look right with no animation running; hide anything that doesn't (`motion-reduce:hidden`). Gate
   scroll-linked animation behind `supports-[animation-timeline:...]:`, since not every browser has scroll timelines.
 - **Only `index.html` is scanned for classes** (`source(none)` plus `@source`), so words in the Markdown docs don't generate CSS.
   Add an `@source` line for any new file that contains classes.
-- **Check print output after changing colors.** `<body>` forces black text with `print:**:text-black!`; gradient text also needs
-  `print:bg-none`.
+- **Check print output after changing colors.** `<body>` forces black text and clears surface backgrounds with `print:**:text-black!` and `print:**:bg-transparent!`.
 
 ## Hard constraint: no JavaScript
 
@@ -87,13 +86,13 @@ convert <source> -auto-orient -strip -resize 800x -quality 80 -interlace Plane p
 `-strip` matters: it drops EXIF so no camera or GPS metadata is published.
 
 The social card and icons are generated too. Render the card from a throwaway HTML page in headless Chrome at 1200×630, using
-Commissioner from `node_modules` and `#193cb8` (Tailwind's `blue-800`), then save it with `convert out.png -strip -quality 85`.
+Commissioner from `node_modules` and the `@theme` palette, then save it with `convert out.png -strip -quality 85`.
 Regenerate the icons from the SVG:
 
 ```sh
 inkscape public/favicon.svg -w 512 -h 512 -o /tmp/fav512.png
 convert /tmp/fav512.png -define icon:auto-resize=48,32,16 public/favicon.ico
-convert /tmp/fav512.png -background '#193cb8' -flatten -resize 180x180 -strip public/apple-touch-icon.png   # opaque: iOS masks it
+convert /tmp/fav512.png -background '#2dd4bf' -flatten -resize 180x180 -strip public/apple-touch-icon.png   # opaque: iOS masks it
 ```
 
 ## Site content
