@@ -778,20 +778,45 @@
                                     <p class="mt-2 text-muted">
                                         Crafting scalable, high-performance web applications tailored to business needs.
                                     </p>
+                                    <ul class="mt-4 space-y-1.5 text-sm text-muted">
+                                        <li class="flex gap-2.5">
+                                            <span class="mt-2 size-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>Monorepos
+                                            organized by domain
+                                        </li>
+                                        <li class="flex gap-2.5">
+                                            <span class="mt-2 size-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>Module
+                                            boundaries that prevent circular dependencies
+                                        </li>
+                                        <li class="flex gap-2.5">
+                                            <span class="mt-2 size-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>Lazily
+                                            loaded modules and components
+                                        </li>
+                                        <li class="flex gap-2.5">
+                                            <span class="mt-2 size-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>Minimal
+                                            third-party libraries
+                                        </li>
+                                    </ul>
                                 </div>
+                                <!-- A domain-driven Nx workspace: lazy features, deferred UI, enforced boundaries, few dependencies. -->
                                 <div
                                     class="overflow-x-auto rounded-2xl border border-line bg-canvas px-5 py-4 print:hidden"
                                     aria-hidden="true"
                                 >
                                     <pre
                                         class="font-mono text-xs/6 text-ink sm:text-[0.8125rem]/7"
-                                    ><span class="text-accent">src/app/</span>
-├── core/          <span class="text-muted">// singletons</span>
-├── shared/        <span class="text-muted">// ui · pipes</span>
-├── features/
-│   ├── search/    <span class="rounded bg-accent/12 px-1 text-accent">lazy</span>
-│   └── forms/     <span class="rounded bg-accent/12 px-1 text-accent">lazy</span>
-└── app.routes.ts</pre>
+                                    ><span class="text-accent">workspace/</span>            <span class="text-muted">// nx monorepo</span>
+├── apps/
+│   └── shell/        <span class="text-muted">// routes only</span>
+└── libs/
+    ├── orders/       <span class="text-muted">// domain</span>
+    │   ├── feature/  <span class="rounded bg-accent/12 px-1 text-accent">lazy</span>
+    │   ├── data-access/
+    │   └── ui/       <span class="rounded bg-accent/12 px-1 text-accent">@defer</span>
+    ├── billing/      <span class="rounded bg-accent/12 px-1 text-accent">lazy</span>
+    └── shared/       <span class="text-muted">// ui · utils</span>
+
+<span class="text-accent">✓</span> module boundaries <span class="text-muted">0 circular deps</span>
+<span class="text-accent">✓</span> third-party libs  <span class="text-muted">kept minimal</span></pre>
                                 </div>
                             </div>
                         </li>
