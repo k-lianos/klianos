@@ -6,9 +6,8 @@ Source for my personal site — a single page about my work as a software archit
 
 **Live at [klianos.com](https://klianos.com/)**
 
-Built with [Vite](https://vite.dev/) and nothing else. **Almost no JavaScript ships** — 0.6 KB gzipped, and its only job is
-toggling the mobile menu. The sticky header, theming, responsive layout, and every transition are plain CSS. The whole site is
-about 220 KB, most of that images.
+Built with [Vite](https://vite.dev/) and [Tailwind CSS](https://tailwindcss.com/). **No JavaScript ships.** The sticky header, theming, and responsive
+layout are all Tailwind utility classes in `index.html`.
 
 ## Discoverability
 
@@ -26,8 +25,8 @@ about 220 KB, most of that images.
 
 ## Getting started
 
-Requires **Node.js 22** (22.12 or newer) and **npm 10** — the versions declared in `engines`, and what CI builds with. Vite 8 would
-also accept Node 20.19+, but the project standardizes on the 22 line.
+Requires **Node.js 26** and **npm 11** — the versions declared in `engines`, and what CI builds with. Volta users get the pinned
+version automatically.
 
 ```sh
 npm install
@@ -47,9 +46,7 @@ Then open http://localhost:5173/.
 ## Structure
 
 ```
-index.html         the page — Vite's entry point
-styles.css         the only stylesheet
-menu.js            mobile menu toggle — the only script
+index.html         the page and its Tailwind entry point — Vite's entry point
 public/            images, icons, 404, llms.txt, robots.txt, sitemap.xml, CNAME — copied to dist/ verbatim
 .github/workflows/ build and deploy to Pages on push to main
 ```

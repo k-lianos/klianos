@@ -1,21 +1,32 @@
 # klianos
 
-Konstantinos Lianos' personal site — a single page about him. Vanilla Vite, no framework. `index.html` at the repo root is the
-entry point and the only page; `styles.css` sits next to it and is the only stylesheet.
+Konstantinos Lianos' personal site — a single page about him. Vite and Tailwind CSS, no JS framework. `index.html` at the repo root
+is the entry point and the only page. There is no stylesheet file and no script: every style is a utility class in `index.html`.
 
-## Hard constraint: keep JavaScript minimal
+## Tailwind
 
-JavaScript is allowed but strictly rationed. Solve layout, theming, and state-driven styling in CSS; reach for JS only when CSS
-genuinely cannot do the job, and say so when you do.
+Tailwind v4 runs through `@tailwindcss/vite`. Its entry point is the inline `<style>` block in the `<head>` of `index.html`, which
+Vite compiles and inlines into the built HTML:
 
-Today the entire budget is `menu.js` — roughly twenty lines that toggle `aria-expanded` on the burger button and a `.nav-open`
-class on `<html>`. Every transition, transform, and layout change hangs off that class in `styles.css`. Keep it that way: JS flips
-state, CSS owns appearance.
+- **Style with utility classes on the element.** The `<style>` block holds only the imports, `@source`, and `@theme`. The site is dark only, so there are no `dark:` variants. `@theme` sets
+  the font, the animations, and the charcoal and teal palette as tokens (`canvas`, `surface`, `elevated`, `accent`, `accent-hover`,
+  `ink`, `muted`, `line`). Use those tokens for color, not Tailwind's default palette.
+- **Animation is CSS only and must stop cleanly.** `<body>` turns off every animation under `motion-reduce:` and `print:`, so each
+  element's resting state has to look right with no animation running; hide anything that doesn't (`motion-reduce:hidden`). Gate
+  scroll-linked animation behind `supports-[animation-timeline:...]:`, since not every browser has scroll timelines.
+- **Only `index.html` is scanned for classes** (`source(none)` plus `@source`), so words in the Markdown docs don't generate CSS.
+  Add an `@source` line for any new file that contains classes.
+- **Check print output after changing colors.** `<body>` forces black text and clears surface backgrounds with `print:**:text-black!` and `print:**:bg-transparent!`.
 
-The other `<script>` is the `application/ld+json` block in `index.html`, which is inert data, not code.
+## Hard constraint: no JavaScript
+
+The page ships no JavaScript and the budget is zero. Solve layout, theming, and state-driven styling with Tailwind. If CSS genuinely
+cannot do the job, say so and ask before adding a script. The navigation stays a plain row of links for this reason.
+
+The `<script>` in `index.html` is the `application/ld+json` block, which is inert data, not code.
 
 ```sh
-npm run build && ls dist/assets/*.js   # expect exactly one small bundle
+npm run build && ls dist/assets/*.js   # expect no matches
 ```
 
 ## Commands
@@ -37,8 +48,7 @@ Live at https://klianos.com/, custom-domained onto GitHub Pages (the project sti
 https://k-lianos.github.io/klianos/, which now redirects). Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds
 and uploads `dist/` as a Pages artifact — there is no `gh-pages` branch.
 
-The site is served from the domain root, and there's no `vite.config.js` — it carried only a `base` path setting, which a root
-domain doesn't need, so the file was deleted rather than left empty. Don't reintroduce one just to set `base`. `public/CNAME`
+The site is served from the domain root, so `vite.config.js` sets no `base` path; it exists only to load the Tailwind plugin. `public/CNAME`
 (containing `klianos.com`) is what makes GitHub Pages honor the custom domain; because deploys go through the Actions artifact
 workflow rather than a branch GitHub manages itself, that file has to ship in every build, which is why it lives in `public/`
 alongside the other verbatim-copied assets rather than being set only via the repo's Pages dashboard setting.
@@ -49,8 +59,9 @@ point at GitHub Pages' IPs, and `www` is a `CNAME` to `k-lianos.github.io`. GoDa
 
 ## Layout
 
-- `index.html`, `styles.css` — the site. `styles.css` is linked as `./styles.css` so Vite processes and hashes it.
-- `menu.js` — the mobile drawer toggle, the only script. Linked as `./menu.js` so Vite bundles it.
+- `index.html` — the whole site, markup and styles.
+- `@fontsource-variable/commissioner` — the self-hosted typeface, imported in the `<style>` block. Vite hashes the font files into
+  `dist/assets/`, so the page makes no third-party font requests.
 - `public/profile-400.jpg`, `public/profile-800.jpg` — the portrait, served via `srcset`. Vite copies `public/` verbatim, so
   these keep stable URLs.
 - `public/og-image.jpg` — 1200×630 social preview card. Generated, not hand-drawn; see below.
@@ -74,11 +85,14 @@ convert <source> -auto-orient -strip -resize 800x -quality 80 -interlace Plane p
 
 `-strip` matters: it drops EXIF so no camera or GPS metadata is published.
 
-The social card and icons are generated too. Measure text before sizing it — guessing overflows the portrait panel:
+The social card and icons are generated too. Render the card from a throwaway HTML page in headless Chrome at 1200×630, using
+Commissioner from `node_modules` and the `@theme` palette, then save it with `convert out.png -strip -quality 85`.
+Regenerate the icons from the SVG:
 
 ```sh
-convert -font /usr/share/fonts/opentype/fira/FiraSans-Bold.otf -pointsize 66 label:'Konstantinos Lianos' -format '%w' info:
-inkscape public/favicon.svg -w 512 -h 512 -o /tmp/fav512.png   # then resize into favicon.ico / apple-touch-icon.png
+inkscape public/favicon.svg -w 512 -h 512 -o /tmp/fav512.png
+convert /tmp/fav512.png -define icon:auto-resize=48,32,16 public/favicon.ico
+convert /tmp/fav512.png -background '#2dd4bf' -flatten -resize 180x180 -strip public/apple-touch-icon.png   # opaque: iOS masks it
 ```
 
 ## Site content
@@ -105,17 +119,6 @@ if you go digging for the source:
 - **Contact is the gmail address** from the CV, not the vimachem.com work address.
 - **Location reads "Vouliagmeni"**, not the CV's "Voúla" — corrected by the owner.
 
-## Header and drawer gotchas
-
-Two constraints trapped earlier attempts at the mobile menu. Both are verified, not guessed:
-
-- **The header cannot host a `position: fixed` child.** `.site-header` has `backdrop-filter`, which makes it the containing block
-  for fixed descendants — a fixed panel gets clamped to the header's box. And `position: sticky` makes it a stacking context, so
-  no descendant can paint _behind_ its background either. The drawer therefore grows `max-height` from 0 with `overflow: hidden`,
-  unfurling downward from the header's edge and never overlapping it.
-- **The drawer's `left`/`right` must be `0`, not `-1.25rem`.** Absolute offsets resolve against the containing block's _padding_
-  box, which already contains `.container`'s inline padding. Negative values overhang the viewport and cause sideways scrolling.
-
 ## Conventions
 
 - Prettier owns all formatting: 4-space indent, 140 columns, single quotes, semicolons. Config in `.prettierrc`; don't
@@ -124,5 +127,4 @@ Two constraints trapped earlier attempts at the mobile menu. Both are verified, 
   committing.
 - Verify visual changes in a real browser, not by reading the CSS. `npm run preview`, then screenshot with
   `google-chrome --headless --no-sandbox --hide-scrollbars --window-size=1280,7000 --screenshot=out.png http://localhost:4173/`.
-  Add `--blink-settings=preferredColorScheme=1` to force light mode — headless Chrome defaults to dark here, so both need
-  checking.
+  Add `--force-prefers-reduced-motion` to check the still version too.
