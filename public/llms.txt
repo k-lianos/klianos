@@ -4,14 +4,16 @@
 > modernizing large-scale web applications, with deep specialization in the Angular and JavaScript ecosystem.
 
 Site: https://klianos.com/
+Company: Quokka L.P. — https://quokka-dev.com/
 Contact: konstantinos.lianos@gmail.com
 LinkedIn: https://www.linkedin.com/in/klianos
 GitHub: https://github.com/k-lianos
 Instagram: https://www.instagram.com/const.lianos/
 
-## Current role
+## Current work
 
-Senior Frontend Software Engineer at Vimachem (IIoT Pharma 4.0 AI Platform), Athens — since March 2026.
+Runs Quokka L.P., and is available for contract work through it. Senior Frontend Software Engineer (contract) at Vimachem (IIoT
+Pharma 4.0 AI Platform), Athens — since March 2026.
 
 ## What he does
 
@@ -38,7 +40,7 @@ Angular, TypeScript, JavaScript, Node.js, Nrwl Nx, Jest, WebdriverIO, Spring MVC
 
 ## Experience
 
-- **Vimachem** — Senior Frontend Software Engineer, March 2026 to present, Athens.
+- **Vimachem** — Senior Frontend Software Engineer (contract), March 2026 to present, Athens.
 - **TRASYS Greece** — Software Architect (May 2022 to March 2026), previously Senior Software Engineer (December 2019 to May
   2022), Athens.
 - **Blueground** — Software Engineer, March 2018 to December 2019, Athens.
