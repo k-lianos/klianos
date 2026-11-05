@@ -62,8 +62,12 @@ point at GitHub Pages' IPs, and `www` is a `CNAME` to `k-lianos.github.io`. GoDa
 - `index.html` — the whole site, markup and styles.
 - `@fontsource-variable/commissioner` — the self-hosted typeface, imported in the `<style>` block. Vite hashes the font files into
   `dist/assets/`, so the page makes no third-party font requests.
-- `public/profile-400.jpg`, `public/profile-800.jpg` — the portrait, served via `srcset`. Vite copies `public/` verbatim, so
-  these keep stable URLs.
+- `images/` — images the page references. Vite puts a content hash in each filename at build, so a changed image gets a new URL
+  and browsers can't show a stale copy. Files under 4 KB (`edu-lse.png`) are inlined into the HTML instead. New page images go here,
+  referenced as `/images/<name>`.
+- `public/` — files that need a stable URL, copied verbatim with no hash. Only put a file here if something outside the page's
+  markup asks for it by name.
+- `public/profile-800.jpg` — stable copy of `images/profile-800.jpg` for the JSON-LD `image`, which Vite doesn't rewrite. Update both.
 - `public/og-image.jpg` — 1200×630 social preview card. Generated, not hand-drawn; see below.
 - `public/favicon.svg`, `favicon.ico`, `apple-touch-icon.png` — the KL monogram. The SVG is the source; the raster ones are
   derived from it.
@@ -79,8 +83,9 @@ They currently all point at `https://klianos.com/`.
 To regenerate the portrait after replacing it, from a full-size original at `<source>`:
 
 ```sh
-convert <source> -auto-orient -strip -resize 400x -quality 82 -interlace Plane public/profile-400.jpg
-convert <source> -auto-orient -strip -resize 800x -quality 80 -interlace Plane public/profile-800.jpg
+convert <source> -auto-orient -strip -resize 400x -quality 82 -interlace Plane images/profile-400.jpg
+convert <source> -auto-orient -strip -resize 800x -quality 80 -interlace Plane images/profile-800.jpg
+cp images/profile-800.jpg public/profile-800.jpg
 ```
 
 `-strip` matters: it drops EXIF so no camera or GPS metadata is published.
