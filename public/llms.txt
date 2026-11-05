@@ -40,7 +40,7 @@ Senior Frontend Software Engineer at Vimachem (IIoT Pharma 4.0 AI Platform), Ath
 
 ## Technologies
 
-Angular, TypeScript, JavaScript, React, Node.js, Nrwl Nx, Jest, Vitest, WebdriverIO, Playwright, Protractor, Spring MVC, Agile (Scrum/Kanban), Jenkins CI/CD, Azure DevOps.
+Angular, AngularJS, TypeScript, JavaScript, React, Node.js, Nrwl Nx, Jest, Vitest, WebdriverIO, Playwright, Protractor, Spring MVC, Agile (Scrum/Kanban), Jenkins CI/CD, Azure DevOps.
 
 ## Experience
 
