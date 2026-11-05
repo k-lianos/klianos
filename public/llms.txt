@@ -26,7 +26,7 @@ Senior Frontend Software Engineer at Vimachem (IIoT Pharma 4.0 AI Platform), Ath
 
 ## Selected achievements
 
-- Led the Angular modernization of a critical EU regulatory platform, upgrading from
+- Led the Angular modernization of a critical EU regulatory platform (IUCLID, for the European Chemicals Agency), upgrading from
   Angular 6 to 21, introducing Nrwl Nx with tags and module boundaries, and migrating the test suite from Protractor and
   Karma/Jasmine to WebdriverIO and Jest.
 - Migrated an entire UI codebase from dozens of separate repositories to a single Nx monorepo, and set up its CI pipeline with
@@ -44,7 +44,7 @@ Angular, TypeScript, JavaScript, Node.js, Nrwl Nx, Jest, WebdriverIO, Spring MVC
 ## Experience
 
 - **Vimachem** — Senior Frontend Software Engineer, March 2026 to present, Athens.
-- **TRASYS Greece** — Software Architect (May 2022 to March 2026), previously Senior Software Engineer (December 2019 to May
+- **KEYES (formerly TRASYS Greece)** — Software Architect (May 2022 to March 2026), previously Senior Software Engineer (December 2019 to May
   2022), Athens.
 - **Blueground** — Software Engineer, March 2018 to December 2019, Athens.
 - **SingularLogic** — Software Engineer, May 2017 to March 2018, Athens.

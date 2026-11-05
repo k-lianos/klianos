@@ -121,8 +121,10 @@ if you go digging for the source:
   before adding either. The CV's "Flexibility & Efficiency" offering stays omitted.
 - **Omitted from Education:** 4th General Lyceum of Chalandri (high school, superseded by the MSc) and the Ministry of
   Agricultural Development "CERT Meat Technician" (off-topic for a software site).
-- **Work is not tied to clients.** The page and `llms.txt` name employers, titles, and dates, but describe the work in general terms.
-  Proof points such as the Angular 6 → 21 upgrade stay unattributed. Do not add client, project, or employer names to them.
+- **Named work.** IUCLID, the European Chemicals Agency, and OTE–Cosmote may be named. The Vimachem and Hellenic Army work stays general:
+  the monorepo migration is not attributed to Vimachem. Ask him before tying other work to a named client.
+- **OTE–Cosmote is now Telekom** (https://www.telekom.gr/), shown as "OTE–Cosmote (now Telekom)". The older system names keep the brand of their time.
+- **TRASYS Greece is now KEYES** (https://www.keyes.eu), shown as "KEYES (formerly TRASYS Greece)". He worked there under the old name.
 - **Contact is the gmail address** from the CV, not the vimachem.com work address.
 - **Location reads "Vouliagmeni"**, not the CV's "Voúla" — corrected by the owner.
 
