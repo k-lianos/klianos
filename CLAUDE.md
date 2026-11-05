@@ -71,7 +71,8 @@ point at GitHub Pages' IPs, and `www` is a `CNAME` to `k-lianos.github.io`. GoDa
 - `public/og-image.jpg` — 1200×630 social preview card. Generated, not hand-drawn; see below.
 - `public/favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png` — the
   "Code K" mark: a vertical stem plus an angle bracket, read as `|<`. `favicon.svg` is the source; the raster ones are derived from it.
-  The header logo in `index.html` is an inline copy of the same glyph, inked with `currentColor`, so change both together.
+  The glyph has three other copies: the header logo in `index.html` (inline, inked with `currentColor`), the square source in the
+  regeneration commands below, and the logo on `og-image.jpg`. Change all four together.
 - `public/site.webmanifest` — web app manifest, linked from `index.html`. Lists `icon-192.png` and `icon-512.png` (purpose `any`)
   and `icon-maskable-512.png` (purpose `maskable`).
 - `public/llms.txt`, `robots.txt`, `sitemap.xml` — machine-readable descriptions of the site.
