@@ -15,8 +15,8 @@
     "author": "",
     "license": "ISC",
     "engines": {
-        "node": ">=22.12.0 <23",
-        "npm": ">=10.9.0 <11"
+        "node": ">=26.0.0 <27",
+        "npm": ">=11.0.0 <12"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.3.4",
@@ -25,5 +25,8 @@
         "prettier": "^3.9.10",
         "tailwindcss": "^4.3.4",
         "vite": "^8.3.6"
+    },
+    "volta": {
+        "node": "26.13.0"
     }
 }

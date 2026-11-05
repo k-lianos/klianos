@@ -26,8 +26,8 @@ site is about 220 KB, most of that images.
 
 ## Getting started
 
-Requires **Node.js 22** (22.12 or newer) and **npm 10** — the versions declared in `engines`, and what CI builds with. Vite 8 would
-also accept Node 20.19+, but the project standardizes on the 22 line.
+Requires **Node.js 26** and **npm 11** — the versions declared in `engines`, and what CI builds with. Volta users get the pinned
+version automatically.
 
 ```sh
 npm install
