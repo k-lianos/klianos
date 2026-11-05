@@ -69,8 +69,12 @@ point at GitHub Pages' IPs, and `www` is a `CNAME` to `k-lianos.github.io`. GoDa
   markup asks for it by name.
 - `public/profile-800.jpg` — stable copy of `images/profile-800.jpg` for the JSON-LD `image`, which Vite doesn't rewrite. Update both.
 - `public/og-image.jpg` — 1200×630 social preview card. Generated, not hand-drawn; see below.
-- `public/favicon.svg`, `favicon.ico`, `apple-touch-icon.png` — the KL monogram. The SVG is the source; the raster ones are
-  derived from it.
+- `public/favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png` — the
+  "Code K" mark: a vertical stem plus an angle bracket, read as `|<`. `favicon.svg` is the source; the raster ones are derived from it.
+  The glyph has three other copies: the header logo in `index.html` (inline, inked with `currentColor`), the square source in the
+  regeneration commands below, and the logo on `og-image.jpg`. Change all four together.
+- `public/site.webmanifest` — web app manifest, linked from `index.html`. Lists `icon-192.png` and `icon-512.png` (purpose `any`)
+  and `icon-maskable-512.png` (purpose `maskable`).
 - `public/llms.txt`, `robots.txt`, `sitemap.xml` — machine-readable descriptions of the site.
 - `public/404.html` — standalone error page. It lives in `public/`, so Vite never rewrites a hashed stylesheet link into it; its
   CSS is inlined and its homepage link is hardcoded to `/` for the same reason.
@@ -92,12 +96,30 @@ cp images/profile-800.jpg public/profile-800.jpg
 
 The social card and icons are generated too. Render the card from a throwaway HTML page in headless Chrome at 1200×630, using
 Commissioner from `node_modules` and the `@theme` palette, then save it with `convert out.png -strip -quality 85`.
-Regenerate the icons from the SVG:
+Regenerate the icons with `rsvg-convert` (`librsvg2-bin` on Debian and Ubuntu) and ImageMagick. The circular icons render from
+`favicon.svg`. The maskable and Apple icons render from a full-bleed square source, with the glyph scaled to 0.72 so it stays inside
+Android's safe zone:
 
 ```sh
-inkscape public/favicon.svg -w 512 -h 512 -o /tmp/fav512.png
+rsvg-convert -w 512 -h 512 public/favicon.svg -o /tmp/fav512.png
+rsvg-convert -w 192 -h 192 public/favicon.svg -o /tmp/fav192.png
 convert /tmp/fav512.png -define icon:auto-resize=48,32,16 public/favicon.ico
-convert /tmp/fav512.png -background '#2dd4bf' -flatten -resize 180x180 -strip public/apple-touch-icon.png   # opaque: iOS masks it
+convert /tmp/fav512.png -strip public/icon-512.png
+convert /tmp/fav192.png -strip public/icon-192.png
+
+cat > /tmp/icon-square.svg <<'SVG'
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+    <rect width="64" height="64" fill="#2dd4bf" />
+    <g transform="translate(32 32) scale(0.72) translate(-32 -32)">
+        <rect x="15" y="16" width="7" height="32" fill="#101416" />
+        <polyline points="47,17 32,32 47,47" fill="none" stroke="#101416" stroke-width="7" stroke-linejoin="miter" />
+    </g>
+</svg>
+SVG
+rsvg-convert -w 512 -h 512 /tmp/icon-square.svg -o /tmp/square512.png
+rsvg-convert -w 180 -h 180 /tmp/icon-square.svg -o /tmp/square180.png
+convert /tmp/square512.png -strip public/icon-maskable-512.png
+convert /tmp/square180.png -background '#2dd4bf' -flatten -strip public/apple-touch-icon.png   # opaque: iOS masks it
 ```
 
 ## Site content

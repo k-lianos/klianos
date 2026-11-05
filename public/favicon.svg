@@ -1,12 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="KL">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Konstantinos Lianos">
     <circle cx="32" cy="32" r="32" fill="#2dd4bf" />
-    <!-- Monogram drawn as paths rather than <text>, so it renders identically
-         everywhere instead of depending on a font being present. -->
-    <g fill="#101416">
-        <!-- K -->
-        <rect x="13" y="18" width="6" height="28" />
-        <path d="M20 31.5 L29.5 18 H37 L26 32.5 L37.5 46 H30 Z" />
-        <!-- L -->
-        <path d="M41 18 H47 V40.5 H57 V46 H41 Z" />
-    </g>
+    <!-- "Code K": a stem plus an angle bracket, read as |<. Drawn as shapes, not <text>,
+         so it renders identically everywhere. -->
+    <rect x="15" y="16" width="7" height="32" fill="#101416" />
+    <polyline points="47,17 32,32 47,47" fill="none" stroke="#101416" stroke-width="7" stroke-linejoin="miter" />
 </svg>
