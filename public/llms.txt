@@ -1,19 +1,21 @@
 # Konstantinos Lianos
 
-> Software architect and frontend specialist based in Vouliagmeni, Attiki, Greece. Over a decade architecting, optimizing, and
-> modernizing large-scale web applications, with deep specialization in the Angular and JavaScript ecosystem.
+> Angular modernization and performance consultant based in Vouliagmeni, Attiki, Greece. Software architect with over a decade
+> architecting, optimizing, and modernizing large-scale web applications. Takes contract work for teams worldwide, including the EU, UK,
+> and US, through Quokka L.P.
 
 Site: https://klianos.com/
 Company: Quokka L.P. — https://quokka-dev.com/
 Contact: konstantinos.lianos@gmail.com
 LinkedIn: https://www.linkedin.com/in/klianos
 GitHub: https://github.com/k-lianos
-Instagram: https://www.instagram.com/const.lianos/
 
 ## Current work
 
-Runs Quokka L.P., and is available for contract work through it. Senior Frontend Software Engineer (contract) at Vimachem (IIoT
-Pharma 4.0 AI Platform), Athens — since March 2026.
+Runs Quokka L.P., and is available for contract work through it. Always open to talking about new opportunities: if his own time
+is committed to another client, a colleague from his team at Quokka takes on the work, with his supervision and support.
+
+Senior Frontend Software Engineer at Vimachem (IIoT Pharma 4.0 AI Platform), Athens — since March 2026.
 
 ## What he does
 
@@ -24,15 +26,16 @@ Pharma 4.0 AI Platform), Athens — since March 2026.
 
 ## Selected achievements
 
-- Led the Angular modernization of a critical EU regulatory platform (IUCLID, for the European Chemicals Agency), upgrading from
+- Led the Angular modernization of a critical EU regulatory platform, upgrading from
   Angular 6 to 21, introducing Nrwl Nx with tags and module boundaries, and migrating the test suite from Protractor and
   Karma/Jasmine to WebdriverIO and Jest.
+- Migrated an entire UI codebase from dozens of separate repositories to a single Nx monorepo, and set up its CI pipeline with
+  unit tests, linting rules, and incremental builds.
 - Reduced load times substantially for a massive dynamically generated form driven by backend JSON configuration, via lazy loading
   of all controls plus graph manipulation and IndexedDB caching strategies.
 - Designed frontend architectures for multiple organizations, transitioning systems from Java-based stacks to modern JavaScript
   frameworks.
-- Built a web application for the Hellenic Army granting fast access to naval and air force data; still in use at Aegean posts
-  with an observational mission, and recognized with an official thanks from the Chief of Army Staff.
+- Built, as sole developer, a web application that remains in use and earned an official thanks from a national chief of staff.
 
 ## Technologies
 
@@ -40,7 +43,7 @@ Angular, TypeScript, JavaScript, Node.js, Nrwl Nx, Jest, WebdriverIO, Spring MVC
 
 ## Experience
 
-- **Vimachem** — Senior Frontend Software Engineer (contract), March 2026 to present, Athens.
+- **Vimachem** — Senior Frontend Software Engineer, March 2026 to present, Athens.
 - **TRASYS Greece** — Software Architect (May 2022 to March 2026), previously Senior Software Engineer (December 2019 to May
   2022), Athens.
 - **Blueground** — Software Engineer, March 2018 to December 2019, Athens.
@@ -54,7 +57,7 @@ Angular, TypeScript, JavaScript, Node.js, Nrwl Nx, Jest, WebdriverIO, Spring MVC
 ## Education
 
 - **London School of Economics and Political Science** — MSc Management, Information Systems and Innovation (MISI), 2012–2013.
-- **University of Liverpool** — Computer Science, 2008–2011.
+- **University of Liverpool** — BSc Computer Science, 2008–2011.
 
 ## Languages
 

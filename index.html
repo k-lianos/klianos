@@ -4,10 +4,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>Konstantinos Lianos — Software Architect &amp; Angular Specialist</title>
+        <title>Angular Upgrade &amp; Performance Consultant — Konstantinos Lianos</title>
         <meta
             name="description"
-            content="Konstantinos Lianos is a software architect and frontend specialist in Athens, Greece, with over a decade of experience architecting, optimizing, and modernizing large-scale Angular applications. Available for contract work through his company, Quokka L.P."
+            content="Athens-based Angular consultant who led an EU regulatory platform's upgrade from Angular 6 to 21. Contract work for teams in the EU, UK, US, and beyond."
         />
         <meta name="author" content="Konstantinos Lianos" />
         <link rel="canonical" href="https://klianos.com/" />
@@ -24,10 +24,10 @@
         <meta property="og:type" content="profile" />
         <meta property="og:site_name" content="Konstantinos Lianos" />
         <meta property="og:url" content="https://klianos.com/" />
-        <meta property="og:title" content="Konstantinos Lianos — Software Architect &amp; Angular Specialist" />
+        <meta property="og:title" content="Angular Upgrade &amp; Performance Consultant — Konstantinos Lianos" />
         <meta
             property="og:description"
-            content="Software architect and frontend specialist in Athens, Greece. A decade-plus architecting, optimizing, and modernizing large-scale Angular applications."
+            content="Athens-based Angular consultant who led an EU regulatory platform's upgrade from Angular 6 to 21. Contract work for teams in the EU, UK, US, and beyond."
         />
         <meta property="og:image" content="https://klianos.com/og-image.jpg" />
         <meta property="og:image:type" content="image/jpeg" />
@@ -40,10 +40,10 @@
 
         <!-- Twitter/X reads most og:* tags but needs its own card type. -->
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Konstantinos Lianos — Software Architect &amp; Angular Specialist" />
+        <meta name="twitter:title" content="Angular Upgrade &amp; Performance Consultant — Konstantinos Lianos" />
         <meta
             name="twitter:description"
-            content="Software architect and frontend specialist in Athens, Greece. A decade-plus architecting, optimizing, and modernizing large-scale Angular applications."
+            content="Athens-based Angular consultant who led an EU regulatory platform's upgrade from Angular 6 to 21. Contract work for teams in the EU, UK, US, and beyond."
         />
         <meta name="twitter:image" content="https://klianos.com/og-image.jpg" />
         <meta name="twitter:image:alt" content="Konstantinos Lianos, Software Architect and Angular Specialist" />
@@ -56,7 +56,6 @@
         <!-- IndieWeb identity consolidation: marks the LinkedIn profile as the same person. -->
         <link rel="me" href="https://www.linkedin.com/in/klianos" />
         <link rel="me" href="https://github.com/k-lianos" />
-        <link rel="me" href="https://www.instagram.com/const.lianos/" />
 
         <!-- Tailwind's entry point. Everything else on the page is a utility class. Only this
              file is scanned, so words in the Markdown docs don't generate CSS. -->
@@ -157,52 +156,117 @@
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
-                "@type": "Person",
-                "name": "Konstantinos Lianos",
-                "givenName": "Konstantinos",
-                "familyName": "Lianos",
-                "url": "https://klianos.com/",
-                "image": "https://klianos.com/profile-800.jpg",
-                "email": "konstantinos.lianos@gmail.com",
-                "jobTitle": ["Software Architect", "Senior Frontend Software Engineer"],
-                "description": "Software architect and frontend specialist with over a decade of experience architecting, optimizing, and modernizing large-scale web applications in the Angular and JavaScript ecosystem.",
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Vouliagmeni",
-                    "addressRegion": "Attiki",
-                    "addressCountry": "GR"
-                },
-                "sameAs": ["https://www.linkedin.com/in/klianos", "https://github.com/k-lianos", "https://www.instagram.com/const.lianos/"],
-                "worksFor": [
-                    { "@type": "Organization", "name": "Quokka L.P.", "url": "https://quokka-dev.com/" },
-                    { "@type": "Organization", "name": "Vimachem" }
-                ],
-                "alumniOf": [
+                "@graph": [
                     {
-                        "@type": "CollegeOrUniversity",
-                        "name": "London School of Economics and Political Science"
+                        "@type": "Person",
+                        "@id": "https://klianos.com/#person",
+                        "name": "Konstantinos Lianos",
+                        "givenName": "Konstantinos",
+                        "familyName": "Lianos",
+                        "url": "https://klianos.com/",
+                        "image": "https://klianos.com/profile-800.jpg",
+                        "email": "konstantinos.lianos@gmail.com",
+                        "jobTitle": ["Software Architect", "Senior Frontend Software Engineer"],
+                        "description": "Software architect and Angular consultant with over a decade of experience. Led the Angular modernization of a critical EU regulatory platform, from Angular 6 to 21.",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": "Vouliagmeni",
+                            "addressRegion": "Attiki",
+                            "addressCountry": "GR"
+                        },
+                        "sameAs": ["https://www.linkedin.com/in/klianos", "https://github.com/k-lianos"],
+                        "worksFor": [
+                            {
+                                "@id": "https://quokka-dev.com/#organization"
+                            },
+                            {
+                                "@type": "Organization",
+                                "name": "Vimachem"
+                            }
+                        ],
+                        "alumniOf": [
+                            {
+                                "@type": "CollegeOrUniversity",
+                                "name": "London School of Economics and Political Science",
+                                "sameAs": "https://en.wikipedia.org/wiki/London_School_of_Economics"
+                            },
+                            {
+                                "@type": "CollegeOrUniversity",
+                                "name": "University of Liverpool",
+                                "sameAs": "https://en.wikipedia.org/wiki/University_of_Liverpool"
+                            }
+                        ],
+                        "knowsLanguage": [
+                            {
+                                "@type": "Language",
+                                "name": "Greek"
+                            },
+                            {
+                                "@type": "Language",
+                                "name": "English"
+                            },
+                            {
+                                "@type": "Language",
+                                "name": "French"
+                            }
+                        ],
+                        "knowsAbout": [
+                            {
+                                "@type": "Thing",
+                                "name": "Angular",
+                                "sameAs": "https://en.wikipedia.org/wiki/Angular_(web_framework)"
+                            },
+                            "Angular version upgrades",
+                            "Legacy frontend modernization",
+                            "Frontend architecture",
+                            "Web performance optimization",
+                            "TypeScript",
+                            "JavaScript",
+                            "Node.js",
+                            "Nrwl Nx",
+                            "Nx monorepo migration",
+                            "Jest",
+                            "WebdriverIO",
+                            "Agile software development"
+                        ]
                     },
                     {
-                        "@type": "CollegeOrUniversity",
-                        "name": "University of Liverpool"
+                        "@type": "Organization",
+                        "@id": "https://quokka-dev.com/#organization",
+                        "name": "Quokka L.P.",
+                        "url": "https://quokka-dev.com/",
+                        "description": "Contract Angular architecture, modernization, and performance consultancy.",
+                        "areaServed": {
+                            "@type": "Place",
+                            "name": "Worldwide"
+                        },
+                        "member": {
+                            "@id": "https://klianos.com/#person"
+                        },
+                        "makesOffer": [
+                            {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Angular upgrade and modernization"
+                                }
+                            },
+                            {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Angular performance tuning"
+                                }
+                            },
+                            {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Frontend architecture consulting"
+                                }
+                            }
+                        ]
                     }
-                ],
-                "knowsLanguage": [
-                    { "@type": "Language", "name": "Greek" },
-                    { "@type": "Language", "name": "English" },
-                    { "@type": "Language", "name": "French" }
-                ],
-                "knowsAbout": [
-                    "Angular",
-                    "TypeScript",
-                    "JavaScript",
-                    "Frontend architecture",
-                    "Web performance optimization",
-                    "Nrwl Nx",
-                    "Node.js",
-                    "Jest",
-                    "WebdriverIO",
-                    "Agile software development"
                 ]
             }
         </script>
@@ -353,26 +417,19 @@
                     class="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-[minmax(0,1fr)_20rem] md:px-8 lg:grid-cols-[minmax(0,1fr)_24rem]"
                 >
                     <div>
-                        <p
-                            class="inline-flex animate-rise items-center gap-2.5 rounded-full border border-line bg-surface px-4 py-1.5 text-sm font-medium text-ink backdrop-blur"
-                        >
-                            <span class="relative flex size-2" aria-hidden="true"
-                                ><span class="absolute size-full animate-ping rounded-full bg-accent"></span
-                                ><span class="size-2 rounded-full bg-accent"></span
-                            ></span>
-                            Available for contract work
-                        </p>
                         <h1
                             class="mt-6 animate-rise text-[clamp(2.75rem,12.5vw,6.75rem)] md:text-[7vw] lg:text-[min(8.4vw,6.75rem)] leading-[0.98] font-extrabold tracking-tight [animation-delay:100ms] print:text-5xl"
                         >
                             Konstantinos<br />Lianos
                         </h1>
                         <p class="mt-6 animate-rise text-xl/8 font-semibold text-ink [animation-delay:200ms]">
-                            Software architect and Angular specialist
+                            Angular modernization and performance consultant
                         </p>
                         <p class="mt-3 max-w-xl animate-rise text-lg/8 text-muted [animation-delay:300ms]">
-                            I architect, optimize, and modernize large-scale web applications — with a decade-plus focus on the Angular and
-                            JavaScript ecosystem. I take on contract work through my company,
+                            I help teams modernize old or slow Angular applications. I have led the upgrade of a critical EU regulatory
+                            platform from Angular 6 to 21, and moved a UI codebase spread across dozens of repositories into a single Nx
+                            monorepo, with a CI pipeline for tests, linting, and incremental builds. I take on contract work for teams in
+                            the EU, UK, US, or anywhere else through my company,
                             <a
                                 class="font-medium text-ink underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent whitespace-nowrap"
                                 href="https://quokka-dev.com/"
@@ -380,13 +437,14 @@
                                 target="_blank"
                                 >Quokka L.P.</a
                             >
+                            I am always happy to talk about new opportunities.
                         </p>
                         <p class="mt-3 animate-rise text-muted [animation-delay:300ms]">Vouliagmeni, Attiki, Greece</p>
                         <div class="mt-8 flex animate-rise flex-wrap items-center gap-x-4 gap-y-3 [animation-delay:400ms] print:hidden">
                             <a
                                 class="rounded-full bg-accent px-6 py-3 font-semibold text-canvas transition hover:bg-accent-hover"
-                                href="mailto:konstantinos.lianos@gmail.com"
-                                >Get in touch</a
+                                href="mailto:konstantinos.lianos@gmail.com?subject=Angular%20enquiry%20(hero)&amp;body=Angular%20version%3A%0AApp%20size%20and%20team%3A%0AMain%20problem%3A%0ADeadline%3A"
+                                >Tell me about your Angular app</a
                             >
                             <div class="flex gap-1">
                                 <a
@@ -409,17 +467,6 @@
                                     ><svg class="size-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                                         <path
                                             d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-                                        /></svg
-                                ></a>
-                                <a
-                                    class="flex size-11 items-center justify-center rounded-full text-ink transition hover:bg-elevated hover:text-accent"
-                                    href="https://www.instagram.com/const.lianos/"
-                                    rel="me noopener"
-                                    target="_blank"
-                                    aria-label="Instagram"
-                                    ><svg class="size-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path
-                                            d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"
                                         /></svg
                                 ></a>
                             </div>
@@ -682,6 +729,13 @@
                         <li
                             class="rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 relative overflow-hidden p-6 text-muted"
                         >
+                            <span class="absolute inset-y-6 left-0 w-0.5 bg-accent" aria-hidden="true"></span>Consolidated a UI codebase
+                            spread across dozens of repositories into a single Nx monorepo and set up its CI pipeline with unit tests,
+                            linting rules, and incremental builds.
+                        </li>
+                        <li
+                            class="rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 relative overflow-hidden p-6 text-muted"
+                        >
                             <span class="absolute inset-y-6 left-0 w-0.5 bg-accent" aria-hidden="true"></span>Pioneered performance
                             optimizations that significantly reduced load times for complex dynamic forms using advanced lazy-loading
                             techniques.
@@ -694,7 +748,7 @@
                             frameworks.
                         </li>
                         <li
-                            class="rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 relative overflow-hidden p-6 text-muted"
+                            class="md:col-span-2 rounded-3xl border border-line bg-elevated transition duration-300 hover:-translate-y-1 hover:border-accent/40 relative overflow-hidden p-6 text-muted"
                         >
                             <span class="absolute inset-y-6 left-0 w-0.5 bg-accent" aria-hidden="true"></span>Mentored and trained
                             developers, ensuring high coding standards and best practices in Agile environments.
@@ -841,16 +895,16 @@
                                 >
                                     <div class="flex flex-wrap items-start justify-between gap-x-8 gap-y-2">
                                         <div>
-                                            <h3 class="text-xl/7 font-bold text-ink">
-                                                Senior Frontend Software Engineer
-                                                <span class="text-sm font-medium text-muted">(contract)</span>
-                                            </h3>
+                                            <h3 class="text-xl/7 font-bold text-ink">Senior Frontend Software Engineer</h3>
                                             <p class="mt-1 font-medium text-accent">Vimachem — IIoT Pharma 4.0 AI Platform</p>
                                         </div>
                                         <div class="text-sm md:text-right">
                                             <p class="font-semibold text-ink">Mar 2026 – Present</p>
                                             <p class="text-muted">Athens, Greece</p>
                                         </div>
+                                    </div>
+                                    <div class="mt-4 max-w-3xl space-y-3 text-muted">
+                                        <p>Frontend architecture, build tooling, and delivery quality across the UI codebase.</p>
                                     </div>
                                 </div>
                             </li>
@@ -878,19 +932,12 @@
                                     </div>
                                     <div class="mt-4 max-w-3xl space-y-3 text-muted">
                                         <p>
-                                            Led UI development and optimization of IUCLID, a major distributed software system for ECHA —
-                                            owning Angular development, architectural decisions, and system performance.
+                                            Led UI development and optimization of a major distributed software system, owning frontend
+                                            development, architectural decisions, and system performance.
                                         </p>
                                         <p>
-                                            Drove the modernization end to end: migrated the end-to-end test suite from Protractor to
-                                            WebdriverIO, introduced Nrwl Nx with tags and module boundaries for better modularization,
-                                            upgraded the system from Angular 6 to 21, and replaced Karma/Jasmine with Jest for a significant
-                                            gain in test speed and reliability.
-                                        </p>
-                                        <p>
-                                            The core view of the app is a massive dynamically generated form built from backend JSON
-                                            configuration. To keep it smooth I implemented lazy loading for all controls, and leaned on
-                                            advanced graph manipulation and IndexedDB caching to make data access efficient.
+                                            Drove modernization end to end across the framework, module structure, and test tooling, and
+                                            improved the performance of complex, data-heavy views.
                                         </p>
                                         <p>
                                             Alongside the technical work I played a key role in hiring and mentoring new developers within a
@@ -922,8 +969,8 @@
                                         <p>
                                             Hired as a Java engineer, then moved into a JavaScript architect role once my JS work became the
                                             more valuable contribution. Made the architectural and technology decisions behind a modernized
-                                            frontend for the company's internal ERP system, and got involved in hiring and training junior
-                                            team members under Scrum and Kanban.
+                                            frontend for internal business systems, and got involved in hiring and training junior team
+                                            members under Scrum and Kanban.
                                         </p>
                                     </div>
                                 </div>
@@ -1006,10 +1053,8 @@
                                     </div>
                                     <div class="mt-4 max-w-3xl space-y-3 text-muted">
                                         <p>
-                                            Developed and maintained TELCO projects for OTE–Cosmote, Greece's largest telecommunications
-                                            organization. Heavy Java Spring work integrating with third-party systems such as Siebel CRM and
-                                            Service BUS via web and REST services, across OTE's e-shop and integration system, Cosmote's
-                                            online billing system, and Syzefxis II.
+                                            Developed and maintained large telecom projects. Heavy Java Spring work integrating with
+                                            third-party systems via web and REST services.
                                         </p>
                                     </div>
                                 </div>
@@ -1035,9 +1080,9 @@
                                     </div>
                                     <div class="mt-4 max-w-3xl space-y-3 text-muted">
                                         <p>
-                                            Solely developed a web application granting fast access to naval and air force data, built with
-                                            HTML5, JavaScript, jQuery, and JSON data structures. It is still run at every Aegean post with
-                                            an observational mission, and earned an official thanks from the Chief of Army Staff.
+                                            Solely developed a web application granting fast access to operational data, built with HTML5,
+                                            JavaScript, jQuery, and JSON data structures. It remains in use and earned an official thanks
+                                            from the Chief of Army Staff.
                                         </p>
                                     </div>
                                 </div>
@@ -1178,10 +1223,14 @@
                             >Quokka L.P.</a
                         >
                     </p>
+                    <p class="mx-auto mt-4 max-w-2xl text-lg/8 text-balance text-muted">
+                        I am always open to talking about new opportunities. If my own time is committed to another client, a colleague from
+                        my team at Quokka takes on the work, always with my supervision and support.
+                    </p>
                     <div class="mt-8 flex flex-col items-center gap-6">
                         <a
                             class="max-w-full wrap-anywhere rounded-full bg-accent px-6 py-3 font-semibold text-canvas transition hover:bg-accent-hover"
-                            href="mailto:konstantinos.lianos@gmail.com"
+                            href="mailto:konstantinos.lianos@gmail.com?subject=Angular%20enquiry%20(contact)&amp;body=Angular%20version%3A%0AApp%20size%20and%20team%3A%0AMain%20problem%3A%0ADeadline%3A"
                             >konstantinos.lianos@gmail.com</a
                         >
                         <div class="flex max-w-full flex-wrap justify-center gap-x-6 gap-y-3">
@@ -1225,20 +1274,6 @@
                                 ><span
                                     class="min-w-0 wrap-anywhere underline decoration-line underline-offset-4 group-hover:decoration-accent"
                                     >github.com/k-lianos</span
-                                ></a
-                            >
-                            <a
-                                class="group inline-flex max-w-full items-center gap-2 font-medium text-ink transition hover:text-accent"
-                                href="https://www.instagram.com/const.lianos/"
-                                rel="me noopener"
-                                target="_blank"
-                                ><svg class="size-4 shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path
-                                        d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"
-                                    /></svg
-                                ><span
-                                    class="min-w-0 wrap-anywhere underline decoration-line underline-offset-4 group-hover:decoration-accent"
-                                    >instagram.com/const.lianos</span
                                 ></a
                             >
                         </div>
