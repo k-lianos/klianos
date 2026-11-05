@@ -147,6 +147,7 @@ if you go digging for the source:
   the monorepo migration is not attributed to Vimachem. Ask him before tying other work to a named client.
 - **OTE–Cosmote is now Telekom** (https://www.telekom.gr/), shown as "OTE–Cosmote (now Telekom)". The older system names keep the brand of their time.
 - **TRASYS Greece is now KEYES** (https://www.keyes.eu), shown as "KEYES (formerly TRASYS Greece)". He worked there under the old name.
+- **IRI is now Circana** (https://www.circana.com/), shown as "Circana (formerly known as IRI)". He worked there under the old name.
 - **Contact is the gmail address** from the CV, not the vimachem.com work address.
 - **Location reads "Vouliagmeni"**, not the CV's "Voúla" — corrected by the owner.
 

@@ -49,7 +49,7 @@ Angular, AngularJS, TypeScript, JavaScript, React, Node.js, Nrwl Nx, Jest, Vites
   2022), Athens.
 - **Blueground** — Software Engineer, March 2018 to December 2019, Athens.
 - **SingularLogic** — Software Engineer, May 2017 to March 2018, Athens.
-- **IRI** — Software Engineer, June 2015 to May 2017, Athens.
+- **Circana (formerly known as IRI)** — Software Engineer, June 2015 to May 2017, Athens.
 - **Cognity** — Junior Software Engineer, October 2014 to June 2015, Athens.
 - **Hellenic Army, 96 High Military Command** — Information Systems Researcher, November 2013 to August 2014, Chios.
 - **Holic** — Software Developer intern, August to November 2011, Athens.
