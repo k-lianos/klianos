@@ -1,0 +1,17 @@
+{
+    "ci": {
+        "collect": {
+            "numberOfRuns": 1,
+            "startServerCommand": "npm run preview",
+            "startServerReadyPattern": "Local",
+            "url": ["http://localhost:4173/"]
+        },
+        "assert": {
+            "assertions": {
+                "categories:seo": ["error", { "minScore": 1 }],
+                "categories:best-practices": ["error", { "minScore": 1 }],
+                "total-byte-weight": ["error", { "maxNumericValue": 204800 }]
+            }
+        }
+    }
+}

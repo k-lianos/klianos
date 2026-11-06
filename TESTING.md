@@ -1,8 +1,8 @@
 # Testing plan
 
-> **Status: planned, not implemented.** Written 2026-08-14. There are no tests in this repo and `npm test` is a placeholder that
-> always passes. **Do not add tests without being asked** — this document records a decision about _what_ to build, not permission
-> to build it.
+> **Status: Tiers 1–3 and the smoke test are implemented; Tier 4 is deliberately deferred.** Written 2026-08-14, implemented
+> 2026-11. `npm run check-dist` runs Tier 1, `npm test` runs the Playwright suite (Tiers 2 and 3), and Lighthouse CI runs as its own
+> step in the same `build` job. The post-deploy smoke test runs in the `deploy` job after `actions/deploy-pages@v5`.
 
 ## Why this shape
 
@@ -47,7 +47,7 @@ A plain Node script over `dist/`. No browser, runs in under a second.
 - `sitemap.xml` and `favicon.svg` are well-formed XML
 - Required meta present: `canonical`, `og:image`, `og:title`, `description`
 - No JS bundle — this is the "no JavaScript" rule in `CLAUDE.md`, enforced instead of merely written down
-- Total page weight stays under a stated ceiling
+- `index.html` stays under a stated ceiling (Lighthouse budgets the total transfer size; see Tier 3)
 
 Cheapest possible protection against a broken `base`, which would silently break every asset on the live site while the build
 still reports success. The W3C Nu checker in CI already enforces well-formed HTML on every PR; Tier 1 adds the
@@ -68,8 +68,14 @@ One small file, mapping directly onto the failures above.
 
 ### 3. Accessibility and Lighthouse floors
 
-`axe-core` through Playwright, plus Lighthouse CI with minimum scores for accessibility, SEO, and performance. For a page whose
-entire job is representing someone professionally, a silent contrast or heading-order regression has a real cost. Low maintenance.
+`axe-core` through Playwright, plus Lighthouse CI. For a page whose entire job is representing someone professionally, a silent
+contrast or heading-order regression has a real cost. Low maintenance.
+
+- **axe** runs at 320 and 1280 px with each work entry open, the coverage of the manual review in `ACCESSIBILITY.md`. It allows only
+  the reviewed exceptions recorded there, each limited to one rule and the elements it names. axe only flags focusable content
+  inside `aria-hidden` for manual review, so a separate test asserts there is none.
+- **Lighthouse** gates SEO and best practices at a score of 1 and total transfer size at 200 KB. It does not gate accessibility,
+  which the axe tests cover more strictly, or the performance score, which is too noisy across single CI runs to threshold.
 
 ### 4. Visual regression — deliberately deferred
 
@@ -92,14 +98,14 @@ local test can. Roughly ten lines of shell.
 - **Anything reaching linkedin.com or github.com** — flaky, and not this codebase's behavior
 - **Coverage percentages** — meaningless for a document
 
-## Where it would run
+## Where it runs
 
-CI lives in `.github/workflows/deploy.yml`. It runs on every PR and push to `main`, gates deploys on a build
-success, and already runs the W3C Nu HTML checker as a required step — invalid HTML never deploys. The husky
-pre-commit hook formats staged files; it is bypassable, so nothing beyond formatting is enforced locally.
+CI lives in `.github/workflows/deploy.yml`. It runs on every PR and push to `main`, and its `build` job is the required check that
+gates deploys: after the build it runs the W3C Nu HTML checker, Tier 1, the Playwright suite, and Lighthouse CI, and any failure
+blocks both the merge and the deploy. The husky pre-commit hook formats staged files; it is bypassable, so nothing beyond
+formatting is enforced locally.
 
-Tiers 1 and 2 belong in this same workflow, triggered on pull requests and pushes alongside the existing build
-and validate steps. Keeping everything in one file means the PR check and the deploy gate can't drift apart.
+Everything stays in this one workflow, so the PR check and the deploy gate can't drift apart.
 
 ## If you only do one thing
 

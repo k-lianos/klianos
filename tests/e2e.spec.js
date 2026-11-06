@@ -1,3 +1,4 @@
+import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
 const OVERFLOW_WIDTHS = [320, 390, 768, 1280];
@@ -99,4 +100,51 @@ test('reduced motion: content visible, no overflow', async ({ browser }) => {
     }
 
     await ctx.close();
+});
+
+// ── Tier 3: accessibility ─────────────────────────────────────────────────────
+
+// The reviewed exceptions in ACCESSIBILITY.md, each limited to one rule and the elements it names.
+const WATERMARKS = '#education span[aria-hidden="true"].select-none';
+const DISCLOSURE_SUMMARIES = '#work summary';
+const FOCUSABLE =
+    'a[href], button:not(:disabled), input:not(:disabled), select:not(:disabled), textarea:not(:disabled), summary, [tabindex]:not([tabindex="-1"])';
+
+async function axeViolations(page, scope) {
+    const scan = () => (scope ? new AxeBuilder({ page }).include(scope) : new AxeBuilder({ page }));
+    const scans = [
+        scan().disableRules(['color-contrast', 'label-content-name-mismatch']),
+        scan().withRules(['color-contrast']).exclude(WATERMARKS),
+        scan().withRules(['label-content-name-mismatch']).exclude(DISCLOSURE_SUMMARIES),
+    ];
+    const violations = [];
+    for (const builder of scans) violations.push(...(await builder.analyze()).violations);
+    return violations.map(v => `${v.id}: ${v.nodes.map(n => n.target.join(' ')).join(', ')}`);
+}
+
+test.describe('accessibility', () => {
+    // Elements rest at their final colors, so contrast is measured after the fade-in, not during it.
+    test.use({ reducedMotion: 'reduce' });
+
+    for (const width of [320, 1280]) {
+        test(`no axe violations at ${width}px with each work entry open`, async ({ page }) => {
+            await page.setViewportSize({ width, height: 800 });
+            await page.goto('/');
+            expect(await axeViolations(page), 'whole page').toEqual([]);
+
+            const entries = page.locator('#work details');
+            for (let i = 0; i < (await entries.count()); i++) {
+                const entry = entries.nth(i);
+                if (!(await entry.evaluate(el => el.open))) await entry.locator('summary').click();
+                await expect(entry).toHaveJSProperty('open', true);
+                expect(await axeViolations(page, '#work details[open]'), `work entry ${i + 1}`).toEqual([]);
+            }
+        });
+    }
+
+    // axe only marks this for manual review, which the scans above do not fail on.
+    test('nothing inside aria-hidden is focusable', async ({ page }) => {
+        await page.goto('/');
+        await expect(page.locator(`[aria-hidden="true"] :is(${FOCUSABLE}), [aria-hidden="true"]:is(${FOCUSABLE})`)).toHaveCount(0);
+    });
 });
