@@ -23,6 +23,26 @@ layout are all Tailwind utility classes in `index.html`.
 `robots.txt` and `llms.txt` are only honored at a **domain root**, which is why the site is custom-domained onto
 `klianos.com` rather than left at its GitHub Pages subpath.
 
+### Sitemap maintenance
+
+`public/sitemap.xml` lists only `https://klianos.com/`, matching the canonical URL in `index.html`. Sections with `#` anchors
+belong to this same page; do not add them, `/index.html`, or the error page as separate sitemap entries. Vite copies the sitemap
+to `/sitemap.xml`, and `public/robots.txt` already advertises that URL to crawlers.
+
+Update `<lastmod>` to the actual date (`YYYY-MM-DD`) of a significant change to the page's content, structured data, or links.
+Do not refresh it just because the site is rebuilt or the sitemap is edited. Both Google and Bing ignore `priority` and
+`changefreq`, so they are omitted. See [Google's sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
+and [Bing's sitemap guidance](https://blogs.bing.com/webmaster/2025/7/Keeping-Content-Discoverable-with-Sitemaps-in-AI-Powered-Search/).
+
+After deployment, submit `https://klianos.com/sitemap.xml` in the verified site's Google Search Console **Sitemaps** report.
+Use **URL Inspection** for `https://klianos.com/` to check indexing and request indexing when appropriate. A sitemap helps
+discovery; it does not guarantee indexing or higher rankings.
+
+Also submit the same `https://klianos.com/sitemap.xml` URL in the verified site's **Sitemaps** section of
+[Bing Webmaster Tools](https://www.bing.com/webmasters/). Check its processing status, last processing date, and discovered URLs
+after submission. The existing `User-agent: *` rule allows Bingbot, and the sitemap declaration supports Bing's discovery too;
+no separate Bing sitemap or crawler-specific rule is needed.
+
 ## Getting started
 
 Requires **Node.js 26** and **npm 11** — the versions declared in `engines`, and what CI builds with. Volta users get the pinned
