@@ -50,7 +50,8 @@ A plain Node script over `dist/`. No browser, runs in under a second.
 - Total page weight stays under a stated ceiling
 
 Cheapest possible protection against a broken `base`, which would silently break every asset on the live site while the build
-still reports success.
+still reports success. The W3C Nu checker in CI already enforces well-formed HTML on every PR; Tier 1 adds the
+asset-resolution, JSON-LD content, and no-JS-bundle checks that the validator does not cover.
 
 ### 2. A small Playwright spec — best coverage of real bugs
 
@@ -59,7 +60,11 @@ One small file, mapping directly onto the failures above.
 - **No horizontal overflow**: `scrollWidth <= clientWidth` at 320, 390, 768, 1280
 - **Header stays put**: scroll down, assert the header's box is still at the top of the viewport and its links are hit-testable
 - Every nav link is fully visible at 360 and wider
-- Reduced motion renders cleanly (Playwright takes `reducedMotion` as a context option)
+- **Anchor scroll offset**: click each nav link; the target section heading is fully below the sticky header, not occluded by it
+- **`<details>` accordion overflow**: open each work-history entry at 320 px; `scrollWidth <= clientWidth` holds
+- **Reduced motion**: with `reducedMotion: 'reduce'`, elements hidden by `motion-reduce:hidden` (decorative blobs,
+  animated SVG paths, scroll progress bar) are absent, and the page has no visual holes — resting states look
+  complete without any animation running (Playwright takes `reducedMotion` as a context option)
 
 ### 3. Accessibility and Lighthouse floors
 
@@ -89,12 +94,12 @@ local test can. Roughly ten lines of shell.
 
 ## Where it would run
 
-There is currently no CI. The husky pre-commit hook only formats staged files, and it is bypassable with `--no-verify` or a push
-from another machine, so nothing is actually enforced.
+CI lives in `.github/workflows/deploy.yml`. It runs on every PR and push to `main`, gates deploys on a build
+success, and already runs the W3C Nu HTML checker as a required step — invalid HTML never deploys. The husky
+pre-commit hook formats staged files; it is bypassable, so nothing beyond formatting is enforced locally.
 
-Tiers 1 and 2 belong in a `ci.yml` triggered on pull requests and pushes, alongside `prettier --check .` and a build-succeeds gate.
-Keep it separate from `deploy.yml`: CI needs no write permissions and should run on every branch, while the deploy holds
-`pages: write` and must only ever run on `main`.
+Tiers 1 and 2 belong in this same workflow, triggered on pull requests and pushes alongside the existing build
+and validate steps. Keeping everything in one file means the PR check and the deploy gate can't drift apart.
 
 ## If you only do one thing
 
