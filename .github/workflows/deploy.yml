@@ -82,3 +82,32 @@ jobs:
         steps:
             - id: deployment
               uses: actions/deploy-pages@v5
+
+            # Runs against the live site: the only way to catch a GitHub Pages
+            # misconfiguration (broken CNAME, failed artifact upload, wrong base path).
+            # Checks the page, stable public/ assets, hashed CSS and portrait bundles,
+            # and the Commissioner Variable font extracted from the stylesheet.
+            - name: Smoke test
+              env:
+                  BASE: ${{ steps.deployment.outputs.page_url }}
+              run: |
+                  BASE="${BASE%/}"
+                  FAIL=0
+                  check() {
+                    local code
+                    code=$(curl -sSo /dev/null -w '%{http_code}' --max-time 10 "$1")
+                    if [ "$code" = "200" ]; then echo "  200  $1"
+                    else echo "  FAIL ($code)  $1" >&2; FAIL=$((FAIL+1)); fi
+                  }
+                  check "$BASE/"
+                  check "$BASE/og-image.jpg"
+                  check "$BASE/sitemap.xml"
+                  check "$BASE/favicon.svg"
+                  HTML=$(curl -sS --max-time 10 "$BASE/")
+                  for path in $(printf '%s' "$HTML" | grep -oE '"(/assets/[^"]+\.(css|jpg))"' | tr -d '"' | sort -u); do
+                    check "$BASE$path"
+                  done
+                  CSS=$(printf '%s' "$HTML" | grep -oE '/assets/[^"]+\.css' | head -1)
+                  FONT=$([ -n "$CSS" ] && curl -sS --max-time 10 "$BASE$CSS" | grep -oE '/assets/commissioner-variable[^)]+\.woff2' | head -1 || true)
+                  [ -n "$FONT" ] && check "$BASE$FONT"
+                  [ "$FAIL" = 0 ] && echo 'all checks passed' || { echo "$FAIL check(s) failed" >&2; exit 1; }
