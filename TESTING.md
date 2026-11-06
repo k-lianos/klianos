@@ -50,7 +50,8 @@ A plain Node script over `dist/`. No browser, runs in under a second.
 - Total page weight stays under a stated ceiling
 
 Cheapest possible protection against a broken `base`, which would silently break every asset on the live site while the build
-still reports success.
+still reports success. The W3C Nu checker in CI already enforces well-formed HTML on every PR; Tier 1 adds the
+asset-resolution, JSON-LD content, and no-JS-bundle checks that the validator does not cover.
 
 ### 2. A small Playwright spec — best coverage of real bugs
 
