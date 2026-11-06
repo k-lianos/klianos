@@ -1,14 +1,15 @@
 # klianos
 
 Konstantinos Lianos' personal site — a single page about him. Vite and Tailwind CSS, no JS framework. `index.html` at the repo root
-is the entry point and the only page. There is no stylesheet file and no script: every style is a utility class in `index.html`.
+is the entry point and the only page. Styles use utility classes in `index.html`; `styles.css` contains the Tailwind imports,
+source configuration, theme tokens, and keyframes. No executable JavaScript ships.
 
 ## Tailwind
 
-Tailwind v4 runs through `@tailwindcss/vite`. Its entry point is the inline `<style>` block in the `<head>` of `index.html`, which
-Vite compiles and inlines into the built HTML:
+Tailwind v4 runs through `@tailwindcss/vite`. Its entry point is `styles.css`, linked from the `<head>` of `index.html`.
+Vite compiles it into a separate, content-hashed stylesheet in `dist/assets/`:
 
-- **Style with utility classes on the element.** The `<style>` block holds only the imports, `@source`, and `@theme`. The site is dark only, so there are no `dark:` variants. `@theme` sets
+- **Style with utility classes on the element.** `styles.css` holds only the imports, `@source`, and `@theme`. The site is dark only, so there are no `dark:` variants. `@theme` sets
   the font, the animations, and the charcoal and teal palette as tokens (`canvas`, `surface`, `elevated`, `accent`, `accent-hover`,
   `ink`, `muted`, `line`, `keyword`, `string`). Use those tokens for color, not Tailwind's default palette.
 - **Animation is CSS only and must stop cleanly.** `<body>` turns off every animation under `motion-reduce:` and `print:`, so each
@@ -59,8 +60,9 @@ point at GitHub Pages' IPs, and `www` is a `CNAME` to `k-lianos.github.io`. GoDa
 
 ## Layout
 
-- `index.html` — the whole site, markup and styles.
-- `@fontsource-variable/commissioner` — the self-hosted typeface, imported in the `<style>` block. Vite hashes the font files into
+- `index.html` — the whole site, markup and utility classes.
+- `styles.css` — Tailwind imports, source configuration, theme tokens, and keyframes; compiled into an external stylesheet.
+- `@fontsource-variable/commissioner` — the self-hosted typeface, imported in `styles.css`. Vite hashes the font files into
   `dist/assets/`, so the page makes no third-party font requests.
 - `images/` — images the page references. Vite puts a content hash in each filename at build, so a changed image gets a new URL
   and browsers can't show a stale copy. Files under 4 KB (`edu-lse.png`) are inlined into the HTML instead. New page images go here,
