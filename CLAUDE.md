@@ -39,20 +39,24 @@ npm run build && ls dist/assets/*.js   # expect no matches
 | `npm run preview`      | Serve the built `dist/` locally               |
 | `npm run format`       | Prettier over the whole repo                  |
 | `npm run format:check` | Verify formatting without writing             |
+| `npm run check-dist`   | Tier 1 assertions over the built `dist/`      |
+| `npm test`             | Playwright suite: layout invariants and axe   |
 
-`npm test` is a placeholder that always passes — there are no tests yet. `TESTING.md` records the agreed plan for adding them
-(what to build, and what to skip). It is future work: read it if asked about testing, but **don't implement it unprompted.**
+`npm test` serves the existing `dist/` through `npm run preview`, so build first. `TESTING.md` explains what each tier covers and
+what is deliberately left out; read it before adding or changing tests. `ACCESSIBILITY.md` records the accessibility review and its
+reviewed exceptions — read it before changing markup to satisfy an accessibility checker, since some findings were kept on purpose.
 
 ## Deployment
 
 Live at https://klianos.com/, custom-domained onto GitHub Pages (the project still lives at
 https://k-lianos.github.io/klianos/, which now redirects). Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds
-and validates the output with the W3C Nu checker (a separate workflow step, so an error blocks the deploy) and uploads `dist/` as a Pages artifact — there is no
-`gh-pages` branch. `vnu.jar` needs Java 17+; the workflow installs it with `setup-java`, and `.sdkmanrc` pins it locally (`sdk env`). To run the check locally, `npm run build`, then copy the `java -jar ... vnu.jar` command from the
+the site, checks it (the W3C Nu checker, `check-dist`, the Playwright suite, and Lighthouse CI, each a separate step, so any failure
+blocks the deploy), and uploads `dist/` as a Pages artifact — there is no `gh-pages` branch. After deploying, a smoke test requests
+the live site and its assets. `vnu.jar` needs Java 17+; the workflow installs it with `setup-java`, and `.sdkmanrc` pins it locally (`sdk env`). To run the check locally, `npm run build`, then copy the `java -jar ... vnu.jar` command from the
 "Validate HTML" step in the workflow.
 
-Pull requests into `main` run the same workflow's `build` job (build plus the W3C check) but skip the Pages steps and the `deploy` job.
-The `build` job is the required status check on `main`, so a failing build or invalid HTML blocks the merge. Keep it in this one
+Pull requests into `main` run the same workflow's `build` job (the build plus every check) but skip the Pages steps and the `deploy`
+job. The `build` job is the required status check on `main`, so a failing build or check blocks the merge. Keep it in this one
 workflow rather than a separate CI file, so the PR check and the deploy gate can't drift apart.
 
 The site is served from the domain root, so `vite.config.mjs` sets no `base` path; it exists only to load the Tailwind plugin. `public/CNAME`

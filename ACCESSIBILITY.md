@@ -34,6 +34,16 @@ The two oversized, faint degree watermarks are decorative duplicates of readable
 `aria-hidden="true"` and are not the source of any information. axe reports their low contrast; this is an intentional
 decorative-text exception, not an exemption for the actual degree labels. No accessibility rules are disabled in the site.
 
+Each experience disclosure is named by its company and role (`aria-labelledby` on the `<summary>`), not by its whole row.
+axe's `label-content-name-mismatch` check (WCAG 2.5.3 Label in Name) flags this, because the row also shows dates, a "Now"
+badge, and skill tags. The short name is deliberate: the full row would make a screen reader read every date and tag on all
+nine controls, and the name still contains the company and role text a voice-control user would say. The check is WCAG 2.1
+Level A, which the scan tags listed above did not include; it surfaced once the automated suite ran axe's default rule set.
+
+The Playwright suite (`tests/e2e.spec.js`) enforces this review on every pull request: axe runs at 320px and 1280px with each
+experience entry open, these two exceptions apply only to the watermarks and the experience summaries, and every other element
+must pass axe's default rules.
+
 axe also leaves some contrast checks for manual review where backgrounds or overlays prevent reliable measurement.
 Automated checks cannot prove full accessibility. Real NVDA/Firefox and VoiceOver/Safari testing, browser zoom checks, and
 review by people using assistive technology remain appropriate before claiming conformance. In particular, browsers differ
