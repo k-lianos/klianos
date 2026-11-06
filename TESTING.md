@@ -62,7 +62,9 @@ One small file, mapping directly onto the failures above.
 - Every nav link is fully visible at 360 and wider
 - **Anchor scroll offset**: click each nav link; the target section heading is fully below the sticky header, not occluded by it
 - **`<details>` accordion overflow**: open each work-history entry at 320 px; `scrollWidth <= clientWidth` holds
-- Reduced motion renders cleanly (Playwright takes `reducedMotion` as a context option)
+- **Reduced motion**: with `reducedMotion: 'reduce'`, elements hidden by `motion-reduce:hidden` (decorative blobs,
+  animated SVG paths, scroll progress bar) are absent, and the page has no visual holes — resting states look
+  complete without any animation running (Playwright takes `reducedMotion` as a context option)
 
 ### 3. Accessibility and Lighthouse floors
 
