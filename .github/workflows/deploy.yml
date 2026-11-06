@@ -54,12 +54,20 @@ jobs:
             - name: Check dist
               run: npm run check-dist
 
-            # Tier 2: browser geometry tests (overflow, sticky header, anchor offset, accordion, reduced motion).
+            # Tiers 2 and 3: Playwright geometry invariants and the axe accessibility audit.
             - name: Install Playwright browsers
               run: npx playwright install --with-deps chromium
 
             - name: Run Playwright tests
               run: npm test
+
+            # Tier 3: Lighthouse CI on the Chromium Playwright installed, which needs --no-sandbox on GitHub's runners. Gates SEO,
+            # best practices, and page weight. The axe tests cover accessibility, and one run's performance score is too noisy to gate on.
+            - name: Lighthouse CI
+              run: |
+                  CHROME=$(find ~/.cache/ms-playwright/chromium-* -name chrome -type f | head -1)
+                  CHROME_PATH="$CHROME" npx lhci collect --settings.chromeFlags="--no-sandbox --disable-dev-shm-usage"
+                  npx lhci assert
 
             - if: github.event_name != 'pull_request'
               uses: actions/configure-pages@v6
