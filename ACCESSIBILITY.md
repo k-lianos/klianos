@@ -9,9 +9,7 @@ Reviewed on 2026-11-06 against the production build. This is a verification reco
 - Keyboard access to the horizontally scrolling code panel, with a visible focus indicator.
 - Focus outlines for links and forced-colors outlines for disclosures; scroll margins accommodate the sticky header.
 - Readable navigation suffixes and code line numbers.
-- A native **Pause animations** checkbox in the footer, reachable through the keyboard-only **Animation controls** link.
-  It pauses CSS animations and disables transitions and smooth scrolling without shipping JavaScript.
-- Reduced-motion preferences disable animations, transitions, and smooth scrolling. The redundant pause control is hidden in this mode.
+- Reduced-motion preferences disable animations, transitions, and smooth scrolling.
 - The floating WhatsApp link is inside the footer landmark and uses a native tooltip instead of an overlapping custom tooltip.
 
 ## Verification
@@ -22,8 +20,8 @@ Reviewed on 2026-11-06 against the production build. This is a verification reco
 - axe-core 4.14.0: WCAG 2 A/AA, 2.1 AA, 2.2 AA, and best-practice checks. All nine experience entries were tested open at both
   320px and 1280px viewport widths (18 scans). No actionable automated violations remained after reviewing the decorative
   contrast exceptions below. The default page was also scanned at 390px.
-- Browser-driven keyboard checks covered the skip link, horizontal scrolling, Enter/Space disclosure activation, exclusive
-  expansion, and pause/resume. Chromium's accessibility tree exposed nine named disclosure controls.
+- Browser-driven keyboard checks covered the skip link, horizontal scrolling, Enter/Space disclosure activation, and exclusive
+  expansion. Chromium's accessibility tree exposed nine named disclosure controls.
 - Forced-colors emulation confirmed visible disclosure focus outlines. Reduced-motion emulation confirmed no running animations
   and no smooth scrolling.
 - Text-spacing overrides (1.5 line height, 0.12em letter spacing, 0.16em word spacing, and 2em paragraph spacing) introduced no

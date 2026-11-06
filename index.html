@@ -1,7 +1,7 @@
 <!doctype html>
 <html
     lang="en-US"
-    class="scroll-pt-24 sm:text-[length:106.25%] scroll-smooth bg-canvas scheme-dark motion-reduce:scroll-auto has-[#pause-motion:checked]:scroll-auto print:bg-white print:scheme-light"
+    class="scroll-pt-24 sm:text-[length:106.25%] scroll-smooth bg-canvas scheme-dark motion-reduce:scroll-auto print:bg-white print:scheme-light"
 >
     <head>
         <meta charset="UTF-8" />
@@ -202,17 +202,12 @@
     </head>
     <body
         id="top"
-        class="overflow-x-clip bg-canvas text-base/7 text-ink antialiased motion-reduce:**:animate-none! motion-reduce:**:transition-none! has-[#pause-motion:checked]:**:[animation-play-state:paused]! has-[#pause-motion:checked]:**:transition-none! [&_a]:scroll-mt-24 [&_summary]:scroll-mt-24 print:bg-white print:text-black print:**:animate-none! print:**:border-slate-300! print:**:bg-transparent! print:**:text-black! print:**:shadow-none! [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-2 [&_a:focus-visible]:outline-accent"
+        class="overflow-x-clip bg-canvas text-base/7 text-ink antialiased motion-reduce:**:animate-none! motion-reduce:**:transition-none! [&_a]:scroll-mt-24 [&_summary]:scroll-mt-24 print:bg-white print:text-black print:**:animate-none! print:**:border-slate-300! print:**:bg-transparent! print:**:text-black! print:**:shadow-none! [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-2 [&_a:focus-visible]:outline-accent"
     >
         <a
             class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:font-semibold focus:text-canvas"
             href="#main"
             >Skip to content</a
-        >
-        <a
-            href="#pause-motion"
-            class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:font-semibold focus:text-canvas motion-reduce:hidden"
-            >Animation controls</a
         >
 
         <!-- Scroll progress. Browsers without scroll timelines simply don't show it. -->
@@ -3021,14 +3016,6 @@
                     <span>© 2026 Konstantinos Lianos</span>
                 </p>
                 <p class="hidden py-2 md:block">Vite · Tailwind · 0 KB JavaScript</p>
-                <label class="inline-flex min-h-11 cursor-pointer items-center gap-2 py-2 text-ink motion-reduce:hidden">
-                    <input
-                        id="pause-motion"
-                        type="checkbox"
-                        class="size-4 accent-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                    />
-                    Pause animations
-                </label>
                 <a class="inline-flex min-h-11 items-center gap-1.5 text-ink transition hover:text-accent" href="#top"
                     >Back to top
                     <svg
