@@ -42,16 +42,17 @@ survives a CSS rewrite; `assert nav left is 0` does not.
 
 A plain Node script over `dist/`. No browser, runs in under a second.
 
-- Every `src` and `href` resolves to a file that exists in `dist/` — catches asset rot and base-path mistakes
+- Every `src`, `href`, and `srcset` candidate resolves to a file that exists in `dist/` — catches asset rot and base-path mistakes
 - The JSON-LD block parses, and has `@type`, `name`, `url`
 - `sitemap.xml` and `favicon.svg` are well-formed XML
 - Required meta present: `canonical`, `og:image`, `og:title`, `description`
-- No JS bundle — this is the "no JavaScript" rule in `CLAUDE.md`, enforced instead of merely written down
+- No executable JavaScript: no bundle, and in `index.html` and `404.html` no script but the JSON-LD block, no inline event
+  handlers, no `javascript:` URLs — this is the "no JavaScript" rule in `CLAUDE.md`, enforced instead of merely written down
 - `index.html` stays under a stated ceiling (Lighthouse budgets the total transfer size; see Tier 3)
 
 Cheapest possible protection against a broken `base`, which would silently break every asset on the live site while the build
 still reports success. The W3C Nu checker in CI already enforces well-formed HTML on every PR; Tier 1 adds the
-asset-resolution, JSON-LD content, and no-JS-bundle checks that the validator does not cover.
+asset-resolution, JSON-LD content, and no-JavaScript checks that the validator does not cover.
 
 ### 2. A small Playwright spec — best coverage of real bugs
 
@@ -61,10 +62,12 @@ One small file, mapping directly onto the failures above.
 - **Header stays put**: scroll down, assert the header's box is still at the top of the viewport and its links are hit-testable
 - Every nav link is fully visible at 360 and wider
 - **Anchor scroll offset**: click each nav link; the target section heading is fully below the sticky header, not occluded by it
-- **`<details>` accordion overflow**: open each work-history entry at 320 px; `scrollWidth <= clientWidth` holds
-- **Reduced motion**: with `reducedMotion: 'reduce'`, elements hidden by `motion-reduce:hidden` (decorative blobs,
-  animated SVG paths, scroll progress bar) are absent, and the page has no visual holes — resting states look
-  complete without any animation running (Playwright takes `reducedMotion` as a context option)
+- **Work entries keep their content**: open each work-history entry at 320 px; nothing in its expanded content extends past the
+  entry's edges. Entries clip their content for the open/close animation, so page-level overflow can't see this
+- **Reduced motion**: with `reducedMotion: 'reduce'`, at 320 and 1280 px no text is left invisible (opacity 0 or
+  `visibility: hidden` on it or an ancestor) and nothing overflows — resting states look complete without any animation
+  running. Playwright's `toBeVisible()` counts opacity 0 as visible, so the check reads computed visibility instead
+- **Print**: every work entry prints expanded, and no text is left invisible
 
 ### 3. Accessibility and Lighthouse floors
 
