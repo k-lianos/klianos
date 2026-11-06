@@ -89,12 +89,12 @@ local test can. Roughly ten lines of shell.
 
 ## Where it would run
 
-There is currently no CI. The husky pre-commit hook only formats staged files, and it is bypassable with `--no-verify` or a push
-from another machine, so nothing is actually enforced.
+CI lives in `.github/workflows/deploy.yml`. It runs on every PR and push to `main`, gates deploys on a build
+success, and already runs the W3C Nu HTML checker as a required step — invalid HTML never deploys. The husky
+pre-commit hook formats staged files; it is bypassable, so nothing beyond formatting is enforced locally.
 
-Tiers 1 and 2 belong in a `ci.yml` triggered on pull requests and pushes, alongside `prettier --check .` and a build-succeeds gate.
-Keep it separate from `deploy.yml`: CI needs no write permissions and should run on every branch, while the deploy holds
-`pages: write` and must only ever run on `main`.
+Tiers 1 and 2 belong in this same workflow, triggered on pull requests and pushes alongside the existing build
+and validate steps. Keeping everything in one file means the PR check and the deploy gate can't drift apart.
 
 ## If you only do one thing
 
