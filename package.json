@@ -9,7 +9,8 @@
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "test": "echo \"no tests yet\"",
-        "prepare": "husky"
+        "prepare": "husky",
+        "validate": "vite build && java -jar node_modules/vnu-jar/build/dist/vnu.jar --skip-non-html --format gnu --filterpattern '.*Trailing slash on void elements.*' dist/"
     },
     "keywords": [],
     "author": "",
@@ -25,7 +26,8 @@
         "lint-staged": "^17.6.0",
         "prettier": "^3.9.10",
         "tailwindcss": "^4.3.4",
-        "vite": "^8.3.6"
+        "vite": "^8.3.6",
+        "vnu-jar": "^26.11.4"
     },
     "volta": {
         "node": "26.13.0"
