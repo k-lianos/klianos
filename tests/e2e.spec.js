@@ -67,7 +67,7 @@ test('open work entries keep their content inside the entry at 320px', async ({ 
     await page.goto('/');
 
     // Each entry clips its expanded content for the open/close animation, so content that is too wide is cut off instead of
-    // scrolling the page. Page overflow can't see that; compare each element's edges with the entry's.
+    // scrolling the page. Page overflow can't see that; compare the edges of each element, and of the text itself, with the entry's.
     const entries = page.locator('#work details');
     for (let i = 0; i < (await entries.count()); i++) {
         const entry = entries.nth(i);
@@ -75,12 +75,30 @@ test('open work entries keep their content inside the entry at 320px', async ({ 
         await expect(entry).toHaveJSProperty('open', true);
         const cutOff = await entry.evaluate(el => {
             const box = el.getBoundingClientRect();
-            return [...el.querySelectorAll(':scope > :not(summary), :scope > :not(summary) *')]
-                .filter(child => {
-                    const r = child.getBoundingClientRect();
-                    return child.checkVisibility() && (r.left < box.left - 1 || r.right > box.right + 1);
-                })
-                .map(child => `<${child.tagName.toLowerCase()}> ${child.textContent.trim().slice(0, 40)}`);
+            const outside = r => r.width > 0 && (r.left < box.left - 1 || r.right > box.right + 1);
+            // Clipping by an overflow container inside the entry (screen-reader-only text, say) is intended.
+            const clippedInside = node => {
+                for (let a = node.parentElement; a && a !== el; a = a.parentElement)
+                    if (getComputedStyle(a).overflowX !== 'visible') return true;
+                return false;
+            };
+            const found = [];
+            for (const root of [...el.children].filter(c => c.tagName !== 'SUMMARY')) {
+                for (const child of [root, ...root.querySelectorAll('*')]) {
+                    if (child.checkVisibility() && !clippedInside(child) && outside(child.getBoundingClientRect())) {
+                        found.push(`<${child.tagName.toLowerCase()}> ${child.textContent.trim().slice(0, 40)}`);
+                    }
+                }
+                // An unbreakable word overflows its element without widening the element's box, so measure the text too.
+                const text = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+                for (let node = text.nextNode(); node; node = text.nextNode()) {
+                    if (!node.textContent.trim() || !node.parentElement.checkVisibility() || clippedInside(node)) continue;
+                    const range = document.createRange();
+                    range.selectNodeContents(node);
+                    if ([...range.getClientRects()].some(outside)) found.push(`text "${node.textContent.trim().slice(0, 40)}"`);
+                }
+            }
+            return found;
         });
         expect(cutOff, `content cut off in work entry ${i + 1}`).toEqual([]);
     }
