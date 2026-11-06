@@ -30,7 +30,14 @@ jobs:
             # husky's prepare script is pointless in CI and only installs hooks.
             - run: npm ci --ignore-scripts
 
-            - run: npm run build
+            # vnu.jar (the W3C Nu HTML checker) needs Java 17 or newer.
+            - uses: actions/setup-java@v4
+              with:
+                  distribution: temurin
+                  java-version: 21
+
+            # Builds, then fails the job if the W3C checker finds any errors, so invalid HTML never deploys.
+            - run: npm run validate
 
             - uses: actions/configure-pages@v5
 

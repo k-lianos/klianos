@@ -37,6 +37,7 @@ npm run build && ls dist/assets/*.js   # expect no matches
 | `npm run dev`          | Dev server with HMR at http://localhost:5173/ |
 | `npm run build`        | Production build to `dist/`                   |
 | `npm run preview`      | Serve the built `dist/` locally               |
+| `npm run validate`     | Build, then run the W3C Nu checker on `dist/` |
 | `npm run format`       | Prettier over the whole repo                  |
 | `npm run format:check` | Verify formatting without writing             |
 
@@ -47,7 +48,8 @@ npm run build && ls dist/assets/*.js   # expect no matches
 
 Live at https://klianos.com/, custom-domained onto GitHub Pages (the project still lives at
 https://k-lianos.github.io/klianos/, which now redirects). Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds
-and uploads `dist/` as a Pages artifact — there is no `gh-pages` branch.
+and validates (`npm run validate`, so a W3C checker error blocks the deploy) and uploads `dist/` as a Pages artifact — there is no
+`gh-pages` branch. `vnu.jar` needs Java 17+; the workflow installs it with `setup-java`, and `.sdkmanrc` pins it locally (`sdk env`).
 
 The site is served from the domain root, so `vite.config.mjs` sets no `base` path; it exists only to load the Tailwind plugin. `public/CNAME`
 (containing `klianos.com`) is what makes GitHub Pages honor the custom domain; because deploys go through the Actions artifact
