@@ -1,7 +1,7 @@
 <!doctype html>
 <html
     lang="en-US"
-    class="scroll-pt-24 sm:text-[length:106.25%] scroll-smooth bg-canvas scheme-dark motion-reduce:scroll-auto print:bg-white print:scheme-light"
+    class="scroll-pt-24 sm:text-[length:106.25%] scroll-smooth bg-canvas scheme-dark motion-reduce:scroll-auto has-[#pause-motion:checked]:scroll-auto print:bg-white print:scheme-light"
 >
     <head>
         <meta charset="UTF-8" />
@@ -280,12 +280,17 @@
     </head>
     <body
         id="top"
-        class="overflow-x-clip bg-canvas text-base/7 text-ink antialiased motion-reduce:**:animate-none! print:bg-white print:text-black print:**:animate-none! print:**:border-slate-300! print:**:bg-transparent! print:**:text-black! print:**:shadow-none! [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-2 [&_a:focus-visible]:outline-accent"
+        class="overflow-x-clip bg-canvas text-base/7 text-ink antialiased motion-reduce:**:animate-none! motion-reduce:**:transition-none! has-[#pause-motion:checked]:**:[animation-play-state:paused]! has-[#pause-motion:checked]:**:transition-none! [&_a]:scroll-mt-24 [&_summary]:scroll-mt-24 print:bg-white print:text-black print:**:animate-none! print:**:border-slate-300! print:**:bg-transparent! print:**:text-black! print:**:shadow-none! [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-2 [&_a:focus-visible]:outline-accent"
     >
         <a
             class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:font-semibold focus:text-canvas"
             href="#main"
             >Skip to content</a
+        >
+        <a
+            href="#pause-motion"
+            class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:font-semibold focus:text-canvas motion-reduce:hidden"
+            >Animation controls</a
         >
 
         <!-- Scroll progress. Browsers without scroll timelines simply don't show it. -->
@@ -315,39 +320,39 @@
                     <span class="sr-only md:not-sr-only">Konstantinos Lianos</span>
                 </a>
                 <!-- Every link stays visible, so there is no menu state and no script. -->
-                <nav class="min-w-0 overflow-x-auto" aria-label="Sections">
+                <nav class="min-w-0 overflow-x-auto [&_a:focus-visible]:outline-offset-[-2px]" aria-label="Sections">
                     <ul class="flex font-mono text-xs sm:text-sm">
                         <li>
                             <a
                                 class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-1.5 lg:px-3"
                                 href="#about"
-                                >about<span class="hidden text-muted/60 sm:inline">.md</span></a
+                                >about<span class="hidden text-muted sm:inline">.md</span></a
                             >
                         </li>
                         <li>
                             <a
                                 class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-1.5 lg:px-3"
                                 href="#expertise"
-                                >skills<span class="hidden text-muted/60 sm:inline">.json</span></a
+                                >skills<span class="hidden text-muted sm:inline">.json</span></a
                             >
                         </li>
                         <li>
                             <a class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-1.5 lg:px-3" href="#work"
-                                >work<span class="hidden text-muted/60 sm:inline">.log</span></a
+                                >work<span class="hidden text-muted sm:inline">.log</span></a
                             >
                         </li>
                         <li>
                             <a
                                 class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-1.5 lg:px-3"
                                 href="#education"
-                                >education<span class="hidden text-muted/60 sm:inline">.md</span></a
+                                >education<span class="hidden text-muted sm:inline">.md</span></a
                             >
                         </li>
                         <li>
                             <a
                                 class="block rounded-full px-1 py-2.5 text-muted transition hover:text-accent sm:px-1.5 lg:px-3"
                                 href="#contact"
-                                >contact<span class="hidden text-muted/60 sm:inline">.sh</span></a
+                                >contact<span class="hidden text-muted sm:inline">.sh</span></a
                             >
                         </li>
                     </ul>
@@ -355,7 +360,7 @@
             </div>
         </header>
 
-        <main id="main">
+        <main id="main" tabindex="-1" class="outline-none">
             <!-- ─────────────────────────────  Hero  ───────────────────────────── -->
             <section aria-labelledby="intro-heading" class="relative isolate overflow-hidden pt-28 pb-16 md:pt-36 md:pb-28">
                 <div class="absolute inset-0 -z-10 print:hidden" aria-hidden="true">
@@ -697,9 +702,14 @@
                             <span class="border-b-2 border-accent px-4 py-3 text-ink">konstantinos.ts</span>
                             <span class="px-4 py-3 text-muted">engineer.d.ts</span>
                         </div>
-                        <div class="flex overflow-x-auto py-5 font-mono text-[0.6875rem]/6 sm:text-[0.8125rem]/7">
+                        <div
+                            tabindex="0"
+                            role="region"
+                            aria-label="Code-style profile summary"
+                            class="flex overflow-x-auto py-5 font-mono text-[0.6875rem]/6 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent sm:text-[0.8125rem]/7"
+                        >
                             <ol
-                                class="shrink-0 pr-2 pl-3 text-right text-muted/40 select-none sm:pr-4 sm:pl-5 print:hidden"
+                                class="shrink-0 pr-2 pl-3 text-right text-muted select-none sm:pr-4 sm:pl-5 print:hidden"
                                 aria-hidden="true"
                             >
                                 <li>1</li>
@@ -1339,7 +1349,8 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        aria-labelledby="experience-1-company experience-1-role"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent forced-colors:focus-visible:outline-solid forced-colors:focus-visible:outline-2 forced-colors:focus-visible:-outline-offset-2 forced-colors:focus-visible:outline-[Highlight] md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
                                         <h3
                                             class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
@@ -1373,14 +1384,7 @@
                                                         id="experience-1-company"
                                                         class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
                                                     >
-                                                        <a
-                                                            class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                            href="https://www.vimachem.com/"
-                                                            rel="noopener"
-                                                            target="_blank"
-                                                            >Vimachem</a
-                                                        >
-                                                        — IIoT Pharma 4.0 AI Platform
+                                                        Vimachem — IIoT Pharma 4.0 AI Platform
                                                     </span>
                                                     <span
                                                         class="rounded-full bg-accent/12 px-2 py-0.5 font-mono text-[0.6875rem]/4 font-semibold text-accent"
@@ -1449,6 +1453,15 @@
                                                     Build tooling
                                                 </li>
                                             </ul>
+                                            <p class="mt-4">
+                                                <a
+                                                    class="inline-flex min-h-11 items-center font-medium text-accent underline underline-offset-4"
+                                                    href="https://www.vimachem.com/"
+                                                    rel="noopener"
+                                                    target="_blank"
+                                                    >Visit Vimachem<span class="sr-only"> (opens in a new tab)</span></a
+                                                >
+                                            </p>
                                         </div>
                                     </div>
                                 </details>
@@ -1461,7 +1474,8 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        aria-labelledby="experience-2-company experience-2-role"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent forced-colors:focus-visible:outline-solid forced-colors:focus-visible:outline-2 forced-colors:focus-visible:-outline-offset-2 forced-colors:focus-visible:outline-[Highlight] md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
                                         <h3
                                             class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
@@ -1493,13 +1507,7 @@
                                                         id="experience-2-company"
                                                         class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
                                                     >
-                                                        <a
-                                                            class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                            href="https://www.keyes.eu"
-                                                            rel="noopener"
-                                                            target="_blank"
-                                                            >KEYES (formerly TRASYS Greece)</a
-                                                        >
+                                                        KEYES (formerly TRASYS Greece)
                                                     </span>
                                                 </span>
                                                 <span
@@ -1615,6 +1623,17 @@
                                                     IndexedDB
                                                 </li>
                                             </ul>
+                                            <p class="mt-4">
+                                                <a
+                                                    class="inline-flex min-h-11 items-center font-medium text-accent underline underline-offset-4"
+                                                    href="https://www.keyes.eu"
+                                                    rel="noopener"
+                                                    target="_blank"
+                                                    >Visit KEYES (formerly TRASYS Greece)<span class="sr-only">
+                                                        (opens in a new tab)</span
+                                                    ></a
+                                                >
+                                            </p>
                                         </div>
                                     </div>
                                 </details>
@@ -1627,7 +1646,8 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        aria-labelledby="experience-3-company experience-3-role"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent forced-colors:focus-visible:outline-solid forced-colors:focus-visible:outline-2 forced-colors:focus-visible:-outline-offset-2 forced-colors:focus-visible:outline-[Highlight] md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
                                         <h3
                                             class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
@@ -1659,13 +1679,7 @@
                                                         id="experience-3-company"
                                                         class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
                                                     >
-                                                        <a
-                                                            class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                            href="https://www.theblueground.com/"
-                                                            rel="noopener"
-                                                            target="_blank"
-                                                            >Blueground</a
-                                                        >
+                                                        Blueground
                                                     </span>
                                                 </span>
                                                 <span
@@ -1753,6 +1767,15 @@
                                                     Kanban
                                                 </li>
                                             </ul>
+                                            <p class="mt-4">
+                                                <a
+                                                    class="inline-flex min-h-11 items-center font-medium text-accent underline underline-offset-4"
+                                                    href="https://www.theblueground.com/"
+                                                    rel="noopener"
+                                                    target="_blank"
+                                                    >Visit Blueground<span class="sr-only"> (opens in a new tab)</span></a
+                                                >
+                                            </p>
                                         </div>
                                     </div>
                                 </details>
@@ -1765,7 +1788,8 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        aria-labelledby="experience-4-company experience-4-role"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent forced-colors:focus-visible:outline-solid forced-colors:focus-visible:outline-2 forced-colors:focus-visible:-outline-offset-2 forced-colors:focus-visible:outline-[Highlight] md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
                                         <h3
                                             class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
@@ -1797,13 +1821,7 @@
                                                         id="experience-4-company"
                                                         class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
                                                     >
-                                                        <a
-                                                            class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                            href="https://portal.singularlogic.eu/en"
-                                                            rel="noopener"
-                                                            target="_blank"
-                                                            >SingularLogic</a
-                                                        >
+                                                        SingularLogic
                                                     </span>
                                                 </span>
                                                 <span
@@ -1881,6 +1899,15 @@
                                                     Webpack
                                                 </li>
                                             </ul>
+                                            <p class="mt-4">
+                                                <a
+                                                    class="inline-flex min-h-11 items-center font-medium text-accent underline underline-offset-4"
+                                                    href="https://portal.singularlogic.eu/en"
+                                                    rel="noopener"
+                                                    target="_blank"
+                                                    >Visit SingularLogic<span class="sr-only"> (opens in a new tab)</span></a
+                                                >
+                                            </p>
                                         </div>
                                     </div>
                                 </details>
@@ -1893,7 +1920,8 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        aria-labelledby="experience-5-company experience-5-role"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent forced-colors:focus-visible:outline-solid forced-colors:focus-visible:outline-2 forced-colors:focus-visible:-outline-offset-2 forced-colors:focus-visible:outline-[Highlight] md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
                                         <h3
                                             class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
@@ -1925,13 +1953,7 @@
                                                         id="experience-5-company"
                                                         class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
                                                     >
-                                                        <a
-                                                            class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                            href="https://www.circana.com/"
-                                                            rel="noopener"
-                                                            target="_blank"
-                                                            >Circana (formerly known as IRI)</a
-                                                        >
+                                                        Circana (formerly known as IRI)
                                                     </span>
                                                 </span>
                                                 <span
@@ -2010,6 +2032,17 @@
                                                     Scrum
                                                 </li>
                                             </ul>
+                                            <p class="mt-4">
+                                                <a
+                                                    class="inline-flex min-h-11 items-center font-medium text-accent underline underline-offset-4"
+                                                    href="https://www.circana.com/"
+                                                    rel="noopener"
+                                                    target="_blank"
+                                                    >Visit Circana (formerly known as IRI)<span class="sr-only">
+                                                        (opens in a new tab)</span
+                                                    ></a
+                                                >
+                                            </p>
                                         </div>
                                     </div>
                                 </details>
@@ -2022,7 +2055,8 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        aria-labelledby="experience-6-company experience-6-role"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent forced-colors:focus-visible:outline-solid forced-colors:focus-visible:outline-2 forced-colors:focus-visible:-outline-offset-2 forced-colors:focus-visible:outline-[Highlight] md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
                                         <h3
                                             class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
@@ -2054,13 +2088,7 @@
                                                         id="experience-6-company"
                                                         class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
                                                     >
-                                                        <a
-                                                            class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                            href="https://www.cognity.gr/"
-                                                            rel="noopener"
-                                                            target="_blank"
-                                                            >Cognity</a
-                                                        >
+                                                        Cognity
                                                     </span>
                                                 </span>
                                                 <span
@@ -2139,6 +2167,15 @@
                                                     Siebel CRM
                                                 </li>
                                             </ul>
+                                            <p class="mt-4">
+                                                <a
+                                                    class="inline-flex min-h-11 items-center font-medium text-accent underline underline-offset-4"
+                                                    href="https://www.cognity.gr/"
+                                                    rel="noopener"
+                                                    target="_blank"
+                                                    >Visit Cognity<span class="sr-only"> (opens in a new tab)</span></a
+                                                >
+                                            </p>
                                         </div>
                                     </div>
                                 </details>
@@ -2151,7 +2188,8 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        aria-labelledby="experience-7-company experience-7-role"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent forced-colors:focus-visible:outline-solid forced-colors:focus-visible:outline-2 forced-colors:focus-visible:-outline-offset-2 forced-colors:focus-visible:outline-[Highlight] md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
                                         <h3
                                             class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
@@ -2273,7 +2311,8 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        aria-labelledby="experience-8-company experience-8-role"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent forced-colors:focus-visible:outline-solid forced-colors:focus-visible:outline-2 forced-colors:focus-visible:-outline-offset-2 forced-colors:focus-visible:outline-[Highlight] md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
                                         <h3
                                             class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
@@ -2393,7 +2432,8 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        aria-labelledby="experience-9-company experience-9-role"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent forced-colors:focus-visible:outline-solid forced-colors:focus-visible:outline-2 forced-colors:focus-visible:-outline-offset-2 forced-colors:focus-visible:outline-[Highlight] md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
                                         <h3
                                             class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
@@ -2425,13 +2465,7 @@
                                                         id="experience-9-company"
                                                         class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
                                                     >
-                                                        <a
-                                                            class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                            href="https://www.linkedin.com/company/aleyu-network-culture-co-ltd/"
-                                                            rel="noopener"
-                                                            target="_blank"
-                                                            >ALEYU</a
-                                                        >
+                                                        ALEYU
                                                     </span>
                                                     <span
                                                         class="rounded-full border border-line px-2 py-0.5 font-mono text-[0.6875rem]/4 text-muted"
@@ -2505,6 +2539,15 @@
                                                     JavaScript
                                                 </li>
                                             </ul>
+                                            <p class="mt-4">
+                                                <a
+                                                    class="inline-flex min-h-11 items-center font-medium text-accent underline underline-offset-4"
+                                                    href="https://www.linkedin.com/company/aleyu-network-culture-co-ltd/"
+                                                    rel="noopener"
+                                                    target="_blank"
+                                                    >Visit ALEYU<span class="sr-only"> (opens in a new tab)</span></a
+                                                >
+                                            </p>
                                         </div>
                                     </div>
                                 </details>
@@ -3056,6 +3099,14 @@
                     <span>© 2026 Konstantinos Lianos</span>
                 </p>
                 <p class="hidden py-2 md:block">Vite · Tailwind · 0 KB JavaScript</p>
+                <label class="inline-flex min-h-11 cursor-pointer items-center gap-2 py-2 text-ink motion-reduce:hidden">
+                    <input
+                        id="pause-motion"
+                        type="checkbox"
+                        class="size-4 accent-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                    />
+                    Pause animations
+                </label>
                 <a class="inline-flex min-h-11 items-center gap-1.5 text-ink transition hover:text-accent" href="#top"
                     >Back to top
                     <svg
@@ -3073,23 +3124,19 @@
                     </svg>
                 </a>
             </div>
+            <!-- From xl up, the page's side margin is wide enough to hold this without covering content. -->
+            <a
+                class="group fixed right-3 bottom-3 z-40 hidden size-11 items-center justify-center rounded-full border border-line bg-elevated text-ink shadow-lg shadow-black/30 transition hover:text-accent xl:flex print:hidden"
+                href="https://wa.me/306972260029?text=Hi%20Konstantinos%2C%20I%27d%20like%20to%20talk%20about%20my%20Angular%20app."
+                rel="noopener"
+                target="_blank"
+                aria-label="Chat on WhatsApp (opens in a new tab)"
+                title="Chat on WhatsApp"
+                ><svg class="size-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                    /></svg
+            ></a>
         </footer>
-
-        <!-- From xl up, the page's side margin is wide enough to hold this without covering content. -->
-        <a
-            class="group fixed right-3 bottom-3 z-40 hidden size-11 items-center justify-center rounded-full border border-line bg-elevated text-ink shadow-lg shadow-black/30 transition hover:text-accent xl:flex print:hidden"
-            href="https://wa.me/306972260029?text=Hi%20Konstantinos%2C%20I%27d%20like%20to%20talk%20about%20my%20Angular%20app."
-            rel="noopener"
-            target="_blank"
-            aria-label="WhatsApp"
-            ><span
-                class="pointer-events-none absolute right-full mr-3 rounded-full border border-line bg-elevated px-3 py-1.5 text-sm font-medium whitespace-nowrap text-ink opacity-0 shadow-lg shadow-black/30 transition group-hover:opacity-100 group-focus-visible:opacity-100"
-                aria-hidden="true"
-                >Chat on WhatsApp</span
-            ><svg class="size-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
-                /></svg
-        ></a>
     </body>
 </html>
