@@ -16,8 +16,9 @@ Reviewed on 2026-11-06 against the production build. This is a verification reco
 
 ## Verification
 
-- Production build and HTML structure validation passed. The validator still flags unsupported modern CSS syntax from Tailwind
-  and gives informational notices about trailing slashes on void elements.
+- Production build and HTML structure validation passed. Following stylesheet extraction, the HTML validation reports only
+  informational notices about trailing slashes on void elements. Validating the CSS separately may still flag modern Tailwind
+  syntax unsupported by the CSS validator; extraction does not change the CSS language features in use.
 - axe-core 4.14.0: WCAG 2 A/AA, 2.1 AA, 2.2 AA, and best-practice checks. All nine experience entries were tested open at both
   320px and 1280px viewport widths (18 scans). No actionable automated violations remained after reviewing the decorative
   contrast exceptions below. The default page was also scanned at 390px.

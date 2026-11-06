@@ -7,7 +7,8 @@ Source for my personal site — a single page about my work as a software archit
 **Live at [klianos.com](https://klianos.com/)**
 
 Built with [Vite](https://vite.dev/) and [Tailwind CSS](https://tailwindcss.com/). **No JavaScript ships.** The sticky header, theming, and responsive
-layout are all Tailwind utility classes in `index.html`.
+layout are all Tailwind utility classes in `index.html`. The Tailwind entry point in `styles.css` builds into a separate,
+content-hashed stylesheet that browsers can cache.
 
 ## Discoverability
 
@@ -66,7 +67,8 @@ Then open http://localhost:5173/.
 ## Structure
 
 ```
-index.html         the page and its Tailwind entry point — Vite's entry point
+index.html         the page — Vite's entry point
+styles.css         Tailwind imports, theme, and keyframes — built into a hashed stylesheet
 public/            images, icons, 404, llms.txt, robots.txt, sitemap.xml, CNAME — copied to dist/ verbatim
 .github/workflows/ build and deploy to Pages on push to main
 ```
