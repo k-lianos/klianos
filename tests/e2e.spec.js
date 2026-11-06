@@ -44,8 +44,6 @@ test('all nav links fully visible at 360px', async ({ page }) => {
     }
 });
 
-// ── New invariants identified during the 2026-11 review ──────────────────────
-
 test('anchor scroll offset: section headings clear the sticky header', async ({ page }) => {
     await page.goto('/');
 
@@ -64,42 +62,73 @@ test('anchor scroll offset: section headings clear the sticky header', async ({ 
     }
 });
 
-test('<details> accordion does not cause overflow at 320px', async ({ page }) => {
+test('open work entries keep their content inside the entry at 320px', async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 800 });
     await page.goto('/');
 
-    // The work section uses native <details> for each job entry.
-    const details = page.locator('#work details');
-    const count = await details.count();
-
-    for (let i = 0; i < count; i++) {
-        const item = details.nth(i);
-        const isOpen = await item.evaluate(el => el.open);
-        if (!isOpen) await item.locator('summary').click();
-        // Wait a frame for the browser to render the expanded content.
-        await page.waitForTimeout(50);
-        const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
-        expect(overflow, `overflow after opening <details> ${i + 1} of ${count}`).toBe(false);
+    // Each entry clips its expanded content for the open/close animation, so content that is too wide is cut off instead of
+    // scrolling the page. Page overflow can't see that; compare each element's edges with the entry's.
+    const entries = page.locator('#work details');
+    for (let i = 0; i < (await entries.count()); i++) {
+        const entry = entries.nth(i);
+        if (!(await entry.evaluate(el => el.open))) await entry.locator('summary').click();
+        await expect(entry).toHaveJSProperty('open', true);
+        const cutOff = await entry.evaluate(el => {
+            const box = el.getBoundingClientRect();
+            return [...el.querySelectorAll(':scope > :not(summary), :scope > :not(summary) *')]
+                .filter(child => {
+                    const r = child.getBoundingClientRect();
+                    return child.checkVisibility() && (r.left < box.left - 1 || r.right > box.right + 1);
+                })
+                .map(child => `<${child.tagName.toLowerCase()}> ${child.textContent.trim().slice(0, 40)}`);
+        });
+        expect(cutOff, `content cut off in work entry ${i + 1}`).toEqual([]);
     }
 });
 
-test('reduced motion: content visible, no overflow', async ({ browser }) => {
-    const ctx = await browser.newContext({ reducedMotion: 'reduce' });
-    const page = await ctx.newPage();
-    await page.goto('http://localhost:4173/');
+// Text that is laid out but can't be seen, because it or an ancestor has opacity 0 or visibility: hidden. Playwright's
+// toBeVisible() counts opacity 0 as visible, so it can't catch a resting state that only an animation would have revealed.
+function invisibleText(page) {
+    return page.evaluate(() =>
+        [...document.body.querySelectorAll('*')]
+            .filter(el => [...el.childNodes].some(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim()))
+            .filter(el => el.checkVisibility() && !el.checkVisibility({ opacityProperty: true, visibilityProperty: true }))
+            .filter(el => !el.closest('[aria-hidden="true"]'))
+            .map(el => `<${el.tagName.toLowerCase()}> ${el.textContent.trim().slice(0, 40)}`),
+    );
+}
 
-    // Elements that animate in (animate-rise) must be visible at their resting state.
-    await expect(page.locator('h1')).toBeVisible();
-    await expect(page.locator('header nav')).toBeVisible();
+test.describe('reduced motion', () => {
+    test.use({ reducedMotion: 'reduce' });
 
-    // No overflow at the two extreme widths under reduced motion.
     for (const width of [320, 1280]) {
-        await page.setViewportSize({ width, height: 800 });
-        const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
-        expect(overflow, `overflow under reduced motion at ${width}px`).toBe(false);
+        test(`no text left invisible and no overflow at ${width}px`, async ({ page }) => {
+            await page.setViewportSize({ width, height: 800 });
+            await page.goto('/');
+            expect(await invisibleText(page)).toEqual([]);
+            const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+            expect(overflow, `scrollWidth > clientWidth at ${width}px`).toBe(false);
+        });
     }
+});
 
-    await ctx.close();
+test('print: every work entry expanded and no text left invisible', async ({ page }) => {
+    await page.emulateMedia({ media: 'print' });
+    await page.goto('/');
+    expect(await invisibleText(page)).toEqual([]);
+
+    // A collapsed entry either skips rendering its content or clips it to zero height, so the content sticks out of the entry.
+    const collapsed = await page.locator('#work details').evaluateAll(entries =>
+        entries
+            .map((entry, i) => ({
+                i,
+                box: entry.getBoundingClientRect(),
+                content: [...entry.children].filter(c => c.tagName !== 'SUMMARY'),
+            }))
+            .filter(({ box, content }) => content.some(c => !c.checkVisibility() || c.getBoundingClientRect().bottom > box.bottom + 1))
+            .map(({ i }) => `work entry ${i + 1}`),
+    );
+    expect(collapsed).toEqual([]);
 });
 
 // ── Tier 3: accessibility ─────────────────────────────────────────────────────
