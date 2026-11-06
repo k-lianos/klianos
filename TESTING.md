@@ -60,6 +60,8 @@ One small file, mapping directly onto the failures above.
 - **No horizontal overflow**: `scrollWidth <= clientWidth` at 320, 390, 768, 1280
 - **Header stays put**: scroll down, assert the header's box is still at the top of the viewport and its links are hit-testable
 - Every nav link is fully visible at 360 and wider
+- **Anchor scroll offset**: click each nav link; the target section heading is fully below the sticky header, not occluded by it
+- **`<details>` accordion overflow**: open each work-history entry at 320 px; `scrollWidth <= clientWidth` holds
 - Reduced motion renders cleanly (Playwright takes `reducedMotion` as a context option)
 
 ### 3. Accessibility and Lighthouse floors
