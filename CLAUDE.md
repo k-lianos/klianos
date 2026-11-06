@@ -51,6 +51,10 @@ and validates the output with the W3C Nu checker (a separate workflow step, so a
 `gh-pages` branch. `vnu.jar` needs Java 17+; the workflow installs it with `setup-java`, and `.sdkmanrc` pins it locally (`sdk env`). To run the check locally, `npm run build`, then copy the `java -jar ... vnu.jar` command from the
 "Validate HTML" step in the workflow.
 
+Pull requests into `main` run the same workflow's `build` job (build plus the W3C check) but skip the Pages steps and the `deploy` job.
+The `build` job is the required status check on `main`, so a failing build or invalid HTML blocks the merge. Keep it in this one
+workflow rather than a separate CI file, so the PR check and the deploy gate can't drift apart.
+
 The site is served from the domain root, so `vite.config.mjs` sets no `base` path; it exists only to load the Tailwind plugin. `public/CNAME`
 (containing `klianos.com`) is what makes GitHub Pages honor the custom domain; because deploys go through the Actions artifact
 workflow rather than a branch GitHub manages itself, that file has to ship in every build, which is why it lives in `public/`
