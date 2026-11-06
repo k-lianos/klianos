@@ -357,7 +357,7 @@
 
         <main id="main">
             <!-- ─────────────────────────────  Hero  ───────────────────────────── -->
-            <section class="relative isolate overflow-hidden pt-28 pb-16 md:pt-36 md:pb-28">
+            <section aria-labelledby="intro-heading" class="relative isolate overflow-hidden pt-28 pb-16 md:pt-36 md:pb-28">
                 <div class="absolute inset-0 -z-10 print:hidden" aria-hidden="true">
                     <div class="absolute -top-40 -left-32 size-[36rem] animate-drift rounded-full bg-accent/5 blur-3xl"></div>
                     <div
@@ -493,6 +493,7 @@
                                 <span class="text-accent">~/klianos</span> <span aria-hidden="true">❯</span> whoami
                             </p>
                             <h1
+                                id="intro-heading"
                                 class="mt-3 animate-rise text-[clamp(2.75rem,12.5vw,6.75rem)] leading-[0.98] font-extrabold tracking-tight [animation-delay:100ms] md:text-[5.9vw] lg:text-[min(7.5vw,6rem)] print:text-5xl"
                             >
                                 Konstantinos<br />Lianos<span
@@ -653,7 +654,7 @@
             </section>
 
             <!-- ─────────────────────────────  About  ──────────────────────────── -->
-            <section id="about" class="border-t border-line bg-surface py-16 md:py-24">
+            <section id="about" aria-labelledby="about-heading" class="border-t border-line bg-surface py-16 md:py-24">
                 <div class="mx-auto grid max-w-6xl items-start gap-x-16 gap-y-12 px-5 md:px-8 lg:grid-cols-[minmax(0,1fr)_28rem]">
                     <div>
                         <p class="flex items-center gap-2 font-mono text-sm text-accent print:hidden">
@@ -672,7 +673,7 @@
                             </svg>
                             about.md
                         </p>
-                        <h2 class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">About</h2>
+                        <h2 id="about-heading" class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">About</h2>
                         <p class="mt-6 max-w-2xl text-2xl/9 font-semibold tracking-tight text-ink md:text-3xl/10">
                             My work sits where architecture meets performance: designing systems that scale,
                             <span class="text-accent">then making them fast.</span>
@@ -712,7 +713,9 @@
                                 <li>9</li>
                                 <li>10</li>
                             </ol>
-                            <pre class="pr-3 text-ink sm:pr-5 print:pl-4"><span class="text-keyword">export const</span> konstantinos = {
+                            <pre
+                                class="pr-3 text-ink sm:pr-5 print:pl-4"
+                            ><code><span class="text-keyword">export const</span> konstantinos = {
   role: <span class="text-string">'Software architect'</span>,
   experience: <span class="text-string">'10+ years'</span>,
   focus: [<span class="text-string">'Angular'</span>, <span class="text-string">'TypeScript'</span>, <span class="text-string">'Nx'</span>],
@@ -721,7 +724,7 @@
   education: [<span class="text-string">'MSc, LSE'</span>, <span class="text-string">'BSc, Liverpool'</span>],
   speaks: [<span class="text-string">'el'</span>, <span class="text-string">'en'</span>, <span class="text-string">'fr'</span>],
 } <span class="text-keyword">satisfies</span> <span class="text-accent">Engineer</span>;
-<span class="text-muted">// open to contract work via Quokka L.P.</span></pre>
+<span class="text-muted">// open to contract work via Quokka L.P.</span></code></pre>
                         </div>
                         <div
                             class="flex items-center justify-between border-t border-line px-5 py-2.5 font-mono text-xs text-muted print:hidden"
@@ -736,7 +739,7 @@
             </section>
 
             <!-- ───────────────────────────  Expertise  ────────────────────────── -->
-            <section id="expertise" class="border-t border-line bg-surface py-16 md:py-24">
+            <section id="expertise" aria-labelledby="expertise-heading" class="border-t border-line bg-surface py-16 md:py-24">
                 <div class="mx-auto max-w-6xl px-5 md:px-8">
                     <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
                         <div>
@@ -758,7 +761,7 @@
                                 </svg>
                                 skills.json
                             </p>
-                            <h2 class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">What I do</h2>
+                            <h2 id="expertise-heading" class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">What I do</h2>
                         </div>
                         <p class="font-mono text-sm text-muted">4 services · 5 achievements · 16 tools</p>
                     </div>
@@ -809,7 +812,7 @@
                                 >
                                     <pre
                                         class="font-mono text-xs/6 text-ink sm:text-[0.8125rem]/7"
-                                    ><span class="text-accent">workspace/</span>            <span class="text-muted">// nx monorepo</span>
+                                    ><code><span class="text-accent">workspace/</span>            <span class="text-muted">// nx monorepo</span>
 ├── apps/
 │   └── shell/        <span class="text-muted">// routes only</span>
 └── libs/
@@ -821,7 +824,7 @@
     └── shared/       <span class="text-muted">// ui · utils</span>
 
 <span class="text-accent">✓</span> module boundaries <span class="text-muted">0 circular deps</span>
-<span class="text-accent">✓</span> third-party libs  <span class="text-muted">kept minimal</span></pre>
+<span class="text-accent">✓</span> third-party libs  <span class="text-muted">kept minimal</span></code></pre>
                                 </div>
                             </div>
                         </li>
@@ -991,10 +994,10 @@
                     <!-- Selected achievements, as a changelog -->
                     <div class="mt-20">
                         <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
-                            <h2 class="text-3xl font-bold tracking-tight">Selected achievements</h2>
+                            <h3 class="text-3xl font-bold tracking-tight">Selected achievements</h3>
                             <p class="font-mono text-sm text-muted print:hidden">CHANGELOG.md</p>
                         </div>
-                        <ol class="mt-8 overflow-hidden rounded-3xl border border-line bg-elevated">
+                        <ul class="mt-8 overflow-hidden rounded-3xl border border-line bg-elevated">
                             <li
                                 class="grid gap-x-6 gap-y-2 border-b border-line px-6 py-5 transition hover:bg-surface/60 md:grid-cols-[7.5rem_minmax(0,1fr)] md:px-8 print:break-inside-avoid"
                             >
@@ -1065,7 +1068,7 @@
                                     environments.
                                 </p>
                             </li>
-                        </ol>
+                        </ul>
                     </div>
 
                     <!-- Tech stack, as a manifest. Group names replace the old colour key. -->
@@ -1073,7 +1076,7 @@
                         <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
                             <div>
                                 <p class="font-mono text-sm text-accent">Expertise</p>
-                                <h2 class="mt-2 text-3xl font-bold tracking-tight">Tech stack</h2>
+                                <h3 class="mt-2 text-3xl font-bold tracking-tight">Tech stack</h3>
                             </div>
                             <p class="font-mono text-sm text-muted print:hidden">stack.json</p>
                         </div>
@@ -1086,9 +1089,9 @@
                                 <p class="text-muted" aria-hidden="true">{</p>
                                 <div class="mt-3 grid gap-x-10 gap-y-7 pl-4 md:grid-cols-2 md:pl-6">
                                     <div>
-                                        <h3 class="text-sm font-normal">
+                                        <h4 class="text-sm font-normal">
                                             <span class="text-string">"frontend"</span><span class="text-muted">: [</span>
-                                        </h3>
+                                        </h4>
                                         <ul class="mt-3 flex flex-wrap gap-2">
                                             <li>
                                                 <a
@@ -1139,9 +1142,9 @@
                                         <p class="mt-3 text-muted" aria-hidden="true">],</p>
                                     </div>
                                     <div>
-                                        <h3 class="text-sm font-normal">
+                                        <h4 class="text-sm font-normal">
                                             <span class="text-string">"tooling &amp; testing"</span><span class="text-muted">: [</span>
-                                        </h3>
+                                        </h4>
                                         <ul class="mt-3 flex flex-wrap gap-2">
                                             <li>
                                                 <a
@@ -1201,9 +1204,9 @@
                                         <p class="mt-3 text-muted" aria-hidden="true">],</p>
                                     </div>
                                     <div>
-                                        <h3 class="text-sm font-normal">
+                                        <h4 class="text-sm font-normal">
                                             <span class="text-string">"backend"</span><span class="text-muted">: [</span>
-                                        </h3>
+                                        </h4>
                                         <ul class="mt-3 flex flex-wrap gap-2">
                                             <li>
                                                 <a
@@ -1227,9 +1230,9 @@
                                         <p class="mt-3 text-muted" aria-hidden="true">],</p>
                                     </div>
                                     <div>
-                                        <h3 class="text-sm font-normal">
+                                        <h4 class="text-sm font-normal">
                                             <span class="text-string">"delivery"</span><span class="text-muted">: [</span>
-                                        </h3>
+                                        </h4>
                                         <ul class="mt-3 flex flex-wrap gap-2">
                                             <li>
                                                 <a
@@ -1270,7 +1273,7 @@
             </section>
 
             <!-- ──────────────────────────  Experience  ────────────────────────── -->
-            <section id="work" class="py-16 md:py-24">
+            <section id="work" aria-labelledby="work-heading" class="py-16 md:py-24">
                 <div class="mx-auto max-w-6xl px-3 md:px-8">
                     <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-3 px-3 md:px-0">
                         <div>
@@ -1290,12 +1293,12 @@
                                 </svg>
                                 work.log
                             </p>
-                            <h2 class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">Experience</h2>
+                            <h2 id="work-heading" class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">Experience</h2>
                         </div>
                         <p class="font-mono text-sm text-muted tabular-nums">2010 – Present · 9 roles</p>
                     </div>
 
-                    <!-- The history, read like `git log --graph`. Each role is still a native <details>; the shared name keeps one open at a time, no JavaScript. -->
+                    <!-- The history, read like a Git commit graph. Each role is still a native <details>; the shared name keeps one open at a time, no JavaScript. -->
                     <div
                         class="mt-8 overflow-hidden rounded-3xl border border-line bg-surface md:mt-12 print:overflow-visible print:border-0"
                     >
@@ -1336,73 +1339,87 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="grid cursor-pointer list-none grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
-                                        <span class="relative block" aria-hidden="true">
-                                            <span
-                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
-                                            ></span>
-                                            <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5">
+                                        <h3
+                                            class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
+                                            aria-labelledby="experience-1-company experience-1-role"
+                                        >
+                                            <span class="relative block" aria-hidden="true">
                                                 <span
-                                                    class="absolute inset-0 animate-ping rounded-full bg-accent/70 motion-reduce:hidden"
+                                                    class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
                                                 ></span>
-                                                <span class="absolute inset-0 rounded-full border-2 border-accent bg-accent"></span>
+                                                <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5">
+                                                    <span
+                                                        class="absolute inset-0 animate-ping rounded-full bg-accent/70 motion-reduce:hidden"
+                                                    ></span>
+                                                    <span class="absolute inset-0 rounded-full border-2 border-accent bg-accent"></span>
+                                                </span>
                                             </span>
-                                        </span>
-                                        <span class="hidden md:block">
-                                            <span class="block text-3xl/8 font-bold tabular-nums text-accent">2026</span>
-                                            <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums">Mar 2026 – Present</span>
-                                        </span>
-                                        <span class="block min-w-0">
-                                            <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
-                                                ><span>Mar 2026 – Present</span></span
-                                            >
-                                            <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
-                                                <h3 class="text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7">
-                                                    <a
-                                                        class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                        href="https://www.vimachem.com/"
-                                                        rel="noopener"
-                                                        target="_blank"
-                                                        >Vimachem</a
+                                            <span class="hidden md:block">
+                                                <time datetime="2026" class="block text-3xl/8 font-bold tabular-nums text-accent"
+                                                    >2026</time
+                                                >
+                                                <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums"
+                                                    >Mar 2026 – Present</span
+                                                >
+                                            </span>
+                                            <span class="block min-w-0">
+                                                <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
+                                                    ><span>Mar 2026 – Present</span></span
+                                                >
+                                                <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
+                                                    <span
+                                                        id="experience-1-company"
+                                                        class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
                                                     >
-                                                    — IIoT Pharma 4.0 AI Platform
-                                                </h3>
+                                                        <a
+                                                            class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
+                                                            href="https://www.vimachem.com/"
+                                                            rel="noopener"
+                                                            target="_blank"
+                                                            >Vimachem</a
+                                                        >
+                                                        — IIoT Pharma 4.0 AI Platform
+                                                    </span>
+                                                    <span
+                                                        class="rounded-full bg-accent/12 px-2 py-0.5 font-mono text-[0.6875rem]/4 font-semibold text-accent"
+                                                        >Now</span
+                                                    >
+                                                </span>
                                                 <span
-                                                    class="rounded-full bg-accent/12 px-2 py-0.5 font-mono text-[0.6875rem]/4 font-semibold text-accent"
-                                                    >Now</span
+                                                    id="experience-1-role"
+                                                    class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
+                                                    >Senior Frontend Software Engineer<span class="hidden font-normal text-muted md:inline">
+                                                        · Athens, Greece</span
+                                                    ></span
                                                 >
+                                                <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >Frontend architecture</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >Build tooling</span
+                                                    >
+                                                </span>
                                             </span>
-                                            <span class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
-                                                >Senior Frontend Software Engineer<span class="hidden font-normal text-muted md:inline">
-                                                    · Athens, Greece</span
-                                                ></span
-                                            >
-                                            <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >Frontend architecture</span
+                                            <span
+                                                class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
+                                                aria-hidden="true"
+                                                ><svg
+                                                    class="size-4"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
                                                 >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >Build tooling</span
-                                                >
-                                            </span>
-                                        </span>
-                                        <span
-                                            class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
-                                            aria-hidden="true"
-                                            ><svg
-                                                class="size-4"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <polyline points="6 9 12 15 18 9"></polyline></svg
-                                        ></span>
+                                                    <polyline points="6 9 12 15 18 9"></polyline></svg
+                                            ></span>
+                                        </h3>
                                     </summary>
                                     <div
                                         class="grid grid-cols-[1.5rem_minmax(0,1fr)] gap-x-3.5 px-3 pb-6 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:pb-8"
@@ -1444,83 +1461,95 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="grid cursor-pointer list-none grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
-                                        <span class="relative block" aria-hidden="true">
-                                            <span
-                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
-                                            ></span>
-                                            <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
-                                                ><span
-                                                    class="absolute inset-0 rounded-full border-2 border-accent bg-canvas group-open:bg-accent"
-                                                ></span
-                                            ></span>
-                                        </span>
-                                        <span class="hidden md:block">
-                                            <span class="block text-3xl/8 font-bold tabular-nums text-ink">2019</span>
-                                            <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums">Dec 2019 – Mar 2026</span>
-                                            <span class="block font-mono text-xs text-muted">6 yrs 3 mos</span>
-                                        </span>
-                                        <span class="block min-w-0">
-                                            <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
-                                                ><span>Dec 2019 – Mar 2026</span><span>· 6 yrs 3 mos</span></span
-                                            >
-                                            <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
-                                                <h3 class="text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7">
-                                                    <a
-                                                        class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                        href="https://www.keyes.eu"
-                                                        rel="noopener"
-                                                        target="_blank"
-                                                        >KEYES (formerly TRASYS Greece)</a
+                                        <h3
+                                            class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
+                                            aria-labelledby="experience-2-company experience-2-role"
+                                        >
+                                            <span class="relative block" aria-hidden="true">
+                                                <span
+                                                    class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                ></span>
+                                                <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
+                                                    ><span
+                                                        class="absolute inset-0 rounded-full border-2 border-accent bg-canvas group-open:bg-accent"
+                                                    ></span
+                                                ></span>
+                                            </span>
+                                            <span class="hidden md:block">
+                                                <time datetime="2019" class="block text-3xl/8 font-bold tabular-nums text-ink">2019</time>
+                                                <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums"
+                                                    >Dec 2019 – Mar 2026</span
+                                                >
+                                                <span class="block font-mono text-xs text-muted">6 yrs 3 mos</span>
+                                            </span>
+                                            <span class="block min-w-0">
+                                                <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
+                                                    ><span>Dec 2019 – Mar 2026</span><span>· 6 yrs 3 mos</span></span
+                                                >
+                                                <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
+                                                    <span
+                                                        id="experience-2-company"
+                                                        class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
                                                     >
-                                                </h3>
+                                                        <a
+                                                            class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
+                                                            href="https://www.keyes.eu"
+                                                            rel="noopener"
+                                                            target="_blank"
+                                                            >KEYES (formerly TRASYS Greece)</a
+                                                        >
+                                                    </span>
+                                                </span>
+                                                <span
+                                                    id="experience-2-role"
+                                                    class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
+                                                    >Software Architect<span class="hidden font-normal text-muted md:inline">
+                                                        · Athens, Greece</span
+                                                    ></span
+                                                >
+                                                <span class="hidden font-mono text-xs text-muted md:mt-1 md:block"
+                                                    ><span aria-hidden="true">↳ </span>Senior Software Engineer, 2019–2022</span
+                                                >
+                                                <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
+                                                    <span
+                                                        class="rounded-md border border-accent/40 bg-accent/10 px-2 py-0.5 font-mono text-xs text-accent"
+                                                        >Angular 6 → 21</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >Nx</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >Jest</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >WebdriverIO</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >IndexedDB</span
+                                                    >
+                                                </span>
                                             </span>
-                                            <span class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
-                                                >Software Architect<span class="hidden font-normal text-muted md:inline">
-                                                    · Athens, Greece</span
-                                                ></span
-                                            >
-                                            <span class="hidden font-mono text-xs text-muted md:mt-1 md:block"
-                                                ><span aria-hidden="true">↳ </span>Senior Software Engineer, 2019–2022</span
-                                            >
-                                            <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
-                                                <span
-                                                    class="rounded-md border border-accent/40 bg-accent/10 px-2 py-0.5 font-mono text-xs text-accent"
-                                                    >Angular 6 → 21</span
+                                            <span
+                                                class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
+                                                aria-hidden="true"
+                                                ><svg
+                                                    class="size-4"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
                                                 >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >Nx</span
-                                                >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >Jest</span
-                                                >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >WebdriverIO</span
-                                                >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >IndexedDB</span
-                                                >
-                                            </span>
-                                        </span>
-                                        <span
-                                            class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
-                                            aria-hidden="true"
-                                            ><svg
-                                                class="size-4"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <polyline points="6 9 12 15 18 9"></polyline></svg
-                                        ></span>
+                                                    <polyline points="6 9 12 15 18 9"></polyline></svg
+                                            ></span>
+                                        </h3>
                                     </summary>
                                     <div
                                         class="grid grid-cols-[1.5rem_minmax(0,1fr)] gap-x-3.5 px-3 pb-6 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:pb-8"
@@ -1598,76 +1627,88 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="grid cursor-pointer list-none grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
-                                        <span class="relative block" aria-hidden="true">
-                                            <span
-                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
-                                            ></span>
-                                            <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
-                                                ><span
-                                                    class="absolute inset-0 rounded-full border-2 border-accent bg-canvas group-open:bg-accent"
-                                                ></span
-                                            ></span>
-                                        </span>
-                                        <span class="hidden md:block">
-                                            <span class="block text-3xl/8 font-bold tabular-nums text-ink">2018</span>
-                                            <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums">Mar 2018 – Dec 2019</span>
-                                            <span class="block font-mono text-xs text-muted">1 yr 9 mos</span>
-                                        </span>
-                                        <span class="block min-w-0">
-                                            <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
-                                                ><span>Mar 2018 – Dec 2019</span><span>· 1 yr 9 mos</span></span
-                                            >
-                                            <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
-                                                <h3 class="text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7">
-                                                    <a
-                                                        class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                        href="https://www.theblueground.com/"
-                                                        rel="noopener"
-                                                        target="_blank"
-                                                        >Blueground</a
+                                        <h3
+                                            class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
+                                            aria-labelledby="experience-3-company experience-3-role"
+                                        >
+                                            <span class="relative block" aria-hidden="true">
+                                                <span
+                                                    class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                ></span>
+                                                <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
+                                                    ><span
+                                                        class="absolute inset-0 rounded-full border-2 border-accent bg-canvas group-open:bg-accent"
+                                                    ></span
+                                                ></span>
+                                            </span>
+                                            <span class="hidden md:block">
+                                                <time datetime="2018" class="block text-3xl/8 font-bold tabular-nums text-ink">2018</time>
+                                                <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums"
+                                                    >Mar 2018 – Dec 2019</span
+                                                >
+                                                <span class="block font-mono text-xs text-muted">1 yr 9 mos</span>
+                                            </span>
+                                            <span class="block min-w-0">
+                                                <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
+                                                    ><span>Mar 2018 – Dec 2019</span><span>· 1 yr 9 mos</span></span
+                                                >
+                                                <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
+                                                    <span
+                                                        id="experience-3-company"
+                                                        class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
                                                     >
-                                                </h3>
+                                                        <a
+                                                            class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
+                                                            href="https://www.theblueground.com/"
+                                                            rel="noopener"
+                                                            target="_blank"
+                                                            >Blueground</a
+                                                        >
+                                                    </span>
+                                                </span>
+                                                <span
+                                                    id="experience-3-role"
+                                                    class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
+                                                    >Software Engineer<span class="hidden font-normal text-muted md:inline">
+                                                        · Athens, Greece</span
+                                                    ></span
+                                                >
+                                                <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >Java</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >JavaScript</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >Scrum</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >Kanban</span
+                                                    >
+                                                </span>
                                             </span>
-                                            <span class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
-                                                >Software Engineer<span class="hidden font-normal text-muted md:inline">
-                                                    · Athens, Greece</span
-                                                ></span
-                                            >
-                                            <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >Java</span
+                                            <span
+                                                class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
+                                                aria-hidden="true"
+                                                ><svg
+                                                    class="size-4"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
                                                 >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >JavaScript</span
-                                                >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >Scrum</span
-                                                >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >Kanban</span
-                                                >
-                                            </span>
-                                        </span>
-                                        <span
-                                            class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
-                                            aria-hidden="true"
-                                            ><svg
-                                                class="size-4"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <polyline points="6 9 12 15 18 9"></polyline></svg
-                                        ></span>
+                                                    <polyline points="6 9 12 15 18 9"></polyline></svg
+                                            ></span>
+                                        </h3>
                                     </summary>
                                     <div
                                         class="grid grid-cols-[1.5rem_minmax(0,1fr)] gap-x-3.5 px-3 pb-6 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:pb-8"
@@ -1724,72 +1765,84 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="grid cursor-pointer list-none grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
-                                        <span class="relative block" aria-hidden="true">
-                                            <span
-                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
-                                            ></span>
-                                            <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
-                                                ><span
-                                                    class="absolute inset-0 rounded-full border-2 border-accent bg-canvas group-open:bg-accent"
-                                                ></span
-                                            ></span>
-                                        </span>
-                                        <span class="hidden md:block">
-                                            <span class="block text-3xl/8 font-bold tabular-nums text-ink">2017</span>
-                                            <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums">May 2017 – Mar 2018</span>
-                                            <span class="block font-mono text-xs text-muted">10 mos</span>
-                                        </span>
-                                        <span class="block min-w-0">
-                                            <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
-                                                ><span>May 2017 – Mar 2018</span><span>· 10 mos</span></span
-                                            >
-                                            <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
-                                                <h3 class="text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7">
-                                                    <a
-                                                        class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                        href="https://portal.singularlogic.eu/en"
-                                                        rel="noopener"
-                                                        target="_blank"
-                                                        >SingularLogic</a
+                                        <h3
+                                            class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
+                                            aria-labelledby="experience-4-company experience-4-role"
+                                        >
+                                            <span class="relative block" aria-hidden="true">
+                                                <span
+                                                    class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                ></span>
+                                                <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
+                                                    ><span
+                                                        class="absolute inset-0 rounded-full border-2 border-accent bg-canvas group-open:bg-accent"
+                                                    ></span
+                                                ></span>
+                                            </span>
+                                            <span class="hidden md:block">
+                                                <time datetime="2017" class="block text-3xl/8 font-bold tabular-nums text-ink">2017</time>
+                                                <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums"
+                                                    >May 2017 – Mar 2018</span
+                                                >
+                                                <span class="block font-mono text-xs text-muted">10 mos</span>
+                                            </span>
+                                            <span class="block min-w-0">
+                                                <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
+                                                    ><span>May 2017 – Mar 2018</span><span>· 10 mos</span></span
+                                                >
+                                                <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
+                                                    <span
+                                                        id="experience-4-company"
+                                                        class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
                                                     >
-                                                </h3>
+                                                        <a
+                                                            class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
+                                                            href="https://portal.singularlogic.eu/en"
+                                                            rel="noopener"
+                                                            target="_blank"
+                                                            >SingularLogic</a
+                                                        >
+                                                    </span>
+                                                </span>
+                                                <span
+                                                    id="experience-4-role"
+                                                    class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
+                                                    >Software Engineer<span class="hidden font-normal text-muted md:inline">
+                                                        · Athens, Greece</span
+                                                    ></span
+                                                >
+                                                <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >Angular 4</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >TypeScript</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >Webpack</span
+                                                    >
+                                                </span>
                                             </span>
-                                            <span class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
-                                                >Software Engineer<span class="hidden font-normal text-muted md:inline">
-                                                    · Athens, Greece</span
-                                                ></span
-                                            >
-                                            <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >Angular 4</span
+                                            <span
+                                                class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
+                                                aria-hidden="true"
+                                                ><svg
+                                                    class="size-4"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
                                                 >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >TypeScript</span
-                                                >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >Webpack</span
-                                                >
-                                            </span>
-                                        </span>
-                                        <span
-                                            class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
-                                            aria-hidden="true"
-                                            ><svg
-                                                class="size-4"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <polyline points="6 9 12 15 18 9"></polyline></svg
-                                        ></span>
+                                                    <polyline points="6 9 12 15 18 9"></polyline></svg
+                                            ></span>
+                                        </h3>
                                     </summary>
                                     <div
                                         class="grid grid-cols-[1.5rem_minmax(0,1fr)] gap-x-3.5 px-3 pb-6 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:pb-8"
@@ -1840,72 +1893,84 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="grid cursor-pointer list-none grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
-                                        <span class="relative block" aria-hidden="true">
-                                            <span
-                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
-                                            ></span>
-                                            <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
-                                                ><span
-                                                    class="absolute inset-0 rounded-full border-2 border-accent bg-canvas group-open:bg-accent"
-                                                ></span
-                                            ></span>
-                                        </span>
-                                        <span class="hidden md:block">
-                                            <span class="block text-3xl/8 font-bold tabular-nums text-ink">2015</span>
-                                            <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums">Jun 2015 – May 2017</span>
-                                            <span class="block font-mono text-xs text-muted">1 yr 11 mos</span>
-                                        </span>
-                                        <span class="block min-w-0">
-                                            <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
-                                                ><span>Jun 2015 – May 2017</span><span>· 1 yr 11 mos</span></span
-                                            >
-                                            <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
-                                                <h3 class="text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7">
-                                                    <a
-                                                        class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                        href="https://www.circana.com/"
-                                                        rel="noopener"
-                                                        target="_blank"
-                                                        >Circana (formerly known as IRI)</a
+                                        <h3
+                                            class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
+                                            aria-labelledby="experience-5-company experience-5-role"
+                                        >
+                                            <span class="relative block" aria-hidden="true">
+                                                <span
+                                                    class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                ></span>
+                                                <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
+                                                    ><span
+                                                        class="absolute inset-0 rounded-full border-2 border-accent bg-canvas group-open:bg-accent"
+                                                    ></span
+                                                ></span>
+                                            </span>
+                                            <span class="hidden md:block">
+                                                <time datetime="2015" class="block text-3xl/8 font-bold tabular-nums text-ink">2015</time>
+                                                <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums"
+                                                    >Jun 2015 – May 2017</span
+                                                >
+                                                <span class="block font-mono text-xs text-muted">1 yr 11 mos</span>
+                                            </span>
+                                            <span class="block min-w-0">
+                                                <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
+                                                    ><span>Jun 2015 – May 2017</span><span>· 1 yr 11 mos</span></span
+                                                >
+                                                <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
+                                                    <span
+                                                        id="experience-5-company"
+                                                        class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
                                                     >
-                                                </h3>
+                                                        <a
+                                                            class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
+                                                            href="https://www.circana.com/"
+                                                            rel="noopener"
+                                                            target="_blank"
+                                                            >Circana (formerly known as IRI)</a
+                                                        >
+                                                    </span>
+                                                </span>
+                                                <span
+                                                    id="experience-5-role"
+                                                    class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
+                                                    >Software Engineer<span class="hidden font-normal text-muted md:inline">
+                                                        · Athens, Greece</span
+                                                    ></span
+                                                >
+                                                <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >Analytics</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >Big data</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >Scrum</span
+                                                    >
+                                                </span>
                                             </span>
-                                            <span class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
-                                                >Software Engineer<span class="hidden font-normal text-muted md:inline">
-                                                    · Athens, Greece</span
-                                                ></span
-                                            >
-                                            <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >Analytics</span
+                                            <span
+                                                class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
+                                                aria-hidden="true"
+                                                ><svg
+                                                    class="size-4"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
                                                 >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >Big data</span
-                                                >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >Scrum</span
-                                                >
-                                            </span>
-                                        </span>
-                                        <span
-                                            class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
-                                            aria-hidden="true"
-                                            ><svg
-                                                class="size-4"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <polyline points="6 9 12 15 18 9"></polyline></svg
-                                        ></span>
+                                                    <polyline points="6 9 12 15 18 9"></polyline></svg
+                                            ></span>
+                                        </h3>
                                     </summary>
                                     <div
                                         class="grid grid-cols-[1.5rem_minmax(0,1fr)] gap-x-3.5 px-3 pb-6 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:pb-8"
@@ -1957,72 +2022,84 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="grid cursor-pointer list-none grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
-                                        <span class="relative block" aria-hidden="true">
-                                            <span
-                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
-                                            ></span>
-                                            <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
-                                                ><span
-                                                    class="absolute inset-0 rounded-full border-2 border-accent bg-canvas group-open:bg-accent"
-                                                ></span
-                                            ></span>
-                                        </span>
-                                        <span class="hidden md:block">
-                                            <span class="block text-3xl/8 font-bold tabular-nums text-ink">2014</span>
-                                            <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums">Oct 2014 – Jun 2015</span>
-                                            <span class="block font-mono text-xs text-muted">8 mos</span>
-                                        </span>
-                                        <span class="block min-w-0">
-                                            <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
-                                                ><span>Oct 2014 – Jun 2015</span><span>· 8 mos</span></span
-                                            >
-                                            <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
-                                                <h3 class="text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7">
-                                                    <a
-                                                        class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                        href="https://www.cognity.gr/"
-                                                        rel="noopener"
-                                                        target="_blank"
-                                                        >Cognity</a
+                                        <h3
+                                            class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
+                                            aria-labelledby="experience-6-company experience-6-role"
+                                        >
+                                            <span class="relative block" aria-hidden="true">
+                                                <span
+                                                    class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                ></span>
+                                                <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
+                                                    ><span
+                                                        class="absolute inset-0 rounded-full border-2 border-accent bg-canvas group-open:bg-accent"
+                                                    ></span
+                                                ></span>
+                                            </span>
+                                            <span class="hidden md:block">
+                                                <time datetime="2014" class="block text-3xl/8 font-bold tabular-nums text-ink">2014</time>
+                                                <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums"
+                                                    >Oct 2014 – Jun 2015</span
+                                                >
+                                                <span class="block font-mono text-xs text-muted">8 mos</span>
+                                            </span>
+                                            <span class="block min-w-0">
+                                                <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
+                                                    ><span>Oct 2014 – Jun 2015</span><span>· 8 mos</span></span
+                                                >
+                                                <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
+                                                    <span
+                                                        id="experience-6-company"
+                                                        class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
                                                     >
-                                                </h3>
+                                                        <a
+                                                            class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
+                                                            href="https://www.cognity.gr/"
+                                                            rel="noopener"
+                                                            target="_blank"
+                                                            >Cognity</a
+                                                        >
+                                                    </span>
+                                                </span>
+                                                <span
+                                                    id="experience-6-role"
+                                                    class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
+                                                    >Junior Software Engineer<span class="hidden font-normal text-muted md:inline">
+                                                        · Athens, Greece</span
+                                                    ></span
+                                                >
+                                                <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >Java Spring</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >REST</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >Siebel CRM</span
+                                                    >
+                                                </span>
                                             </span>
-                                            <span class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
-                                                >Junior Software Engineer<span class="hidden font-normal text-muted md:inline">
-                                                    · Athens, Greece</span
-                                                ></span
-                                            >
-                                            <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >Java Spring</span
+                                            <span
+                                                class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
+                                                aria-hidden="true"
+                                                ><svg
+                                                    class="size-4"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
                                                 >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >REST</span
-                                                >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >Siebel CRM</span
-                                                >
-                                            </span>
-                                        </span>
-                                        <span
-                                            class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
-                                            aria-hidden="true"
-                                            ><svg
-                                                class="size-4"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <polyline points="6 9 12 15 18 9"></polyline></svg
-                                        ></span>
+                                                    <polyline points="6 9 12 15 18 9"></polyline></svg
+                                            ></span>
+                                        </h3>
                                     </summary>
                                     <div
                                         class="grid grid-cols-[1.5rem_minmax(0,1fr)] gap-x-3.5 px-3 pb-6 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:pb-8"
@@ -2074,66 +2151,78 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="grid cursor-pointer list-none grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
-                                        <span class="relative block" aria-hidden="true">
+                                        <h3
+                                            class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
+                                            aria-labelledby="experience-7-company experience-7-role"
+                                        >
+                                            <span class="relative block" aria-hidden="true">
+                                                <span
+                                                    class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                ></span>
+                                                <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
+                                                    ><span
+                                                        class="absolute inset-0 rounded-full border-2 border-accent bg-canvas group-open:bg-accent"
+                                                    ></span
+                                                ></span>
+                                            </span>
+                                            <span class="hidden md:block">
+                                                <time datetime="2013" class="block text-3xl/8 font-bold tabular-nums text-ink">2013</time>
+                                                <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums"
+                                                    >Nov 2013 – Aug 2014</span
+                                                >
+                                                <span class="block font-mono text-xs text-muted">9 mos</span>
+                                            </span>
+                                            <span class="block min-w-0">
+                                                <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
+                                                    ><span>Nov 2013 – Aug 2014</span><span>· 9 mos</span></span
+                                                >
+                                                <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
+                                                    <span
+                                                        id="experience-7-company"
+                                                        class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
+                                                    >
+                                                        Hellenic Army — 96 High Military Command
+                                                    </span>
+                                                </span>
+                                                <span
+                                                    id="experience-7-role"
+                                                    class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
+                                                    >Information Systems Researcher<span class="hidden font-normal text-muted md:inline">
+                                                        · Chios, Greece</span
+                                                    ></span
+                                                >
+                                                <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >HTML5</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >JavaScript</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >jQuery</span
+                                                    >
+                                                </span>
+                                            </span>
                                             <span
-                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
+                                                aria-hidden="true"
+                                                ><svg
+                                                    class="size-4"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                >
+                                                    <polyline points="6 9 12 15 18 9"></polyline></svg
                                             ></span>
-                                            <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
-                                                ><span
-                                                    class="absolute inset-0 rounded-full border-2 border-accent bg-canvas group-open:bg-accent"
-                                                ></span
-                                            ></span>
-                                        </span>
-                                        <span class="hidden md:block">
-                                            <span class="block text-3xl/8 font-bold tabular-nums text-ink">2013</span>
-                                            <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums">Nov 2013 – Aug 2014</span>
-                                            <span class="block font-mono text-xs text-muted">9 mos</span>
-                                        </span>
-                                        <span class="block min-w-0">
-                                            <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
-                                                ><span>Nov 2013 – Aug 2014</span><span>· 9 mos</span></span
-                                            >
-                                            <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
-                                                <h3 class="text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7">
-                                                    Hellenic Army — 96 High Military Command
-                                                </h3>
-                                            </span>
-                                            <span class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
-                                                >Information Systems Researcher<span class="hidden font-normal text-muted md:inline">
-                                                    · Chios, Greece</span
-                                                ></span
-                                            >
-                                            <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >HTML5</span
-                                                >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >JavaScript</span
-                                                >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >jQuery</span
-                                                >
-                                            </span>
-                                        </span>
-                                        <span
-                                            class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
-                                            aria-hidden="true"
-                                            ><svg
-                                                class="size-4"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <polyline points="6 9 12 15 18 9"></polyline></svg
-                                        ></span>
+                                        </h3>
                                     </summary>
                                     <div
                                         class="grid grid-cols-[1.5rem_minmax(0,1fr)] gap-x-3.5 px-3 pb-6 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:pb-8"
@@ -2184,64 +2273,77 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="grid cursor-pointer list-none grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
-                                        <span class="relative block" aria-hidden="true">
+                                        <h3
+                                            class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
+                                            aria-labelledby="experience-8-company experience-8-role"
+                                        >
+                                            <span class="relative block" aria-hidden="true">
+                                                <span
+                                                    class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                ></span>
+                                                <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
+                                                    ><span
+                                                        class="absolute inset-0 rounded-full border-2 border-accent bg-canvas group-open:bg-accent"
+                                                    ></span
+                                                ></span>
+                                            </span>
+                                            <span class="hidden md:block">
+                                                <time datetime="2011" class="block text-3xl/8 font-bold tabular-nums text-ink">2011</time>
+                                                <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums"
+                                                    >Aug 2011 – Nov 2011</span
+                                                >
+                                                <span class="block font-mono text-xs text-muted">3 mos</span>
+                                            </span>
+                                            <span class="block min-w-0">
+                                                <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
+                                                    ><span>Aug 2011 – Nov 2011</span><span>· 3 mos</span></span
+                                                >
+                                                <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
+                                                    <span
+                                                        id="experience-8-company"
+                                                        class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
+                                                        >Holic</span
+                                                    >
+                                                </span>
+                                                <span
+                                                    id="experience-8-role"
+                                                    class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
+                                                    >Software Developer, Internship<span class="hidden font-normal text-muted md:inline">
+                                                        · Athens, Greece</span
+                                                    ></span
+                                                >
+                                                <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >C#</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >.NET</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >WCF</span
+                                                    >
+                                                </span>
+                                            </span>
                                             <span
-                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
+                                                aria-hidden="true"
+                                                ><svg
+                                                    class="size-4"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                >
+                                                    <polyline points="6 9 12 15 18 9"></polyline></svg
                                             ></span>
-                                            <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
-                                                ><span
-                                                    class="absolute inset-0 rounded-full border-2 border-accent bg-canvas group-open:bg-accent"
-                                                ></span
-                                            ></span>
-                                        </span>
-                                        <span class="hidden md:block">
-                                            <span class="block text-3xl/8 font-bold tabular-nums text-ink">2011</span>
-                                            <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums">Aug 2011 – Nov 2011</span>
-                                            <span class="block font-mono text-xs text-muted">3 mos</span>
-                                        </span>
-                                        <span class="block min-w-0">
-                                            <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
-                                                ><span>Aug 2011 – Nov 2011</span><span>· 3 mos</span></span
-                                            >
-                                            <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
-                                                <h3 class="text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7">Holic</h3>
-                                            </span>
-                                            <span class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
-                                                >Software Developer, Internship<span class="hidden font-normal text-muted md:inline">
-                                                    · Athens, Greece</span
-                                                ></span
-                                            >
-                                            <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >C#</span
-                                                >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >.NET</span
-                                                >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >WCF</span
-                                                >
-                                            </span>
-                                        </span>
-                                        <span
-                                            class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
-                                            aria-hidden="true"
-                                            ><svg
-                                                class="size-4"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <polyline points="6 9 12 15 18 9"></polyline></svg
-                                        ></span>
+                                        </h3>
                                     </summary>
                                     <div
                                         class="grid grid-cols-[1.5rem_minmax(0,1fr)] gap-x-3.5 px-3 pb-6 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:pb-8"
@@ -2291,72 +2393,84 @@
                                     class="group rounded-2xl transition-colors duration-300 open:bg-elevated/60 motion-reduce:transition-none [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-clip [&::details-content]:transition-[height,content-visibility] [&::details-content]:duration-300 [&::details-content]:[transition-behavior:allow-discrete] open:[&::details-content]:h-auto motion-reduce:[&::details-content]:transition-none print:[&::details-content]:h-auto print:[&::details-content]:[content-visibility:visible] print:open:bg-transparent"
                                 >
                                     <summary
-                                        class="grid cursor-pointer list-none grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
+                                        class="block cursor-pointer list-none rounded-2xl px-3 py-5 outline-none transition-colors hover:bg-elevated/40 focus-visible:ring-2 focus-visible:ring-accent md:px-6 md:py-7 [&::-webkit-details-marker]:hidden"
                                     >
-                                        <span class="relative block" aria-hidden="true">
-                                            <span
-                                                class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
-                                            ></span>
-                                            <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
-                                                ><span
-                                                    class="absolute inset-0 rounded-[3px] border-2 border-accent bg-canvas group-open:bg-accent"
-                                                ></span
-                                            ></span>
-                                        </span>
-                                        <span class="hidden md:block">
-                                            <span class="block text-3xl/8 font-bold tabular-nums text-ink">2010</span>
-                                            <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums">Nov 2010 – Jul 2011</span>
-                                            <span class="block font-mono text-xs text-muted">8 mos</span>
-                                        </span>
-                                        <span class="block min-w-0">
-                                            <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
-                                                ><span>Nov 2010 – Jul 2011</span><span>· 8 mos</span></span
-                                            >
-                                            <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
-                                                <h3 class="text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7">
-                                                    <a
-                                                        class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
-                                                        href="https://www.linkedin.com/company/aleyu-network-culture-co-ltd/"
-                                                        rel="noopener"
-                                                        target="_blank"
-                                                        >ALEYU</a
+                                        <h3
+                                            class="grid grid-cols-[1.5rem_minmax(0,1fr)_2.25rem] gap-x-3.5 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6"
+                                            aria-labelledby="experience-9-company experience-9-role"
+                                        >
+                                            <span class="relative block" aria-hidden="true">
+                                                <span
+                                                    class="absolute -top-5 -bottom-5 left-[0.6875rem] w-0.5 bg-line group-first/row:top-2 group-last/row:bottom-auto group-last/row:h-7 md:-top-7 md:-bottom-7 md:group-first/row:top-4 md:group-last/row:h-11 print:hidden"
+                                                ></span>
+                                                <span class="absolute top-0.5 left-1.5 size-3 md:top-2.5"
+                                                    ><span
+                                                        class="absolute inset-0 rounded-[3px] border-2 border-accent bg-canvas group-open:bg-accent"
+                                                    ></span
+                                                ></span>
+                                            </span>
+                                            <span class="hidden md:block">
+                                                <time datetime="2010" class="block text-3xl/8 font-bold tabular-nums text-ink">2010</time>
+                                                <span class="mt-1.5 block font-mono text-xs text-muted tabular-nums"
+                                                    >Nov 2010 – Jul 2011</span
+                                                >
+                                                <span class="block font-mono text-xs text-muted">8 mos</span>
+                                            </span>
+                                            <span class="block min-w-0">
+                                                <span class="flex items-center gap-2 font-mono text-xs/4 text-muted tabular-nums md:hidden"
+                                                    ><span>Nov 2010 – Jul 2011</span><span>· 8 mos</span></span
+                                                >
+                                                <span class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 md:mt-0">
+                                                    <span
+                                                        id="experience-9-company"
+                                                        class="block text-lg/6.5 font-bold text-pretty text-ink md:text-xl/7"
                                                     >
-                                                </h3>
+                                                        <a
+                                                            class="underline decoration-line underline-offset-4 transition hover:text-accent hover:decoration-accent"
+                                                            href="https://www.linkedin.com/company/aleyu-network-culture-co-ltd/"
+                                                            rel="noopener"
+                                                            target="_blank"
+                                                            >ALEYU</a
+                                                        >
+                                                    </span>
+                                                    <span
+                                                        class="rounded-full border border-line px-2 py-0.5 font-mono text-[0.6875rem]/4 text-muted"
+                                                        >initial commit</span
+                                                    >
+                                                </span>
                                                 <span
-                                                    class="rounded-full border border-line px-2 py-0.5 font-mono text-[0.6875rem]/4 text-muted"
-                                                    >initial commit</span
+                                                    id="experience-9-role"
+                                                    class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
+                                                    >Web Developer, Internship<span class="hidden font-normal text-muted md:inline">
+                                                        · Liverpool, United Kingdom</span
+                                                    ></span
                                                 >
+                                                <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >CSS</span
+                                                    >
+                                                    <span
+                                                        class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
+                                                        >JavaScript</span
+                                                    >
+                                                </span>
                                             </span>
-                                            <span class="mt-0.5 block text-sm font-medium text-accent md:mt-1 md:text-base"
-                                                >Web Developer, Internship<span class="hidden font-normal text-muted md:inline">
-                                                    · Liverpool, United Kingdom</span
-                                                ></span
-                                            >
-                                            <span class="mt-3 hidden flex-wrap gap-1.5 md:flex">
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >CSS</span
+                                            <span
+                                                class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
+                                                aria-hidden="true"
+                                                ><svg
+                                                    class="size-4"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
                                                 >
-                                                <span
-                                                    class="rounded-md border border-line bg-canvas/40 px-2 py-0.5 font-mono text-xs text-muted"
-                                                    >JavaScript</span
-                                                >
-                                            </span>
-                                        </span>
-                                        <span
-                                            class="grid size-9 place-items-center rounded-full border border-line text-muted transition duration-300 group-open:rotate-180 group-open:border-accent/50 group-open:text-accent group-hover/row:text-ink motion-reduce:transition-none print:hidden"
-                                            aria-hidden="true"
-                                            ><svg
-                                                class="size-4"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <polyline points="6 9 12 15 18 9"></polyline></svg
-                                        ></span>
+                                                    <polyline points="6 9 12 15 18 9"></polyline></svg
+                                            ></span>
+                                        </h3>
                                     </summary>
                                     <div
                                         class="grid grid-cols-[1.5rem_minmax(0,1fr)] gap-x-3.5 px-3 pb-6 md:grid-cols-[1.5rem_8.5rem_minmax(0,1fr)_2.25rem] md:gap-x-6 md:px-6 md:pb-8"
@@ -2405,7 +2519,7 @@
             </section>
 
             <!-- ──────────────────────  Education & extras  ────────────────────── -->
-            <section id="education" class="border-t border-line bg-surface py-16 md:py-24">
+            <section id="education" aria-labelledby="education-heading" class="border-t border-line bg-surface py-16 md:py-24">
                 <div class="mx-auto max-w-6xl px-5 md:px-8">
                     <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
                         <div>
@@ -2425,7 +2539,7 @@
                                 </svg>
                                 education.md
                             </p>
-                            <h2 class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">Education</h2>
+                            <h2 id="education-heading" class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">Education</h2>
                         </div>
                         <p class="font-mono text-sm text-muted tabular-nums">2008 – 2013 · United Kingdom</p>
                     </div>
@@ -2462,7 +2576,8 @@
                                         /></span>
                                         <div class="min-w-0">
                                             <p class="font-mono text-sm text-accent tabular-nums">
-                                                2012 – 2013 <span class="text-muted">· London</span>
+                                                2012 – 2013
+                                                <span class="text-muted">· London</span>
                                             </p>
                                             <h3 class="mt-1 text-lg/6 font-bold text-pretty text-ink sm:text-xl/7">
                                                 <a
@@ -2515,7 +2630,8 @@
                                         /></span>
                                         <div class="min-w-0">
                                             <p class="font-mono text-sm text-accent tabular-nums">
-                                                2008 – 2011 <span class="text-muted">· Liverpool</span>
+                                                2008 – 2011
+                                                <span class="text-muted">· Liverpool</span>
                                             </p>
                                             <h3 class="mt-1 text-lg/6 font-bold text-pretty text-ink sm:text-xl/7">
                                                 <a
@@ -2681,7 +2797,7 @@
             </section>
 
             <!-- ────────────────────────────  Contact  ─────────────────────────── -->
-            <section id="contact" class="px-3 py-16 md:py-24">
+            <section id="contact" aria-labelledby="contact-heading" class="px-3 py-16 md:py-24">
                 <div
                     class="relative isolate mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] border border-line bg-surface shadow-xl shadow-black/30 print:shadow-none"
                 >
@@ -2720,7 +2836,10 @@
                             <p class="font-mono text-sm text-muted print:hidden">
                                 <span class="text-accent">~/klianos</span> <span aria-hidden="true">❯</span> ./contact.sh
                             </p>
-                            <h2 class="mt-4 text-[clamp(2.75rem,10vw,6rem)] leading-none font-extrabold tracking-tight print:text-3xl">
+                            <h2
+                                id="contact-heading"
+                                class="mt-4 text-[clamp(2.75rem,10vw,6rem)] leading-none font-extrabold tracking-tight print:text-3xl"
+                            >
                                 Let's talk
                             </h2>
                             <p class="mt-6 max-w-2xl text-lg/8 text-pretty text-muted">
@@ -2760,7 +2879,7 @@
                         </div>
 
                         <!-- Other channels -->
-                        <div class="overflow-hidden rounded-3xl border border-line bg-elevated print:break-inside-avoid">
+                        <address class="not-italic overflow-hidden rounded-3xl border border-line bg-elevated print:break-inside-avoid">
                             <p
                                 class="flex items-center justify-between border-b border-line px-5 py-2.5 font-mono text-xs text-muted print:hidden"
                             >
@@ -2903,7 +3022,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </address>
                     </div>
                 </div>
             </section>
