@@ -50,6 +50,17 @@ jobs:
                   --filterpattern '.*Trailing slash on void elements.*'
                   dist/
 
+            # Tier 1: check asset resolution, JSON-LD, meta tags, no-JS rule, page weight.
+            - name: Check dist
+              run: npm run check-dist
+
+            # Tier 2: browser geometry tests (overflow, sticky header, anchor offset, accordion, reduced motion).
+            - name: Install Playwright browsers
+              run: npx playwright install --with-deps chromium
+
+            - name: Run Playwright tests
+              run: npm test
+
             - if: github.event_name != 'pull_request'
               uses: actions/configure-pages@v6
 
