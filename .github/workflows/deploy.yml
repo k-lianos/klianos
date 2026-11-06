@@ -22,10 +22,10 @@ jobs:
         permissions:
             contents: read
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v7
 
             # Keep this major in step with the `engines` field in package.json.
-            - uses: actions/setup-node@v4
+            - uses: actions/setup-node@v7
               with:
                   node-version: 26
                   cache: npm
@@ -36,7 +36,7 @@ jobs:
             - run: npm run build
 
             # vnu.jar (the W3C Nu HTML checker) needs Java 17 or newer.
-            - uses: actions/setup-java@v4
+            - uses: actions/setup-java@v6
               with:
                   distribution: temurin
                   java-version: 21
@@ -51,10 +51,10 @@ jobs:
                   dist/
 
             - if: github.event_name != 'pull_request'
-              uses: actions/configure-pages@v5
+              uses: actions/configure-pages@v6
 
             - if: github.event_name != 'pull_request'
-              uses: actions/upload-pages-artifact@v3
+              uses: actions/upload-pages-artifact@v5
               with:
                   path: dist
 
@@ -70,4 +70,4 @@ jobs:
             url: ${{ steps.deployment.outputs.page_url }}
         steps:
             - id: deployment
-              uses: actions/deploy-pages@v4
+              uses: actions/deploy-pages@v5
