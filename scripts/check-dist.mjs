@@ -19,16 +19,13 @@ function pass(msg) {
 
 const html = readFileSync(join(dist, 'index.html'), 'utf8');
 
-// Every local src/href in the built HTML resolves to a file in dist/.
-const assetPattern = /(?:src|href)="(\/[^"#?]+)"/g;
-const seen = new Set();
-let m;
-while ((m = assetPattern.exec(html)) !== null) {
-    const ref = m[1];
-    if (seen.has(ref)) continue;
-    seen.add(ref);
-    const abs = join(dist, ref);
-    if (existsSync(abs)) pass(`asset exists:  ${ref}`);
+// Every local src, href, and srcset candidate in the built HTML resolves to a file in dist/.
+const refs = [
+    ...[...html.matchAll(/(?:src|href)="(\/[^"#?]+)"/g)].map(m => m[1]),
+    ...[...html.matchAll(/srcset="([^"]+)"/g)].flatMap(m => m[1].split(',').map(candidate => candidate.trim().split(/\s+/)[0])),
+];
+for (const ref of new Set(refs.filter(ref => ref.startsWith('/')))) {
+    if (existsSync(join(dist, ref))) pass(`asset exists:  ${ref}`);
     else fail(`asset missing: ${ref}`);
 }
 
@@ -88,10 +85,33 @@ for (const [name, re] of metaChecks) {
     else fail(`meta missing: ${name}`);
 }
 
-// No JS bundle — the page ships zero JavaScript.
+// No executable JavaScript ships: no bundle, and no script in either page except the JSON-LD data block, no inline event
+// handlers, and no javascript: URLs.
 const jsFiles = readdirSync(join(dist, 'assets')).filter(f => f.endsWith('.js'));
 if (jsFiles.length === 0) pass('no JS bundle in dist/assets/');
 else fail(`JS bundle found: ${jsFiles.join(', ')}`);
+
+// Quoted attribute values may contain ">" (Tailwind variants such as [&>svg]), so match tags attribute by attribute.
+const TAG = /<([a-z][\w-]*)((?:\s+[^\s"'>/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s"'=<>`]+))?)*)\s*\/?>/gi;
+const ATTRIBUTE = /([^\s"'>/=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/g;
+for (const page of ['index.html', '404.html']) {
+    const scripts = [];
+    for (const [, tag, attrs] of readFileSync(join(dist, page), 'utf8').matchAll(TAG)) {
+        const attributes = [...attrs.matchAll(ATTRIBUTE)].map(([, name, ...values]) => [
+            name.toLowerCase(),
+            values.find(v => v !== undefined) ?? '',
+        ]);
+        if (tag.toLowerCase() === 'script' && !attributes.some(([name, value]) => name === 'type' && value === 'application/ld+json')) {
+            scripts.push('<script> that is not JSON-LD');
+        }
+        for (const [name, value] of attributes) {
+            if (name.startsWith('on')) scripts.push(`<${tag} ${name}> event handler`);
+            if (/^\s*javascript:/i.test(value)) scripts.push(`<${tag} ${name}="javascript:...">`);
+        }
+    }
+    if (scripts.length === 0) pass(`${page}: no executable script`);
+    else for (const script of scripts) fail(`${page}: ${script}`);
+}
 
 // index.html stays under 300 KB.
 const HTML_CEILING = 300 * 1024;
