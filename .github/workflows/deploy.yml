@@ -69,6 +69,17 @@ jobs:
                   CHROME_PATH="$CHROME" npx lhci collect --settings.chromeFlags="--no-sandbox --disable-dev-shm-usage"
                   npx lhci assert
 
+            # Playwright traces and Lighthouse reports, to diagnose a failure without rerunning it.
+            - if: failure()
+              uses: actions/upload-artifact@v7
+              with:
+                  name: test-reports
+                  path: |
+                      test-results/
+                      .lighthouseci/
+                  include-hidden-files: true
+                  if-no-files-found: ignore
+
             - if: github.event_name != 'pull_request'
               uses: actions/configure-pages@v6
 
