@@ -27,7 +27,7 @@ cannot do the job, say so and ask before adding a script. The navigation stays a
 The `<script>` in `index.html` is the `application/ld+json` block, which is inert data, not code.
 
 ```sh
-npm run build && ls dist/assets/*.js   # expect no matches
+npm run build && npm run check-dist   # fails on a JS bundle, any other <script>, an inline handler, or a javascript: URL
 ```
 
 ## Commands
@@ -42,7 +42,8 @@ npm run build && ls dist/assets/*.js   # expect no matches
 | `npm run check-dist`   | Tier 1 assertions over the built `dist/`      |
 | `npm test`             | Playwright suite: layout invariants and axe   |
 
-`npm test` serves the existing `dist/` through `npm run preview`, so build first. `TESTING.md` explains what each tier covers and
+`npm test` builds the site and serves it with `npm run preview` (in CI it tests the build already validated), and it fails if
+something else holds port 4173. `TESTING.md` explains what each tier covers and
 what is deliberately left out; read it before adding or changing tests. `ACCESSIBILITY.md` records the accessibility review and its
 reviewed exceptions — read it before changing markup to satisfy an accessibility checker, since some findings were kept on purpose.
 
