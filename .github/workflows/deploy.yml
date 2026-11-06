@@ -1,23 +1,26 @@
-name: Deploy to GitHub Pages
+name: Build and deploy
 
+# Pull requests run the same build job that gates a deploy, but never deploy. The `build` job is the required status check on `main`.
 on:
     push:
         branches: [main]
+    pull_request:
+        branches: [main]
     workflow_dispatch:
 
-permissions:
-    contents: read
-    pages: write
-    id-token: write
+# Jobs grant themselves what they need, so pull-request runs never hold Pages permissions.
+permissions: {}
 
-# Let a queued run supersede an in-progress one, but never cancel a deploy midway.
+# A newer push to a pull request cancels its older run. On `main` runs queue instead: a deploy is never cancelled midway.
 concurrency:
-    group: pages
-    cancel-in-progress: false
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
     build:
         runs-on: ubuntu-latest
+        permissions:
+            contents: read
         steps:
             - uses: actions/checkout@v4
 
@@ -30,24 +33,38 @@ jobs:
             # husky's prepare script is pointless in CI and only installs hooks.
             - run: npm ci --ignore-scripts
 
+            - run: npm run build
+
             # vnu.jar (the W3C Nu HTML checker) needs Java 17 or newer.
             - uses: actions/setup-java@v4
               with:
                   distribution: temurin
                   java-version: 21
 
-            # Builds, then fails the job if the W3C checker finds any errors, so invalid HTML never deploys.
-            - run: npm run validate
+            # Fails the job on any W3C error, so invalid HTML never deploys. The filtered info note fires on every
+            # `<meta />` that Prettier writes; it is not an error.
+            - name: Validate HTML
+              run: >-
+                  java -jar node_modules/vnu-jar/build/dist/vnu.jar
+                  --skip-non-html --format gnu
+                  --filterpattern '.*Trailing slash on void elements.*'
+                  dist/
 
-            - uses: actions/configure-pages@v5
+            - if: github.event_name != 'pull_request'
+              uses: actions/configure-pages@v5
 
-            - uses: actions/upload-pages-artifact@v3
+            - if: github.event_name != 'pull_request'
+              uses: actions/upload-pages-artifact@v3
               with:
                   path: dist
 
     deploy:
+        if: github.event_name != 'pull_request'
         needs: build
         runs-on: ubuntu-latest
+        permissions:
+            pages: write
+            id-token: write
         environment:
             name: github-pages
             url: ${{ steps.deployment.outputs.page_url }}
