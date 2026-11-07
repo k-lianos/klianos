@@ -48,6 +48,8 @@ A plain Node script over `dist/`. No browser, runs in under a second.
 - Required meta present: `canonical`, `og:image`, `og:title`, `description`
 - No executable JavaScript: no bundle, and in `index.html` and `404.html` no script but the JSON-LD block, no inline event
   handlers, no `javascript:` URLs — this is the "no JavaScript" rule in `CLAUDE.md`, enforced instead of merely written down
+- The built CSS has no range media queries (`width>=…`), and the no-`@layer` fallback is still inside its
+  `@supports not (all:revert-layer)` gate; together, these keep the older-browser fallbacks from silently disappearing
 - `index.html` stays under a stated ceiling (Lighthouse budgets the total transfer size; see Tier 3)
 
 Cheapest possible protection against a broken `base`, which would silently break every asset on the live site while the build
