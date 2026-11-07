@@ -1,0 +1,89 @@
+/*
+ * Baseline for browsers without cascade layers (Chrome < 99, Firefox < 97, Safari < 15.4).
+ *
+ * Every Tailwind rule lives inside @layer, which those browsers drop whole, so without this file they render raw HTML with
+ * full-size SVGs and both the mobile and desktop copies of the work entries. These rules give them a readable single column.
+ *
+ * The rules are unlayered, and unlayered styles beat layered ones regardless of specificity, so a modern browser must never apply
+ * them. They are gated on `revert-layer`, a keyword every engine shipped in the same release as @layer (Chrome 99, Firefox 97,
+ * Safari 15.4), so `@supports not (all: revert-layer)` is true exactly where layers are missing. Keep every rule inside it.
+ *
+ * Colors come from @theme, inlined because the theme's custom properties are themselves inside a layer.
+ */
+
+@supports not (all: revert-layer) {
+    body {
+        max-width: 46rem;
+        margin: 0 auto;
+        padding: 0 1rem 3rem;
+        background: --theme(--color-canvas inline);
+        color: --theme(--color-ink inline);
+        font-family: --theme(--font-sans inline);
+        line-height: 1.6;
+        overflow-wrap: break-word;
+    }
+
+    a {
+        color: --theme(--color-accent inline);
+    }
+
+    a + a {
+        margin-left: 1rem;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    svg {
+        width: 1.25em;
+        height: 1.25em;
+        vertical-align: middle;
+    }
+
+    /* Decoration, desktop-only copies, and the print-only phone number. The mobile copy of each work entry stays. */
+    [aria-hidden='true'],
+    .hidden {
+        display: none;
+    }
+
+    .sr-only:not(:focus) {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+    }
+
+    header {
+        padding: 1rem 0;
+        border-bottom: 1px solid --theme(--color-line inline);
+    }
+
+    nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    nav li {
+        display: inline-block;
+        margin: 0 1rem 0.25rem 0;
+    }
+
+    summary {
+        cursor: pointer;
+        padding: 0.5rem 0;
+    }
+
+    summary h3 {
+        display: inline;
+        font-size: 1.125rem;
+    }
+
+    summary h3 > span {
+        display: block;
+    }
+}
