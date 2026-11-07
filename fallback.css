@@ -1,44 +1,107 @@
 /*
- * Baseline for browsers without cascade layers (Chrome < 99, Firefox < 97, Safari < 15.4).
+ * Fallback design for browsers without cascade layers (Chrome < 99, Firefox < 97, Safari < 15.4).
  *
  * Every Tailwind rule lives inside @layer, which those browsers drop whole, so without this file they render raw HTML with
- * full-size SVGs and both the mobile and desktop copies of the work entries. These rules give them a readable single column.
+ * full-size SVGs and both the mobile and desktop copies of the work entries. These rules give them a designed, still version of
+ * the site: the same charcoal and teal palette, Commissioner with mono labels, cards with title bars, a single column on phones
+ * and a two-column hero and About from 60em. Nothing animates and nothing decorative is drawn.
  *
  * The rules are unlayered, and unlayered styles beat layered ones regardless of specificity, so a modern browser must never apply
  * them. They are gated on `revert-layer`, a keyword every engine shipped in the same release as @layer (Chrome 99, Firefox 97,
  * Safari 15.4), so `@supports not (all: revert-layer)` is true exactly where layers are missing. Keep every rule inside it.
+ * Browsers without @supports at all (Internet Explorer) skip the block and get the unstyled document.
+ *
+ * Write for those engines, not for the build target: block flow, floats, flexbox without `gap`, `calc()`, min-width media
+ * queries in em, and solid hex colors. No grid, custom properties, `inset`, logical properties, `aspect-ratio`, `clamp()` or
+ * alpha colors: Lightning CSS compiles this file for Chrome 99 and may rewrite those into forms older engines can't read.
+ *
+ * Hooks are the page's structure (header, nav, section ids, details/summary, figure, dl, address) plus a short list of utility
+ * class names that already carry meaning: the color tokens (text-*, bg-*), font-mono, text-xs/text-sm, hidden, sr-only,
+ * rounded-3xl (a card), rounded-full/rounded-md/rounded (chips and badges), border-t/border-b (title bars and dividers) and
+ * justify-between. Renaming one of those in the markup changes this file's output too.
  *
  * Colors come from @theme, inlined because the theme's custom properties are themselves inside a layer.
  */
 
 @supports not (all: revert-layer) {
+    /* ───────────────────────────── Base ───────────────────────────── */
+
+    html {
+        background-color: --theme(--color-canvas inline);
+    }
+
     body {
-        max-width: 46rem;
-        margin: 0 auto;
-        padding: 0 1rem 3rem;
-        background: --theme(--color-canvas inline);
+        margin: 0;
+        background-color: --theme(--color-canvas inline);
         color: --theme(--color-ink inline);
         font-family: --theme(--font-sans inline);
+        font-size: 16px;
         line-height: 1.6;
+        word-wrap: break-word;
         overflow-wrap: break-word;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        margin: 0 0 0.5rem;
+        color: --theme(--color-ink inline);
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+    }
+
+    p,
+    ul,
+    ol,
+    dl,
+    pre,
+    figure,
+    address {
+        margin: 0 0 1rem;
+    }
+
+    p:last-child,
+    ul:last-child,
+    ol:last-child,
+    dl:last-child,
+    pre:last-child {
+        margin-bottom: 0;
+    }
+
+    ul,
+    ol {
+        padding-left: 1.25rem;
+    }
+
+    dd {
+        margin: 0;
+    }
+
+    address {
+        font-style: normal;
     }
 
     a {
         color: --theme(--color-accent inline);
     }
 
-    a + a {
-        margin-left: 1rem;
+    a:hover {
+        color: --theme(--color-accent-hover inline);
+    }
+
+    a:focus,
+    summary:focus {
+        outline: 2px solid --theme(--color-accent inline);
+        outline-offset: 2px;
     }
 
     img {
         max-width: 100%;
         height: auto;
-    }
-
-    /* The code sample keeps its lines; at 320px it scrolls inside itself instead of widening the page. */
-    pre {
-        overflow-x: auto;
+        border: 0;
     }
 
     svg {
@@ -47,26 +110,36 @@
         vertical-align: middle;
     }
 
-    /* Decoration, desktop-only copies, and the print-only phone number. The mobile copy of each work entry stays. */
-    [aria-hidden='true'],
-    .hidden {
-        display: none;
-    }
-
-    /* aria-hidden only means "not in the accessibility tree". Inside a link it can be the link's whole visible content (the
-       hero's icon-only links, the header logo), so keep it there, and give icon-only links a usable target. */
-    a [aria-hidden='true']:not(.hidden) {
-        display: inline;
-    }
-
-    a[aria-label]:not(.hidden) {
-        display: inline-block;
-        padding: 0.5rem;
-    }
-
     /* Brand icons are filled through a utility class; stroke icons set fill="none" themselves. */
     a svg:not([fill]) {
         fill: currentColor;
+    }
+
+    pre,
+    code {
+        font-family: --theme(--font-mono inline);
+    }
+
+    pre {
+        overflow: auto;
+        font-size: 0.8125rem;
+        line-height: 1.75;
+    }
+
+    /* ─────────────────── Decoration, duplicates, a11y ─────────────────── */
+
+    /* Decoration (gutters, glows, the portrait ring, the service illustrations, meters), desktop-only copies, and the
+       print-only phone number. The mobile copy of each work entry stays. */
+    [aria-hidden='true'],
+    .hidden {
+        display: none !important;
+    }
+
+    /* aria-hidden only means "not in the accessibility tree". Inside a link it can be the link's whole visible content (the
+       hero's icon-only links, the header logo), so keep it there. Both rules are !important so that no layout rule below,
+       however specific, can bring back something hidden. */
+    a [aria-hidden='true']:not(.hidden) {
+        display: inline-block !important;
     }
 
     .sr-only:not(:focus) {
@@ -78,7 +151,242 @@
         white-space: nowrap;
     }
 
-    /* The header's site name is visually hidden only below md in the real layout; here it is the home link's label. */
+    /* The skip link, once focused. */
+    a.sr-only:focus {
+        position: absolute;
+        z-index: 100;
+        top: 0.5rem;
+        left: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 999px;
+        background-color: --theme(--color-accent inline);
+        color: --theme(--color-canvas inline);
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    /* ─────────────────────── Token hooks ─────────────────────── */
+
+    .text-ink {
+        color: --theme(--color-ink inline);
+    }
+    .text-muted {
+        color: --theme(--color-muted inline);
+    }
+    .text-accent {
+        color: --theme(--color-accent inline);
+    }
+    .text-keyword {
+        color: --theme(--color-keyword inline);
+    }
+    .text-string {
+        color: --theme(--color-string inline);
+    }
+    .text-canvas {
+        color: --theme(--color-canvas inline);
+    }
+    .bg-canvas {
+        background-color: --theme(--color-canvas inline);
+    }
+    .bg-surface {
+        background-color: --theme(--color-surface inline);
+    }
+    .bg-elevated {
+        background-color: --theme(--color-elevated inline);
+    }
+    .bg-accent {
+        background-color: --theme(--color-accent inline);
+    }
+    .bg-ink {
+        background-color: --theme(--color-ink inline);
+    }
+    .font-mono {
+        font-family: --theme(--font-mono inline);
+        font-size: 0.875rem;
+    }
+    .text-sm {
+        font-size: 0.875rem;
+    }
+    .text-xs {
+        font-size: 0.75rem;
+    }
+    .font-semibold {
+        font-weight: 600;
+    }
+    .border-t {
+        border-top: 1px solid --theme(--color-line inline);
+    }
+    .border-b {
+        border-bottom: 1px solid --theme(--color-line inline);
+    }
+    .border-dashed {
+        border-top-style: dashed;
+    }
+    .justify-between {
+        justify-content: space-between;
+    }
+
+    /* ─────────────────────── Layout ─────────────────────── */
+
+    header > div,
+    main > section > div,
+    footer > div {
+        max-width: 60rem;
+        margin-right: auto;
+        margin-left: auto;
+        padding-right: 1.25rem;
+        padding-left: 1.25rem;
+    }
+
+    main > section {
+        padding: 3.5rem 0;
+    }
+
+    main > section h2 {
+        font-size: 2.25rem;
+        letter-spacing: -0.02em;
+    }
+
+    /* Section heading rows: eyebrow and heading on the left, a mono meta line on the right. */
+    #expertise > div > div:first-child,
+    #work > div > div:first-child,
+    #education > div > div:first-child {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+
+    #expertise > div > div:first-child > p,
+    #work > div > div:first-child > p,
+    #education > div > div:first-child > p {
+        margin: 0 0 0.5rem;
+        color: --theme(--color-muted inline);
+    }
+
+    /* The mono file-name eyebrow above each heading. */
+    section h2 {
+        margin-bottom: 0;
+    }
+
+    section div > p.font-mono.text-accent:first-child {
+        margin-bottom: 0.75rem;
+    }
+
+    /* ─────────────────────── Cards ─────────────────────── */
+
+    .rounded-3xl {
+        margin: 0 0 1rem;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid --theme(--color-line inline);
+        border-radius: 1.5rem;
+        background-color: --theme(--color-elevated inline);
+        list-style: none;
+    }
+
+    .rounded-3xl.bg-surface {
+        background-color: --theme(--color-surface inline);
+    }
+
+    .rounded-3xl > * {
+        margin: 0;
+        padding: 1.25rem;
+    }
+
+    /* Title bars and status bars: a thin mono strip with a label and a meta value. */
+    .rounded-3xl > div.border-b,
+    .rounded-3xl > p.border-b,
+    .rounded-3xl > div.border-t,
+    .rounded-3xl > p.border-t,
+    #contact > div > .border-b {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.625rem 1.25rem;
+        color: --theme(--color-muted inline);
+        font-family: --theme(--font-mono inline);
+        font-size: 0.75rem;
+    }
+
+    .rounded-3xl > .border-b > span + span {
+        margin-left: 1rem;
+    }
+
+    /* The About card's tabs sit together, the active one underlined. */
+    .border-b-2 {
+        margin: -0.625rem 0;
+        padding: 0.625rem 0 0.5rem;
+        border-bottom: 2px solid --theme(--color-accent inline);
+        color: --theme(--color-ink inline);
+    }
+
+    /* Chips and badges. */
+    span.rounded-full,
+    span.rounded-md,
+    li.rounded-md {
+        display: inline-block;
+        margin: 0 0.375rem 0.375rem 0;
+        padding: 0.0625rem 0.5rem;
+        border: 1px solid --theme(--color-line inline);
+        border-radius: 999px;
+        font-family: --theme(--font-mono inline);
+        font-size: 0.75rem;
+        line-height: 1.5;
+        vertical-align: middle;
+    }
+
+    span.rounded-md,
+    li.rounded-md {
+        border-radius: 0.375rem;
+    }
+
+    span.rounded {
+        padding: 0 0.25rem;
+        border-radius: 0.25rem;
+    }
+
+    /* ─────────────────────── Header ─────────────────────── */
+
+    header {
+        border-bottom: 1px solid --theme(--color-line inline);
+        background-color: --theme(--color-surface inline);
+    }
+
+    header > div {
+        padding-top: 0.625rem;
+        padding-bottom: 0.625rem;
+    }
+
+    header > div > a {
+        display: inline-block;
+        color: --theme(--color-ink inline);
+        font-weight: 700;
+        line-height: 2.25rem;
+        text-decoration: none;
+    }
+
+    header > div > a > span:first-child {
+        width: 2.25rem;
+        padding: 0;
+        border: 0;
+        line-height: 1;
+        height: 2.25rem;
+        margin-right: 0.625rem;
+        border-radius: 50%;
+        background-color: --theme(--color-accent inline);
+        color: --theme(--color-canvas inline);
+        vertical-align: middle;
+    }
+
+    header > div > a > span:first-child svg {
+        width: 2.25rem;
+        height: 2.25rem;
+        vertical-align: top;
+    }
+
+    /* The site name is visually hidden only below md in the real layout; here it is the home link's label. */
     header .sr-only:not(:focus) {
         position: static;
         width: auto;
@@ -86,11 +394,7 @@
         overflow: visible;
         clip: auto;
         white-space: normal;
-    }
-
-    header {
-        padding: 1rem 0;
-        border-bottom: 1px solid --theme(--color-line inline);
+        vertical-align: middle;
     }
 
     nav ul {
@@ -101,20 +405,805 @@
 
     nav li {
         display: inline-block;
-        margin: 0 1rem 0.25rem 0;
+        margin-right: 1rem;
     }
 
-    summary {
-        cursor: pointer;
+    nav a {
+        display: inline-block;
         padding: 0.5rem 0;
+        color: --theme(--color-muted inline);
+        font-family: --theme(--font-mono inline);
+        font-size: 0.875rem;
+        text-decoration: none;
     }
 
-    summary h3 {
+    nav a:hover {
+        color: --theme(--color-accent inline);
+    }
+
+    /* ─────────────────────── Hero ─────────────────────── */
+
+    #main > section:first-child {
+        padding-top: 3rem;
+    }
+
+    #main > section:first-child h1 {
+        margin: 0.5rem 0 1.25rem;
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.03em;
+    }
+
+    #main > section:first-child h1 + p {
+        margin-bottom: 0.75rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        line-height: 1.5;
+    }
+
+    #main > section:first-child p {
+        max-width: 36rem;
+        color: --theme(--color-muted inline);
+        font-size: 1.0625rem;
+    }
+
+    #main > section:first-child p.font-mono {
+        font-size: 0.875rem;
+    }
+
+    #main > section:first-child h1 + p,
+    #main > section:first-child a.text-ink {
+        color: --theme(--color-ink inline);
+    }
+
+    /* Call to action, the work link, and the social icons. */
+    #main > section:first-child a.rounded-full {
+        display: inline-block;
+        margin: 0.5rem 0.5rem 0.5rem 0;
+        padding: 0.75rem 1.5rem;
+        border: 1px solid --theme(--color-line inline);
+        border-radius: 999px;
+        color: --theme(--color-ink inline);
+        font-weight: 600;
+        line-height: 1.5;
+        text-decoration: none;
+    }
+
+    #main > section:first-child a.rounded-full.bg-accent {
+        border-color: --theme(--color-accent inline);
+        background-color: --theme(--color-accent inline);
+        color: --theme(--color-canvas inline);
+    }
+
+    #main > section:first-child a.rounded-full.font-mono {
+        font-weight: 400;
+    }
+
+    /* The social icons sit on the same line as the two buttons. */
+    #main > section:first-child h1 ~ div > div {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    a[aria-label]:not(.hidden),
+    #main > section:first-child a[aria-label].rounded-full {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin: 0.5rem 0.25rem 0.5rem 0;
+        padding: 0;
+        font-weight: 400;
+        border: 1px solid --theme(--color-line inline);
+        border-radius: 50%;
+        color: --theme(--color-ink inline);
+        line-height: 2.75rem;
+        text-align: center;
+    }
+
+    /* The portrait card. */
+    #main > section:first-child figure {
+        max-width: 20rem;
+        margin: 2.5rem 0 0;
+    }
+
+    #main > section:first-child figure .rounded-3xl {
+        margin: 0;
+        background-color: --theme(--color-surface inline);
+    }
+
+    #main > section:first-child figure img {
+        display: block;
+        width: 100%;
+        border-radius: 1rem;
+    }
+
+    #main > section:first-child figure .rounded-3xl > div + div {
+        padding: 0.75rem;
+    }
+
+    figure dl {
+        overflow: hidden;
+        font-family: --theme(--font-mono inline);
+    }
+
+    figure dl > div {
+        float: left;
+        width: 50%;
+        margin-bottom: 0.625rem;
+    }
+
+    figure dt {
+        color: --theme(--color-muted inline);
+        font-size: 0.75rem;
+    }
+
+    figure dd {
+        font-size: 0.875rem;
+    }
+
+    /* ─────────────────────── About ─────────────────────── */
+
+    #about h2 + p {
+        margin: 1.25rem 0;
+        font-size: 1.375rem;
+        font-weight: 600;
+        line-height: 1.45;
+        letter-spacing: -0.01em;
+    }
+
+    #about h2 + p + div p {
+        margin-bottom: 1rem;
+        color: --theme(--color-muted inline);
+        font-size: 1.0625rem;
+    }
+
+    #about .rounded-3xl {
+        margin-top: 2.5rem;
+    }
+
+    #about div[role='region'] {
+        overflow: auto;
+    }
+
+    /* ─────────────────────── What I do ─────────────────────── */
+
+    #expertise > div > ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    #expertise > div > ul > li {
+        width: 100%;
+    }
+
+    #expertise .rounded-3xl h3 {
+        font-size: 1.25rem;
+    }
+
+    #expertise .rounded-3xl p {
+        color: --theme(--color-muted inline);
+    }
+
+    #expertise > div > ul > li ul {
+        margin: 0.75rem 0 0;
+        color: --theme(--color-muted inline);
+        font-size: 0.875rem;
+    }
+
+    #expertise > div > ul > li ul li {
+        margin-bottom: 0.25rem;
+        list-style: square;
+    }
+
+    /* Selected achievements and Tech stack. */
+    #expertise > div > ul ~ div {
+        margin-top: 4rem;
+    }
+
+    #expertise > div > ul ~ div > div:first-child {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+    }
+
+    #expertise > div > ul ~ div > div:first-child h3 {
+        margin: 0;
+        font-size: 1.75rem;
+    }
+
+    #expertise > div > ul ~ div > div:first-child p {
+        margin: 0;
+    }
+
+    #expertise > div > ul ~ div > ul.rounded-3xl > li {
+        padding: 1.125rem 1.25rem;
+        border-top: 1px solid --theme(--color-line inline);
+    }
+
+    #expertise > div > ul ~ div > ul.rounded-3xl > li:first-child {
+        border-top: 0;
+    }
+
+    #expertise > div > ul ~ div > ul.rounded-3xl > li > span {
+        display: block;
+        margin-bottom: 0.375rem;
+    }
+
+    #expertise > div > ul ~ div > ul.rounded-3xl > li p {
+        color: --theme(--color-ink inline);
+    }
+
+    #expertise h4 {
+        margin: 0 0 0.625rem;
+        font-family: --theme(--font-mono inline);
+        font-size: 0.875rem;
+        font-weight: 400;
+    }
+
+    /* `: [` only reads right next to the closing bracket, which is decorative and hidden here. */
+    #expertise h4 .text-muted {
+        display: none;
+    }
+
+    #expertise h4 + ul {
+        margin: 0 0 1.5rem;
+        padding: 0;
+        list-style: none;
+    }
+
+    #expertise h4 + ul li {
         display: inline;
+    }
+
+    #expertise h4 + ul a {
+        display: inline-block;
+        margin: 0 0.375rem 0.5rem 0;
+        padding: 0.5rem 1rem;
+        border: 1px solid --theme(--color-line inline);
+        border-radius: 999px;
+        background-color: --theme(--color-canvas inline);
+        color: --theme(--color-ink inline);
+        line-height: 1.25;
+        text-decoration: none;
+    }
+
+    #expertise h4 + ul a:hover {
+        border-color: --theme(--color-accent inline);
+        color: --theme(--color-accent inline);
+    }
+
+    /* ─────────────────────── Experience ─────────────────────── */
+
+    #work .rounded-3xl > ol {
+        margin: 0;
+        padding: 0.5rem 0 0;
+        list-style: none;
+    }
+
+    #work .rounded-3xl > p.font-mono {
+        padding-bottom: 0;
+        color: --theme(--color-muted inline);
+    }
+
+    #work details {
+        border-top: 1px solid --theme(--color-line inline);
+    }
+
+    #work li:first-child details {
+        border-top: 0;
+    }
+
+    #work details[open] {
+        background-color: --theme(--color-elevated inline);
+    }
+
+    /* The native marker is replaced with a mono plus and minus, since the chevron is decorative and hidden. */
+    #work summary {
+        display: block;
+        position: relative;
+        padding: 1rem 3rem 1rem 1.25rem;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    #work summary::-webkit-details-marker {
+        display: none;
+    }
+
+    #work summary:after {
+        content: '+';
+        position: absolute;
+        top: 1rem;
+        right: 1.25rem;
+        color: --theme(--color-accent inline);
+        font-family: --theme(--font-mono inline);
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+    }
+
+    #work details[open] > summary:after {
+        content: '\2212';
+    }
+
+    #work summary h3 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        letter-spacing: 0;
+    }
+
+    #work summary h3 > span > span {
+        display: block;
+    }
+
+    #work summary h3 > span > span > span + span {
+        margin-left: 0.375rem;
+    }
+
+    #work summary [id$='-company'] {
+        margin-right: 0.5rem;
+        font-size: 1.125rem;
+        font-weight: 700;
+        line-height: 1.4;
+    }
+
+    #work summary [id$='-role'] {
+        color: --theme(--color-accent inline);
+        font-size: 0.9375rem;
+        font-weight: 500;
+    }
+
+    #work details > div {
+        padding: 0 1.25rem 1.25rem;
+    }
+
+    #work details > div > div {
+        padding-top: 1rem;
+    }
+
+    #work details > div p {
+        margin-bottom: 0.75rem;
+        color: --theme(--color-muted inline);
+        font-size: 0.9375rem;
+    }
+
+    #work details > div ul {
+        margin: 0.5rem 0 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    /* ─────────────────────── Education ─────────────────────── */
+
+    #education > div > div + div > ol {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    #education .rounded-3xl > div + div > div:first-of-type {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 0.25rem;
+    }
+
+    #education .rounded-3xl > div + div > div:first-of-type > span {
+        width: 3.5rem;
+        margin-right: 1rem;
+        -webkit-flex-shrink: 0;
+        flex-shrink: 0;
+    }
+
+    #education .rounded-3xl > div + div > div:first-of-type img {
+        display: block;
+        width: 100%;
+        border-radius: 0.75rem;
+    }
+
+    #education .rounded-3xl h3 {
+        margin: 0.25rem 0 0;
         font-size: 1.125rem;
     }
 
-    summary h3 > span {
+    #education .rounded-3xl h3 a {
+        color: --theme(--color-ink inline);
+    }
+
+    #education .rounded-3xl > div + div > .border-t {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+
+    /* Languages and Honors. */
+    #education .rounded-3xl > div > h3 {
+        margin: 0 0 1rem;
+        font-size: 1.375rem;
+    }
+
+    #education .rounded-3xl > div > ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    #education .rounded-3xl > div > ul > li {
+        margin-bottom: 0.75rem;
+    }
+
+    #education .rounded-3xl > div > ul > li > p {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+    }
+
+    #education .rounded-3xl > div > ul > li > p > span + span {
+        margin-left: 1rem;
+        text-align: right;
+    }
+
+    #education .rounded-3xl > div > ul.divide-y > li {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0.625rem 0;
+        border-top: 1px solid --theme(--color-line inline);
+    }
+
+    #education .rounded-3xl > div > ul.divide-y > li:first-child {
+        padding-top: 0;
+        border-top: 0;
+    }
+
+    #education .rounded-3xl > div > p.border-t {
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        font-family: --theme(--font-mono inline);
+        font-size: 0.75rem;
+    }
+
+    /* ─────────────────────── Contact ─────────────────────── */
+
+    #contact {
+        padding-right: 0.75rem;
+        padding-left: 0.75rem;
+    }
+
+    #contact > div {
+        overflow: hidden;
+        padding: 0;
+        border: 1px solid --theme(--color-line inline);
+        border-radius: 1.5rem;
+        background-color: --theme(--color-surface inline);
+    }
+
+    #contact > div > .border-b {
+        padding: 0.75rem 1.5rem;
+    }
+
+    #contact > div > div + div + div {
+        padding: 2.5rem 1.5rem;
+    }
+
+    #contact h2 {
+        margin: 0.5rem 0 1.25rem;
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.03em;
+    }
+
+    #contact > div > div + div + div > div > p {
+        max-width: 38rem;
+        color: --theme(--color-muted inline);
+        font-size: 1.0625rem;
+    }
+
+    #contact > div > div + div + div > div > p.font-mono {
+        font-size: 0.875rem;
+    }
+
+    #contact p a {
+        color: --theme(--color-ink inline);
+    }
+
+    #contact a[href^='mailto:'] {
+        display: inline-block;
+        max-width: 100%;
+        margin: 0.75rem 0 2rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 999px;
+        background-color: --theme(--color-accent inline);
+        color: --theme(--color-canvas inline);
+        font-weight: 600;
+        text-decoration: none;
+        word-break: break-all;
+    }
+
+    #contact a[href^='mailto:'] svg {
+        margin-right: 0.5rem;
+    }
+
+    #contact address {
+        margin: 0;
+    }
+
+    #contact address > p {
+        padding: 0.625rem 1.25rem;
+    }
+
+    #contact address ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    #contact address li {
+        border-top: 1px solid --theme(--color-line inline);
+    }
+
+    #contact address li:first-child {
+        border-top: 0;
+    }
+
+    #contact address a {
+        display: flex;
+        align-items: center;
+        padding: 0.875rem 1.25rem;
+        color: --theme(--color-ink inline);
+        text-decoration: none;
+    }
+
+    #contact address a:hover {
+        background-color: --theme(--color-surface inline);
+    }
+
+    #contact address a > span:first-child {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin: 0 1rem 0 0;
+        padding: 0;
+        -webkit-flex-shrink: 0;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background-color: --theme(--color-canvas inline);
+        font-size: 1rem;
+        line-height: 2.5rem;
+        text-align: center;
+    }
+
+    #contact address a > span + span {
+        -webkit-flex: 1;
+        flex: 1;
+        min-width: 0;
+    }
+
+    #contact address a > span + span > span {
         display: block;
+    }
+
+    #contact address a > span + span > span + span {
+        color: --theme(--color-muted inline);
+        font-family: --theme(--font-mono inline);
+        font-size: 0.75rem;
+    }
+
+    #contact address a > svg {
+        margin-left: 0.75rem;
+        color: --theme(--color-muted inline);
+    }
+
+    /* ─────────────────────── Footer ─────────────────────── */
+
+    footer {
+        border-top: 1px solid --theme(--color-line inline);
+        background-color: --theme(--color-surface inline);
+    }
+
+    footer > div {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        color: --theme(--color-muted inline);
+        font-family: --theme(--font-mono inline);
+        font-size: 0.75rem;
+    }
+
+    footer p {
+        margin: 0;
+        padding: 0.75rem 0;
+    }
+
+    footer p > span + span {
+        margin-left: 1rem;
+    }
+
+    footer a {
+        display: inline-block;
+        padding: 0.75rem 0;
+        color: --theme(--color-ink inline);
+        text-decoration: none;
+    }
+
+    footer a svg {
+        width: 0.875rem;
+        height: 0.875rem;
+        margin-left: 0.25rem;
+    }
+
+    /* ─────────────────────── Wider screens ─────────────────────── */
+
+    @media (min-width: 40em) {
+        main > section {
+            padding: 4.5rem 0;
+        }
+
+        main > section h2 {
+            font-size: 2.75rem;
+        }
+
+        #main > section:first-child h1 {
+            font-size: 4.25rem;
+        }
+
+        #contact h2 {
+            font-size: 4.5rem;
+        }
+
+        #contact > div > div + div + div {
+            padding: 3.5rem 2.5rem;
+        }
+
+        #contact > div > .border-b {
+            padding-right: 2.5rem;
+            padding-left: 2.5rem;
+        }
+
+        #expertise > div > ul > li:nth-child(2),
+        #expertise > div > ul > li:nth-child(3) {
+            width: -webkit-calc(50% - 0.5rem);
+            width: calc(50% - 0.5rem);
+        }
+
+        #expertise > div > ul ~ div > ul.rounded-3xl > li {
+            padding: 1.25rem 1.5rem;
+            overflow: hidden;
+        }
+
+        #expertise > div > ul ~ div > ul.rounded-3xl > li > span {
+            float: left;
+            width: 8rem;
+            margin: 0;
+        }
+
+        #expertise > div > ul ~ div > ul.rounded-3xl > li > p {
+            margin-left: 8.5rem;
+        }
+
+        #expertise .rounded-3xl > div + div > div {
+            overflow: hidden;
+        }
+
+        #expertise h4 + ul {
+            margin-bottom: 1.75rem;
+        }
+
+        #education > div > div + div > div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #education > div > div + div > div > div {
+            width: -webkit-calc(50% - 0.5rem);
+            width: calc(50% - 0.5rem);
+        }
+    }
+
+    @media (min-width: 60em) {
+        header > div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Hero and About: text on the left, the portrait or the code card on the right. */
+        #main > section:first-child > div + div,
+        #about > div {
+            display: flex;
+            align-items: center;
+        }
+
+        #main > section:first-child > div + div > div {
+            -webkit-flex: 1;
+            flex: 1;
+            min-width: 0;
+        }
+
+        #main > section:first-child figure {
+            width: 20rem;
+            margin: 0 0 0 3rem;
+            -webkit-flex-shrink: 0;
+            flex-shrink: 0;
+        }
+
+        #about > div {
+            align-items: flex-start;
+        }
+
+        #about > div > div:first-child {
+            -webkit-flex: 1;
+            flex: 1;
+            min-width: 0;
+        }
+
+        #about .rounded-3xl {
+            width: 26rem;
+            margin: 0 0 0 3rem;
+            -webkit-flex-shrink: 0;
+            flex-shrink: 0;
+        }
+
+        #contact > div > div + div + div {
+            display: flex;
+            align-items: center;
+        }
+
+        #contact > div > div + div + div > div {
+            -webkit-flex: 1;
+            flex: 1;
+            min-width: 0;
+        }
+
+        #contact address {
+            width: 22rem;
+            margin-left: 3rem;
+            -webkit-flex-shrink: 0;
+            flex-shrink: 0;
+        }
+
+        #contact a[href^='mailto:'] {
+            margin-bottom: 0;
+        }
+    }
+
+    /* ─────────────────────── Print ─────────────────────── */
+
+    @media print {
+        html,
+        body,
+        header,
+        footer,
+        main > section,
+        .rounded-3xl,
+        #contact > div,
+        #work details[open] {
+            background: none;
+            color: #000000;
+        }
+
+        header,
+        footer,
+        nav {
+            display: none;
+        }
+
+        .rounded-3xl,
+        #contact > div {
+            border-color: #cccccc;
+        }
     }
 }
