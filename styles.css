@@ -1,6 +1,7 @@
 @import '@fontsource-variable/commissioner';
 @import 'tailwindcss' source(none);
 @source './index.html';
+@import './fallback.css';
 
 @theme {
     --font-sans: 'Commissioner Variable', ui-sans-serif, system-ui, sans-serif;
