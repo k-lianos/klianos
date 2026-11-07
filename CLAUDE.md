@@ -82,7 +82,8 @@ npm run build && npm run check-dist   # fails on a JS bundle, any other <script>
 
 `npm test` builds the site and serves it with `npm run preview` (in CI it tests the build already validated), and it fails if
 something else holds port 4173. `TESTING.md` explains what each tier covers and
-what is deliberately left out; read it before adding or changing tests. `ACCESSIBILITY.md` records the accessibility review and its
+what is deliberately left out; read it before adding or changing tests. **When a bug is reported, or something we build fails on its
+first try**, decide whether it earns a regression test by following "When something breaks" in `TESTING.md`. `ACCESSIBILITY.md` records the accessibility review and its
 reviewed exceptions — read it before changing markup to satisfy an accessibility checker, since some findings were kept on purpose.
 
 ## Deployment

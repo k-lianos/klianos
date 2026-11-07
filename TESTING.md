@@ -96,6 +96,21 @@ The riskiest moment is not a code change, it is the deploy. A step after `deploy
 on the page, the font, both portraits, `og-image.jpg`, and `sitemap.xml` catches GitHub Pages misconfiguration — which no
 local test can. Roughly ten lines of shell.
 
+## When something breaks
+
+A reported bug, or something we build that fails on its first try, shows where this page's risk actually is. Before calling it
+fixed, decide whether it earns a regression test, and say which way you decided and why:
+
+- **Add one** when a later change could plausibly bring the failure back unnoticed, which usually means geometry, build output, or
+  browser behavior. Write it as an invariant in the cheapest tier that would have caught it (Tier 1 before Playwright), and watch
+  it fail against the broken code before applying the fix.
+- **Skip it** when the failure is covered by "Not worth doing" below, or was a one-off slip with no shape a future change could
+  repeat.
+- **Report the gap** when catching it needs a harness the suite lacks, such as the no-layer fallback (see `CLAUDE.md`). Ask before
+  building that harness.
+
+When a failure shapes a test, add it to the table in "Why this shape" so the plan keeps reflecting real failures.
+
 ## Not worth doing
 
 - **Unit tests** — see above
