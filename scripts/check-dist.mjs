@@ -113,6 +113,20 @@ for (const page of ['index.html', '404.html']) {
     else for (const script of scripts) fail(`${page}: ${script}`);
 }
 
+// Older-browser fallbacks survive the build. Chrome < 104 and Safari < 16.4 ignore range media queries such as (width>=48rem),
+// so they must be lowered to min-width (vite.config.mjs cssTarget). Browsers without @layer get fallback.css, which only stays
+// out of modern browsers' way while it is inside its @supports gate.
+const cssFiles = readdirSync(join(dist, 'assets')).filter(f => f.endsWith('.css'));
+for (const file of cssFiles) {
+    const css = readFileSync(join(dist, 'assets', file), 'utf8');
+    const ranges = css.match(/@media[^{]*\((?:width|height)\s*[<>=]/g) ?? [];
+    if (ranges.length === 0) pass(`${file}: no range media queries`);
+    else fail(`${file}: ${ranges.length} range media quer${ranges.length === 1 ? 'y' : 'ies'}, e.g. ${ranges[0]}`);
+}
+const gate = '@supports not (all:revert-layer){';
+if (cssFiles.some(f => readFileSync(join(dist, 'assets', f), 'utf8').includes(gate))) pass('no-@layer fallback is present and gated');
+else fail('no-@layer fallback missing, or no longer inside @supports not (all: revert-layer)');
+
 // index.html stays under 300 KB.
 const HTML_CEILING = 300 * 1024;
 const htmlBytes = statSync(join(dist, 'index.html')).size;
