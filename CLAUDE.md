@@ -17,6 +17,12 @@ Vite compiles it into a separate, content-hashed stylesheet in `dist/assets/`:
   scroll-linked animation behind `supports-[animation-timeline:...]:`, since not every browser has scroll timelines.
 - **Only `index.html` is scanned for classes** (`source(none)` plus `@source`), so words in the Markdown docs don't generate CSS.
   Add an `@source` line for any new file that contains classes.
+- **Older browsers degrade, they don't match.** Every Tailwind rule is inside `@layer`. `fallback.css`, imported from
+  `styles.css`, gives browsers without cascade layers (Chrome < 99, Firefox < 97, Safari < 15.4) a plain readable column. It is
+  the one place for hand-written rules, and they stay inside its `@supports not (all: revert-layer)` gate: unlayered rules
+  would otherwise override the design. `build.cssTarget` in `vite.config.mjs` is set to the first releases with layers, so
+  Lightning CSS lowers range media queries to `min-width`. Don't center with `translate` when the position matters, because
+  Chrome < 104 lacks it; the portrait ring uses offsets and a percentage margin instead. `check-dist` asserts the lowering and the gate.
 - **Check print output after changing colors.** `<body>` forces black text and clears surface backgrounds with `print:**:text-black!` and `print:**:bg-transparent!`.
 
 ## Hard constraint: no JavaScript
@@ -73,6 +79,7 @@ point at GitHub Pages' IPs, and `www` is a `CNAME` to `k-lianos.github.io`. GoDa
 
 - `index.html` — the whole site, markup and utility classes.
 - `styles.css` — Tailwind imports, source configuration, theme tokens, and keyframes; compiled into an external stylesheet.
+- `fallback.css` — gated baseline styles for browsers without `@layer`; see Tailwind above.
 - `@fontsource-variable/commissioner` — the self-hosted typeface, imported in `styles.css`. Vite hashes the font files into
   `dist/assets/`, so the page makes no third-party font requests.
 - `images/` — images the page references. Vite puts a content hash in each filename at build, so a changed image gets a new URL
