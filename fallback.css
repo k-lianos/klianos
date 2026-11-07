@@ -53,6 +53,22 @@
         display: none;
     }
 
+    /* aria-hidden only means "not in the accessibility tree". Inside a link it can be the link's whole visible content (the
+       hero's icon-only links, the header logo), so keep it there, and give icon-only links a usable target. */
+    a [aria-hidden='true']:not(.hidden) {
+        display: inline;
+    }
+
+    a[aria-label]:not(.hidden) {
+        display: inline-block;
+        padding: 0.5rem;
+    }
+
+    /* Brand icons are filled through a utility class; stroke icons set fill="none" themselves. */
+    a svg:not([fill]) {
+        fill: currentColor;
+    }
+
     .sr-only:not(:focus) {
         position: absolute;
         width: 1px;
@@ -60,6 +76,16 @@
         overflow: hidden;
         clip: rect(0, 0, 0, 0);
         white-space: nowrap;
+    }
+
+    /* The header's site name is visually hidden only below md in the real layout; here it is the home link's label. */
+    header .sr-only:not(:focus) {
+        position: static;
+        width: auto;
+        height: auto;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
     }
 
     header {
