@@ -533,10 +533,9 @@
                             </div>
                             <div class="p-3">
                                 <div class="relative overflow-hidden rounded-[1.4rem] p-0.5">
-                                    <div
-                                        class="absolute top-1/2 left-1/2 aspect-square w-[180%] -translate-x-1/2 -translate-y-1/2"
-                                        aria-hidden="true"
-                                    >
+                                    <div class="absolute top-1/2 -left-2/5 -mt-[90%] aspect-square w-[180%]" aria-hidden="true">
+                                        <!-- Centred without translate, which Chrome < 104 lacks: a 180% square sits 40% left of the
+                                             box, and margin percentages resolve against width, so -90% pulls it up by half its height. -->
                                         <div
                                             class="size-full animate-[spin_7s_linear_infinite] bg-conic from-accent via-line via-40% to-accent"
                                         ></div>
